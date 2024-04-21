@@ -6,30 +6,38 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/21 04:41:36 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:19:39 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <math.h>
-#include <string.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <math.h>
+# include <string.h>
 
-typedef struct	s_mlx
-{
+# include "./struct_minirt.h"
+# include "./define_minirt.h"
+# include "./minilibx-mac/mlx.h"
+# include "./libft/libft.h"
 
-}	t_mlx;
+//check_file.c
+int		check_file(char **av);
 
+//error.c
+int		print_error_exit(t_rt rt, char *s_err, int status);
 
-typedef struct	s_rt
-{
-	t_mlx	rmlx;
-	int		fd;
-}	t_rt;
+//free.c
+char	*free_str(char **s);
+void	free_rt(t_rt *rt);
+
+//minirt.c
+
+//struct.c
+void	rtnew(t_rt *rt, int ac, char **av);
 
 #endif

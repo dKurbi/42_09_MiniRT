@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/21 20:13:13 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
+/*   Updated: 2024/04/21 20:18:11 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	check_file(char **av)
+char	*free_str(char **s)
 {
-	(void)(av);
-	return (0);
+	if (!*s)
+		return (NULL);
+	free(*s);
+	*s = NULL;
+	return (NULL);
+}
+
+void	free_rt(t_rt *rt)
+{
+	free_str(&rt->save);
 }

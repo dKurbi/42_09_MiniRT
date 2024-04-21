@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/21 20:13:13 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/21 19:30:33 by iassambe          #+#    #+#             */
+/*   Updated: 2024/04/21 20:18:09 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	check_file(char **av)
+int	print_error_exit(t_rt rt, char *s_err, int status)
 {
-	(void)(av);
-	return (0);
+	write(STDERR_FILENO, STR_MINIRT, ft_strlen(STR_MINIRT));
+	write(STDERR_FILENO, s_err, ft_strlen(s_err));
+	free_rt(&rt);
+	exit(status);
+	return (status);
 }
