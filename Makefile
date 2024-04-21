@@ -3,31 +3,57 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
+#    By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/04/20 18:02:06 by iassambe         ###   ########.fr        #
+#    Updated: 2024/04/21 15:47:13 by dkurcbar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minirt
 
+UNAME_S := $(shell uname -s)
+
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -O3
 LIBFTFLAGS = -Linc/libft -lft
-MINILIBXFLAGS = -Linc/minilibx_ //aaaaaa
-INCLUDEFLAGS = -Iinc/ -Iinc/libft/ -Iminilibx_ //aaaaa
+
+COMPILED_FLAGS =
+MINILIBXFLAGS = 
+DIR_MINILIBX =
+
+MACMINILIBXFLAGS = -Iminilibx-mac -Linc/minilibx-mac -lmlx
+MACCOMPILEFLAGS = -framework OpenGL -framework AppKit
+MAC_DIR_MINILIBX = inc/minilibx-mac/
+
+LINUXMINILIBXFLAGS = -Iminilibx-linux -Linc/minilibx-linux -lmlx
+LINUXCOMPILEFLAGS = -X11 #etc
+LINUX_DIR_MINILIBX = inc/minilibx-linux/
+
+INCLUDEFLAGS = -Iinc/ -Iinc/libft/
 DEPFLAGS = -MMD -MP
 
+ifeq ($(UNAME_S),Linux)
+    COMPILED_FLAGS += $(LINUXCOMPILEFLAGS)
+	MINILIBXFLAGS += $(LINUXMINILIBXFLAGS)
+	DIR_MINILIBX += $(LINUX_DIR_MINILIBX)
+else ifeq ($(UNAME_S),Darwin)
+    COMPILED_FLAGS += $(MACCOMPILEFLAGS)
+	MINILIBXFLAGS += $(MACMINILIBXFLAGS)
+	DIR_MINILIBX += $(MAC_DIR_MINILIBX)
+else
+    $(error Unsupported operating system: $(UNAME_S))
+endif
+
 COLOR_GREEN = \033[0;32m
-COLOR_RED = //aaaaa 
+COLOR_RED = \033[0;31m
+COLOR_BOLD_RED = \033[1;31m
 COLOR_RESET = \033[0m
 
 DIR_SRC = src/
 DIR_INC = inc/
 DIR_OBJS = objs/
 DIR_LIBFT = inc/libft/
-DIR_MINILIBX = inc/minilibx_/  aaaaa
 
 MKDIR = mkdir -p
 RM = rm
@@ -36,7 +62,7 @@ ECHO = echo
 
 LIB_MINIRT = inc/minirt.h
 COMPILED_LIBFT = libft.a
-COMPILED_MINILIBX = inc/minilibx_ //aaaaaa
+COMPILED_MINILIBX = libmlx.a
 
 SRCS = 	minirt.c
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
@@ -45,7 +71,7 @@ DEPS = $(OBJS:.o=.d)
 all: $(NAME)
 
 $(NAME): $(COMPILED_LIBFT) $(COMPILED_MINILIBX) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) $(COMPILEFLAGS) -o $(NAME)
 	@$(ECHO) "MiniRT $(COLOR_GREEN)Compiled!$(COLOR_RESET)"
 
 $(DIR_OBJS)%.o: $(DIR_SRC)%.c $(LIB_MINIRT) Makefile
@@ -55,17 +81,19 @@ $(DIR_OBJS)%.o: $(DIR_SRC)%.c $(LIB_MINIRT) Makefile
 $(COMPILED_LIBFT):
 	$(MAKE) -C $(DIR_LIBFT) bonus
 
-$(COMPILED_MINILIBX): //aaaaaaa
-	$(MAKE) -C $(DIR_READLINE)//aaaaaaaaaaaaaaaaaaaa
+$(COMPILED_MINILIBX):
+	$(MAKE) -C $(DIR_MINILIBX)
 
 clean:
 	$(MAKE) -C $(DIR_LIBFT) clean
 	$(MAKE) -C $(DIR_MINILIBX) clean
 	$(RM) -rf $(DIR_OBJS)
+	@$(ECHO) "miniRT $(COLOR_RED)Cleaned!$(COLOR_RESET)"
 
 fclean: clean
 	$(MAKE) -C $(DIR_LIBFT) fclean
 	$(RM) -f $(NAME)
+	@$(ECHO) "miniRT $(COLOR_BOLD_RED)FCleaned!$(COLOR_RESET)"
 
 re: fclean all
 
