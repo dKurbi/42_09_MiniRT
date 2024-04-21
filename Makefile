@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/04/19 20:37:30 by iassambe         ###   ########.fr        #
+#    Updated: 2024/04/20 18:02:06 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,12 @@ fclean: clean
 re: fclean all
 
 r: re
+
+fcle: fclean
+
+fc: fclean
+
+fcl: fclean
 
 norminette:
 	norminette inc/libft/*.c inc/libft/*.h inc/*.h src/*.c
