@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/21 20:21:11 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:10:28 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 
 # include "./minirt.h"
 
-# define ERROR 1
-# define ERR_WRONG_FILE "file doesn't have *.rt extension\n"
+# define ERR_EXTENSION "file doesn't have *.rt extension\n"
 # define ERR_INC_ARGS "incorrect arguments passed\n"
+# define ERR_EMPTY "the file is empty\n"
 
-# define STR_MINIRT "minirt: "
+# define STR_MINIRT "miniRT: "
+
+# define ERROR 1
+# define SPACE 32
 
 #endif

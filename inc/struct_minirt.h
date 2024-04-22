@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/21 20:21:21 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:06:33 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_rt
 	int		fd;
 	char	**av;
 	int		ac;
-	char	*save;
+	char	*line;
 }	t_rt;
 
 #endif

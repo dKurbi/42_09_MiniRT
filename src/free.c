@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/21 20:18:11 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:10:54 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*free_str(char **s)
 	return (NULL);
 }
 
-void	free_rt(t_rt *rt)
+int	free_rt(t_rt *rt)
 {
-	free_str(&rt->save);
+	free_str(&rt->line);
+	return (1);
 }

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/22 18:06:38 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/22 15:53:44 by iassambe          #+#    #+#             */
+/*   Updated: 2024/04/22 15:54:53 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	rtnew(t_rt *rt, int ac, char **av)
+void	ft_close(int *fd)
 {
-	rt->ac = ac;
-	rt->av = av;
-	rt->fd = -1;
-	rt->line = NULL;
+	if (*fd < 0)
+		return ;
+	close(*fd);
+	*fd = -1;
 }

@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/04/22 05:34:07 by iassambe         ###   ########.fr        #
+#    Updated: 2024/04/22 18:39:51 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,33 +18,33 @@ UNAME_S := $(shell uname -s)
 
 #	Compile
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -O3
+CFLAGS = -Wall -Wextra -Werror -g -O3 #-fsanitize=address
 LIBFTFLAGS = -Linc/libft -lft
 INCLUDEFLAGS = -Iinc/ -Iinc/libft/
 DEPFLAGS = -MMD -MP
 
 #	Decide for compile, detect OS and add
 MINILIBXFLAGS = 
-COMPILEFLAGS = 
+MINILIBXCOMPILEFLAGS = 
 DIR_MINILIBX = 
 
 #	Variables for Mac (Darwin)
-MACMINILIBXFLAGS = -Iminilibx-mac -Linc/minilibx-mac -lmlx
-MACCOMPILEFLAGS = -framework OpenGL -framework AppKit
+MACMINILIBXFLAGS = -Iminilibx-mac/ -Linc/minilibx-mac -lmlx
+MACMINILIBXCOMPILEFLAGS = -framework OpenGL -framework AppKit
 MAC_DIR_MINILIBX = inc/minilibx-mac/
 
 #	Variables for Linux
-LINUXMINILIBXFLAGS = -Iminilibx-linux -Linc/minilibx-linux -lmlx
-LINUXCOMPILEFLAGS = -L/usr/lib -lX11 -lm -lz -lXext
+LINUXMINILIBXFLAGS = -Iminilibx-linux/ -Linc/minilibx-linux -lmlx
+LINUXMINILIBXCOMPILEFLAGS = -L/usr/lib -lX11 -lm -lz -lXext
 LINUX_DIR_MINILIBX = inc/minilibx-linux/
 
 #	Assigning rules for OS compile
 ifeq ($(UNAME_S),Linux)
-    COMPILEFLAGS += $(LINUXCOMPILEFLAGS)
+    MINILIBXCOMPILEFLAGS += $(LINUXMINILIBXCOMPILEFLAGS)
 	MINILIBXFLAGS += $(LINUXMINILIBXFLAGS)
 	DIR_MINILIBX += $(LINUX_DIR_MINILIBX)
 else ifeq ($(UNAME_S),Darwin)
-    COMPILEFLAGS += $(MACCOMPILEFLAGS)
+    MINILIBXCOMPILEFLAGS += $(MACMINILIBXCOMPILEFLAGS)
 	MINILIBXFLAGS += $(MACMINILIBXFLAGS)
 	DIR_MINILIBX += $(MAC_DIR_MINILIBX)
 else
@@ -78,7 +78,7 @@ COMPILED_LIBFT = libft.a
 COMPILED_MINILIBX = libmlx.a
 
 #	Files .c and .o
-SRCS = 	minirt.c check_file.c error.c free.c struct.c
+SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
 
@@ -86,7 +86,7 @@ DEPS = $(OBJS:.o=.d)
 all: $(NAME)
 
 $(NAME): $(COMPILED_LIBFT) $(COMPILED_MINILIBX) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) $(COMPILEFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) $(MINILIBXCOMPILEFLAGS) -o $(NAME)
 	@$(ECHO) "$(COLOR_BOLD_WHITE)MiniRT $(COLOR_GREEN)Compiled!$(COLOR_RESET)"
 
 $(DIR_OBJS)%.o: $(DIR_SRC)%.c $(LIB_MINIRT) $(LIB_STRUCT_MINIRT) $(LIB_DEFINE_MINIRT) Makefile
