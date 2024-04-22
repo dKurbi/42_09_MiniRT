@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/21 20:19:39 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/22 05:36:23 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,16 @@
 
 # include "./struct_minirt.h"
 # include "./define_minirt.h"
-# include "./minilibx-mac/mlx.h"
 # include "./libft/libft.h"
 
+# ifndef __linux__
+#  include "./minilibx-mac/mlx.h"
+# else
+#  include "./minilibx-linux/mlx.h"
+# endif
+
 //check_file.c
-int		check_file(char **av);
+int		check_file(t_rt rt);
 
 //error.c
 int		print_error_exit(t_rt rt, char *s_err, int status);

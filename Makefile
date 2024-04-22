@@ -6,14 +6,14 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/04/21 21:06:10 by iassambe         ###   ########.fr        #
+#    Updated: 2024/04/22 05:34:07 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #	Executable program
 NAME = minirt
 
-#	Current OS
+#	Get current OS
 UNAME_S := $(shell uname -s)
 
 #	Compile
@@ -23,7 +23,7 @@ LIBFTFLAGS = -Linc/libft -lft
 INCLUDEFLAGS = -Iinc/ -Iinc/libft/
 DEPFLAGS = -MMD -MP
 
-#	Decide for compile, OS checking
+#	Decide for compile, detect OS and add
 MINILIBXFLAGS = 
 COMPILEFLAGS = 
 DIR_MINILIBX = 
@@ -35,7 +35,7 @@ MAC_DIR_MINILIBX = inc/minilibx-mac/
 
 #	Variables for Linux
 LINUXMINILIBXFLAGS = -Iminilibx-linux -Linc/minilibx-linux -lmlx
-LINUXCOMPILEFLAGS = -L/usr/lib -lX11 -lm -lz -lXext -lmlx_linux
+LINUXCOMPILEFLAGS = -L/usr/lib -lX11 -lm -lz -lXext
 LINUX_DIR_MINILIBX = inc/minilibx-linux/
 
 #	Assigning rules for OS compile
