@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/22 19:24:43 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/23 05:14:39 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # else
 #  include "./minilibx-linux/mlx.h"
 # endif
+
 
 //check_file.c
 int		check_if_empty_str(char *s);

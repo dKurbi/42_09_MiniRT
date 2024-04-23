@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/22 20:47:50 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/23 05:36:52 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 int	check_if_empty_str(char *s)
 {
 	size_t	i;
-	int		count_nl;
 
 	if (ft_strlen(s) == 0 || s[0] == '\0')
 		return (1);
-	count_nl = 0;
 	i = 0;
 	while (s && s[i] && (s[i] == SPACE || s[i] == '\t' || s[i] == '\n'))
 		i++;
@@ -44,7 +42,6 @@ int	check_if_empty_fd(int fd, char *s)
 		s = get_next_line(fd);
 	}
 	ft_close(&fd);
-	free_str(&s);
 	if (count_lines == count_empty)
 	{
 		printf("emptao\n");
@@ -73,7 +70,8 @@ int	check_file(t_rt rt)
 	rt.fd = open(rt.av[1], O_RDONLY);
 	if (rt.fd < 0)
 	{
-		(void)write(STDERR_FILENO, STR_MINIRT, ft_strlen(STR_MINIRT));
+		if (write(STDERR_FILENO, STR_MINIRT, ft_strlen(STR_MINIRT)))
+			exit(free_rt(&rt));
 		perror(rt.av[1]);
 		exit(free_rt(&rt));
 	}
