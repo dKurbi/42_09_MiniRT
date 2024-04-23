@@ -3,78 +3,93 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+         #
+#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/04/21 15:47:13 by dkurcbar         ###   ########.fr        #
+#    Updated: 2024/04/22 18:39:51 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+#	Executable program
 NAME = minirt
 
+#	Get current OS
 UNAME_S := $(shell uname -s)
 
+#	Compile
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -O3
+CFLAGS = -Wall -Wextra -Werror -g -O3 #-fsanitize=address
 LIBFTFLAGS = -Linc/libft -lft
-
-COMPILED_FLAGS =
-MINILIBXFLAGS = 
-DIR_MINILIBX =
-
-MACMINILIBXFLAGS = -Iminilibx-mac -Linc/minilibx-mac -lmlx
-MACCOMPILEFLAGS = -framework OpenGL -framework AppKit
-MAC_DIR_MINILIBX = inc/minilibx-mac/
-
-LINUXMINILIBXFLAGS = -Iminilibx-linux -Linc/minilibx-linux -lmlx
-LINUXCOMPILEFLAGS = -X11 #etc
-LINUX_DIR_MINILIBX = inc/minilibx-linux/
-
 INCLUDEFLAGS = -Iinc/ -Iinc/libft/
 DEPFLAGS = -MMD -MP
 
+#	Decide for compile, detect OS and add
+MINILIBXFLAGS = 
+MINILIBXCOMPILEFLAGS = 
+DIR_MINILIBX = 
+
+#	Variables for Mac (Darwin)
+MACMINILIBXFLAGS = -Iminilibx-mac/ -Linc/minilibx-mac -lmlx
+MACMINILIBXCOMPILEFLAGS = -framework OpenGL -framework AppKit
+MAC_DIR_MINILIBX = inc/minilibx-mac/
+
+#	Variables for Linux
+LINUXMINILIBXFLAGS = -Iminilibx-linux/ -Linc/minilibx-linux -lmlx
+LINUXMINILIBXCOMPILEFLAGS = -L/usr/lib -lX11 -lm -lz -lXext
+LINUX_DIR_MINILIBX = inc/minilibx-linux/
+
+#	Assigning rules for OS compile
 ifeq ($(UNAME_S),Linux)
-    COMPILED_FLAGS += $(LINUXCOMPILEFLAGS)
+    MINILIBXCOMPILEFLAGS += $(LINUXMINILIBXCOMPILEFLAGS)
 	MINILIBXFLAGS += $(LINUXMINILIBXFLAGS)
 	DIR_MINILIBX += $(LINUX_DIR_MINILIBX)
 else ifeq ($(UNAME_S),Darwin)
-    COMPILED_FLAGS += $(MACCOMPILEFLAGS)
+    MINILIBXCOMPILEFLAGS += $(MACMINILIBXCOMPILEFLAGS)
 	MINILIBXFLAGS += $(MACMINILIBXFLAGS)
 	DIR_MINILIBX += $(MAC_DIR_MINILIBX)
 else
-    $(error Unsupported operating system: $(UNAME_S))
+    $(error Not valid OS: $(UNAME_S))
 endif
 
+#	Colors
 COLOR_GREEN = \033[0;32m
 COLOR_RED = \033[0;31m
 COLOR_BOLD_RED = \033[1;31m
+COLOR_BOLD_WHITE = \033[1;97m
 COLOR_RESET = \033[0m
 
+#	Directories
 DIR_SRC = src/
 DIR_INC = inc/
 DIR_OBJS = objs/
 DIR_LIBFT = inc/libft/
 
+#	Shell commands
 MKDIR = mkdir -p
 RM = rm
 MAKE = make
 ECHO = echo
 
+#	Files .h and .a
 LIB_MINIRT = inc/minirt.h
+LIB_STRUCT_MINIRT = inc/struct_minirt.h
+LIB_DEFINE_MINIRT = inc/define_minirt.h
 COMPILED_LIBFT = libft.a
 COMPILED_MINILIBX = libmlx.a
 
-SRCS = 	minirt.c
+#	Files .c and .o
+SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
 
+#	Compiling process
 all: $(NAME)
 
 $(NAME): $(COMPILED_LIBFT) $(COMPILED_MINILIBX) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) $(COMPILEFLAGS) -o $(NAME)
-	@$(ECHO) "MiniRT $(COLOR_GREEN)Compiled!$(COLOR_RESET)"
+	$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) $(MINILIBXCOMPILEFLAGS) -o $(NAME)
+	@$(ECHO) "$(COLOR_BOLD_WHITE)MiniRT $(COLOR_GREEN)Compiled!$(COLOR_RESET)"
 
-$(DIR_OBJS)%.o: $(DIR_SRC)%.c $(LIB_MINIRT) Makefile
+$(DIR_OBJS)%.o: $(DIR_SRC)%.c $(LIB_MINIRT) $(LIB_STRUCT_MINIRT) $(LIB_DEFINE_MINIRT) Makefile
 	@$(MKDIR) $(DIR_OBJS)
 	$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDEFLAGS) -c $< -o $@
 
@@ -85,18 +100,19 @@ $(COMPILED_MINILIBX):
 	$(MAKE) -C $(DIR_MINILIBX)
 
 clean:
-	$(MAKE) -C $(DIR_LIBFT) clean
-	$(MAKE) -C $(DIR_MINILIBX) clean
-	$(RM) -rf $(DIR_OBJS)
-	@$(ECHO) "miniRT $(COLOR_RED)Cleaned!$(COLOR_RESET)"
+	@$(MAKE) -C $(DIR_LIBFT) clean
+	@$(MAKE) -C $(DIR_MINILIBX) clean
+	@$(RM) -rf $(DIR_OBJS)
+	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_RED)Cleaned!$(COLOR_RESET)"
 
 fclean: clean
-	$(MAKE) -C $(DIR_LIBFT) fclean
-	$(RM) -f $(NAME)
-	@$(ECHO) "miniRT $(COLOR_BOLD_RED)FCleaned!$(COLOR_RESET)"
+	@$(MAKE) -C $(DIR_LIBFT) fclean
+	@$(RM) -f $(NAME)
+	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_BOLD_RED)FCleaned!$(COLOR_RESET)"
 
 re: fclean all
 
+#	Addictional compiling rules
 r: re
 
 fcle: fclean
@@ -107,6 +123,8 @@ fcl: fclean
 
 norminette:
 	norminette inc/libft/*.c inc/libft/*.h inc/*.h src/*.c
+
+n: norminette
 
 -include $(DEPS)
 

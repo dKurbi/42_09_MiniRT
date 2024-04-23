@@ -1,0 +1,15 @@
+objs/
+inc/libft/objs/
+inc/libft/a.out
+inc/libft/libft.a
+src/a.out
+a.out
+a.out.dSYM
+src/a.out.dSYM
+src/objs/
+inc/minilibx-mac/libmlx.a
+inc/minilibx-linux/libmlx.a
+inc/a.out
+.DS_Store
+.vscode
+src/.DS_Store

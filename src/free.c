@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/22 16:26:24 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
+/*   Updated: 2024/04/23 05:38:56 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	main(int ac, char **av)
+char	*free_str(char **s)
 {
-	t_rt	rt;
+	printf("our s - %s\n", *s);
+	if (!*s | !s)
+	{
+		*s = NULL;
+		return (NULL);
+	}
+	free(*s);
+	*s = (void *)0;
+	return (NULL);
+}
 
-	rtnew(&rt, ac, av);
-	if (ac != 2 || !av)
-		exit(print_error(rt, ERR_INC_ARGS, ERROR));
-	if (check_file(rt) > 0)
-		exit(free_rt(&rt));
-	free_rt(&rt);
-	return (0);
+int	free_rt(t_rt *rt)
+{
+	if (rt->line)
+		free_str(&rt->line);
+	return (1);
 }

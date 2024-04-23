@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/22 16:26:24 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/22 15:53:44 by iassambe          #+#    #+#             */
+/*   Updated: 2024/04/22 15:54:53 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	main(int ac, char **av)
+void	ft_close(int *fd)
 {
-	t_rt	rt;
-
-	rtnew(&rt, ac, av);
-	if (ac != 2 || !av)
-		exit(print_error(rt, ERR_INC_ARGS, ERROR));
-	if (check_file(rt) > 0)
-		exit(free_rt(&rt));
-	free_rt(&rt);
-	return (0);
+	if (*fd < 0)
+		return ;
+	close(*fd);
+	*fd = -1;
 }

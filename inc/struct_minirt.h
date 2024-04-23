@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/22 16:26:24 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
+/*   Updated: 2024/04/22 18:06:33 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#ifndef STRUCT_MINIRT_H
+# define STRUCT_MINIRT_H
 
-int	main(int ac, char **av)
+# include "./minirt.h"
+
+typedef struct s_mlx
 {
-	t_rt	rt;
+	void	*init;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bitspp;
+	int		line_len;
+	int		endian;
+}	t_mlx;
 
-	rtnew(&rt, ac, av);
-	if (ac != 2 || !av)
-		exit(print_error(rt, ERR_INC_ARGS, ERROR));
-	if (check_file(rt) > 0)
-		exit(free_rt(&rt));
-	free_rt(&rt);
-	return (0);
-}
+typedef struct s_rt
+{
+	t_mlx	rtmlx;
+	int		fd;
+	char	**av;
+	int		ac;
+	char	*line;
+}	t_rt;
+
+#endif
