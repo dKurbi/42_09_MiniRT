@@ -13,3 +13,5 @@ inc/a.out
 .DS_Store
 .vscode
 src/.DS_Store
+minirt
+src/minirt

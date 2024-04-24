@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/23 05:38:56 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/24 05:07:47 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 char	*free_str(char **s)
 {
-	printf("our s - %s\n", *s);
 	if (!*s | !s)
 	{
 		*s = NULL;
 		return (NULL);
 	}
 	free(*s);
-	*s = (void *)0;
+	*s = NULL;
 	return (NULL);
 }
 
 int	free_rt(t_rt *rt)
 {
-	if (rt->line)
+	if (rt->line || rt->line != NULL)
 		free_str(&rt->line);
+	ft_close(&rt->fd);
 	return (1);
 }

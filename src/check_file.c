@@ -6,12 +6,13 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/23 05:36:52 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/24 05:06:15 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//empty *s - 1; no empty - 0
 int	check_if_empty_str(char *s)
 {
 	size_t	i;
@@ -26,30 +27,32 @@ int	check_if_empty_str(char *s)
 	return (0);
 }
 
-int	check_if_empty_fd(int fd, char *s)
+//if file is empty - 1, no empty - 0
+int	check_if_empty_fd(int fd, t_rt rt)
 {
 	int	count_lines;
 	int	count_empty;
 
 	count_lines = 0;
 	count_empty = 0;
-	while (s != NULL)
+	rt.line = get_next_line(rt.fd);
+	if (!rt.line)
+		return (1);
+	while (rt.line != NULL)
 	{
-		if (check_if_empty_str(s))
+		if (check_if_empty_str(rt.line))
 			count_empty++;
-		free_str(&s);
+		free(rt.line);
 		count_lines++;
-		s = get_next_line(fd);
+		rt.line = get_next_line(fd);
 	}
 	ft_close(&fd);
 	if (count_lines == count_empty)
-	{
-		printf("emptao\n");
 		return (1);
-	}
 	return (0);
 }
 
+//is *.rt or not (1 - yes, 0 - no)
 int	check_extension(char **av)
 {
 	char	*s_strrchr;
@@ -65,22 +68,24 @@ int	check_extension(char **av)
 	return (0);
 }
 
+//main file check
 int	check_file(t_rt rt)
 {
 	rt.fd = open(rt.av[1], O_RDONLY);
 	if (rt.fd < 0)
 	{
-		if (write(STDERR_FILENO, STR_MINIRT, ft_strlen(STR_MINIRT)))
+		if (write(STDERR_FILENO, STR_MINIRT, ft_strlen(STR_MINIRT)) < 0)
 			exit(free_rt(&rt));
 		perror(rt.av[1]);
 		exit(free_rt(&rt));
 	}
 	if (check_extension(rt.av) > 0)
 		return (print_error_arg(rt, ERR_EXTENSION, rt.av[1], ERROR));
-	rt.line = get_next_line(rt.fd);
-	if (!rt.line || check_if_empty_fd(rt.fd, rt.line) > 0)
+	if (check_if_empty_fd(rt.fd, rt) > 0)
 		return (print_error_arg(rt, ERR_EMPTY, rt.av[1], ERROR));
 	rt.fd = open(rt.av[1], O_RDONLY);
+	//if (check_correct_value_fd(rt))
+		//return (print_error_arg(rt, ERR_VALUE, rt.av[1], ERROR));
 	ft_close(&rt.fd);
 	return (0);
 }

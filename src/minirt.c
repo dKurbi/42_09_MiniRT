@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/22 16:26:24 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/24 05:08:46 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	main(int ac, char **av)
 	if (ac != 2 || !av)
 		exit(print_error(rt, ERR_INC_ARGS, ERROR));
 	if (check_file(rt) > 0)
-		exit(free_rt(&rt));
+		exit(ERROR);
+	mlxnew(&rt);
 	free_rt(&rt);
 	return (0);
 }
