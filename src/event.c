@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/24 18:34:07 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/24 18:32:56 by iassambe          #+#    #+#             */
+/*   Updated: 2024/04/24 18:34:23 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	main(int ac, char **av)
+void	event_destroy(t_rt rt)
 {
-	t_rt	rt;
-
-	rtnew(&rt, ac, av);
-	if (ac != 2 || !av)
-		exit(print_error(rt, ERR_INC_ARGS, ERROR));
-	if (check_file(rt) > 0)
-		exit(ERROR);
-	//mlxnew(&rt);
-	//mlx_hook(rt.rtmlx.img, EV_DESTROY, 0, event_destroy, rt);
-	free_rt(&rt);
-	return (0);
+	(void)rt;
 }

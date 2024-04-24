@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/04/24 05:13:16 by iassambe         ###   ########.fr        #
+#    Updated: 2024/04/24 18:33:57 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,8 @@ COMPILED_LIBFT = libft.a
 COMPILED_MINILIBX = libmlx.a
 
 #	Files .c and .o
-SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c
+SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
+		event.c
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
 

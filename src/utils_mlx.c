@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   utils_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/24 18:34:07 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/24 05:23:50 by iassambe          #+#    #+#             */
+/*   Updated: 2024/04/24 18:23:14 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	main(int ac, char **av)
+//custom mlx_pixel_put
+void	pixel_put(t_rt rt, int x, int y, int color)
 {
-	t_rt	rt;
+	char	*dst;
 
-	rtnew(&rt, ac, av);
-	if (ac != 2 || !av)
-		exit(print_error(rt, ERR_INC_ARGS, ERROR));
-	if (check_file(rt) > 0)
-		exit(ERROR);
-	//mlxnew(&rt);
-	//mlx_hook(rt.rtmlx.img, EV_DESTROY, 0, event_destroy, rt);
-	free_rt(&rt);
-	return (0);
+	if (x >= 0 && y >= 0 && x < WIN_X && y < WIN_Y)
+	{
+		dst = rt.rtmlx.addr + (y * rt.rtmlx.line_len \
+									+ x * (rt.rtmlx.bitspp / 8));
+		*(unsigned int *)dst = color;
+	}
 }

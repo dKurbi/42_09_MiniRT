@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/24 05:09:49 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/24 18:28:21 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	rtnew(t_rt *rt, int ac, char **av)
 
 void	mlxnew(t_rt *rt)
 {
-	//mlx_init()...
-	//mlx_newimage()...
-	//mlx_newwindow()...
-	rt->rtmlx.bitspp = 0;
-	rt->rtmlx.endian = 0;
+	rt->rtmlx.init = mlx_init();
+	rt->rtmlx.win = mlx_new_window(rt->rtmlx.init, WIN_X, WIN_Y, "miniRT");
+	rt->rtmlx.img = mlx_new_image(rt->rtmlx.init, WIN_X, WIN_Y);
+	rt->rtmlx.addr = mlx_get_data_addr(rt->rtmlx.img, \
+					&rt->rtmlx.bitspp, &rt->rtmlx.line_len, &rt->rtmlx.endian);
 }
