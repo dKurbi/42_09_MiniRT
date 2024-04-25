@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:32:56 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 17:20:03 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:47:29 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	event_key(int key, t_rt *rt)
 {
-	printf("key - %d\n", key);//debug print for Mac, Linux
+	printf("key pressed - %d\n", key);//debug print for Mac, Linux
 	if (key == KEY_ESC)
 	{
 		free_rt(rt, FREE_MLX);

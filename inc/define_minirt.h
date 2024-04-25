@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 17:34:05 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:51:55 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,28 @@
 #  define KEY_ESC 65307
 # else
 #  define KEY_ESC 53
+#  define KEY_ENTER 36
+#  define KEY_DELETE 51
+#  define KEY_SPACE 49
+#  define KEY_ARROW_UP 126
+#  define KEY_ARROW_DOWN 125
+#  define KEY_ARROW_LEFT 123
+#  define KEY_ARROW_RIGHT 124
+#  define KEY_W 13
+#  define KEY_A 0
+#  define KEY_S 1
+#  define KEY_D 2
+#  define KEY_Z 6
+#  define KEY_X 7
+#  define KEY_C 8
 # endif
 
 //masks mlx
+# ifdef __linux__
+#  define MASK_DESTROY 1
+# else
+#  define MASK_DESTROY 0
+# endif
 
 //other defines
 # define ERROR 1

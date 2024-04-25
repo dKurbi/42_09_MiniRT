@@ -13,5 +13,9 @@ inc/a.out
 .DS_Store
 .vscode
 src/.DS_Store
+inc/.DS_Store
+inc/libft/.DS_Store
+a
+scene.rt
 minirt
 src/minirt

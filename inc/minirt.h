@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 17:33:09 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:03:13 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,17 @@
 # endif
 
 //check_file.c
-int		check_if_empty_str(char *s);
-int		check_if_empty_fd(int fd, t_rt rt);
+int		check_correct_value_fd(t_rt rt);
 int		check_file(t_rt rt);
 
+//check.c
+int		check_if_empty_str(char *s);
+int		check_if_empty_fd(t_rt rt, int fd);
+int		check_extension(char **av);
+
 //error.c
-int		print_error(t_rt rt, char *s_err, int mlx_free);
-int		print_error_arg(t_rt rt, char *s_err, char *s_arg, int mlx_free);
+int		print_error(t_rt rt, char *s_err, int flag_free_mlx);
+int		print_error_arg(t_rt rt, char *s_err, char *s_arg, int flag_free_mlx);
 
 //event.c
 int		event_key(int key, t_rt *rt);
