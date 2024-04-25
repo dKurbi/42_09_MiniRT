@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/24 05:06:15 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 17:23:58 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,15 @@ int	check_file(t_rt rt)
 	if (rt.fd < 0)
 	{
 		if (write(STDERR_FILENO, STR_MINIRT, ft_strlen(STR_MINIRT)) < 0)
-			exit(free_rt(&rt));
+			exit(free_rt(&rt, NO_FREE_MLX));
 		perror(rt.av[1]);
-		exit(free_rt(&rt));
+		exit(free_rt(&rt, NO_FREE_MLX));
 	}
 	if (check_extension(rt.av) > 0)
-		return (print_error_arg(rt, ERR_EXTENSION, rt.av[1], ERROR));
+		return (print_error_arg(rt, ERR_EXTENSION, rt.av[1], NO_FREE_MLX));
 	if (check_if_empty_fd(rt.fd, rt) > 0)
-		return (print_error_arg(rt, ERR_EMPTY, rt.av[1], ERROR));
-	rt.fd = open(rt.av[1], O_RDONLY);
+		return (print_error_arg(rt, ERR_EMPTY, rt.av[1], NO_FREE_MLX));
 	//if (check_correct_value_fd(rt))
 		//return (print_error_arg(rt, ERR_VALUE, rt.av[1], ERROR));
-	ft_close(&rt.fd);
 	return (0);
 }

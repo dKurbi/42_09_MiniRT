@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 04:59:47 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 17:34:05 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,14 @@
 //normal strings
 # define STR_MINIRT "miniRT: "
 
-//pixels for window
-# define WIN_X 1280
-# define WIN_Y 720
+//pixels for mlx window (Linux/Mac)
+# ifdef __linux__
+#  define WIN_X 1280
+#  define WIN_Y 720
+# else
+#  define WIN_X 1920
+#  define WIN_Y 1200
+# endif
 
 //events
 # define EV_KEY 2
@@ -40,9 +45,12 @@
 #  define KEY_ESC 53
 # endif
 
+//masks mlx
 
 //other defines
 # define ERROR 1
 # define SPACE 32
+# define FREE_MLX 1
+# define NO_FREE_MLX 0
 
 #endif
