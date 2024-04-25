@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 19:51:55 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:27:12 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@
 # define ERR_EXTENSION "file doesn't have *.rt extension\n"
 # define ERR_INC_ARGS "incorrect arguments passed\n"
 # define ERR_EMPTY "the file is empty\n"
-# define ERR_VALUE "values in scene are not passed correctly\n"
+# define ERR_VALUE_NUM "values in line are not numbers\n"
+# define ERR_VALUE_STR "only numbers in line, no string arguments\n"
+# define ERR_VALUE_MUCH "too much values in a scene description\n"
+# define ERR_VALUE_LACK "not enough values in a scene description\n"
+# define ERR_VALUE_NOT_SCENE "string is not a one of scene descriptions\n"
+# define ERR_VALUE_INCOR_PASS "value passed incorrectly in a line\n"
 
 //normal strings
 # define STR_MINIRT "miniRT: "
@@ -46,6 +51,8 @@
 #  define KEY_ENTER 36
 #  define KEY_DELETE 51
 #  define KEY_SPACE 49
+#  define KEY_PLUS 69
+#  define KEY_MINUS 78
 #  define KEY_ARROW_UP 126
 #  define KEY_ARROW_DOWN 125
 #  define KEY_ARROW_LEFT 123

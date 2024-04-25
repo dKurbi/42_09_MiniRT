@@ -6,15 +6,33 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 19:15:44 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:29:14 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+int	check_value_scene_quantity(t_rt rt)
+{
+	(void)rt;
+	return (0);	
+}
+
 int	check_correct_value_fd(t_rt rt)
 {
-	(void)(rt);
+	rt.fd = open(rt.av[1], O_RDONLY);
+	rt.line = get_next_line(rt.fd);
+	while (rt.line != NULL)
+	{
+		if (check_if_empty_str(rt.line) == 0)
+		{
+			if (check_value_scene_quantity(rt) > 0)
+				return (1);
+		}
+		free(rt.line);
+		rt.line = get_next_line(rt.fd);
+	}
+	ft_close(&rt.fd);
 	return (0);
 }
 
@@ -34,6 +52,7 @@ int	check_file(t_rt rt)
 	else if (check_if_empty_fd(rt, rt.fd) > 0)
 		return (print_error_arg(rt, ERR_EMPTY, rt.av[1], NO_FREE_MLX));
 	else if (check_correct_value_fd(rt))
-		return (print_error_arg(rt, ERR_VALUE, rt.av[1], NO_FREE_MLX));
+		return (ERROR);
+		//return (print_error_arg(rt, ERR_VALUE, rt.av[1], NO_FREE_MLX));
 	return (0);
 }

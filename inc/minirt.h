@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 20:03:13 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:32:43 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		print_error(t_rt rt, char *s_err, int flag_free_mlx);
 int		print_error_arg(t_rt rt, char *s_err, char *s_arg, int flag_free_mlx);
 
 //event.c
+int		event_mouse(int mouse, t_rt *rt);
 int		event_key(int key, t_rt *rt);
 int		event_destroy(t_rt *rt);
 

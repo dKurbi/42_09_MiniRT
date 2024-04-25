@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 17:17:00 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:37:34 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ void	destroy_display(void *mlx_ptr)
 {
 	mlx_destroy_display(mlx_ptr);
 }
+
 #else
 
 void	destroy_display(void *mlx_ptr)
 {
 	(void)mlx_ptr;
 }
+
 #endif
 
 char	*free_str(char **s)

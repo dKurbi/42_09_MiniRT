@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 19:52:13 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:30:38 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int ac, char **av)
 	mlxnew(&rt);
 	//mlx_key_hook();
 	mlx_hook(rt.rtmlx.win, EV_KEY, 0, event_key, &rt);
+	mlx_mouse_hook(rt.rtmlx.win, event_mouse, &rt);
 	mlx_hook(rt.rtmlx.win, EV_DESTROY, MASK_DESTROY, event_destroy, &rt);//define MASK 1L << 0 / 0
 	mlx_loop(rt.rtmlx.init);
 	free_rt(&rt, FREE_MLX);
