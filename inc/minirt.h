@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/24 05:08:35 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/25 04:50:51 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,13 @@ int		check_file(t_rt rt);
 int		print_error(t_rt rt, char *s_err, int status);
 int		print_error_arg(t_rt rt, char *s_err, char *s_arg, int status);
 
+//event.c
+int	event_key(int key, t_rt *rt);
+int		event_destroy(t_rt *rt);
+
 //free.c
 char	*free_str(char **s);
+void	free_mlx(t_mlx *rtmlx);
 int		free_rt(t_rt *rt);
 
 //minirt.c
@@ -48,6 +53,10 @@ int		free_rt(t_rt *rt);
 //struct.c
 void	rtnew(t_rt *rt, int ac, char **av);
 void	mlxnew(t_rt *rt);
+
+//utils_mlx.c
+void	pixel_put(t_rt rt, int x, int y, int color);
+
 
 //utils.c
 void	ft_close(int *fd);
