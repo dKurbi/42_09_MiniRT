@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 05:15:58 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:36:57 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_rt	rt;
 
-	printf("1L - %ld\n", 1L << 0);
+	printf("BITWISE MASKS: 1L - %ld\n", 1L << 0);
 	rtnew(&rt, ac, av);
 	if (ac != 2 || !av)
 		exit(print_error(rt, ERR_INC_ARGS, NO_FREE_MLX));

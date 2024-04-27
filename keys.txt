@@ -1,17 +1,19 @@
 ELIMINAR DESPUES - guardados keys de Mac, luego este archivo servira para linux
+key pressed - 65293
+key pressed - 65288
+key pressed - 32
+key pressed - 65451
+key pressed - 65453
+key pressed - 65362
+key pressed - 65364
+key pressed - 65361
+key pressed - 65363
+key pressed - 119
+key pressed - 97
+key pressed - 115
+key pressed - 100
+key pressed - 122
+key pressed - 120
+key pressed - 99
+key pressed - 65307
 
-key - 36
-key - 13
-key - 0
-key - 1
-key - 2
-key - 6
-key - 7
-key - 8
-key - 51
-key - 126
-key - 125
-key - 123
-key - 124
-key - 49
-key - 53

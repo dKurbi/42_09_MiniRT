@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 21:27:12 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/27 02:25:03 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define ERR_VALUE_NUM "values in line are not numbers\n"
 # define ERR_VALUE_STR "only numbers in line, no string arguments\n"
 # define ERR_VALUE_MUCH "too much values in a scene description\n"
+# define ERR_VALUE_SYNTAX "syntax of values is incorrect\n"
 # define ERR_VALUE_LACK "not enough values in a scene description\n"
 # define ERR_VALUE_NOT_SCENE "string is not a one of scene descriptions\n"
 # define ERR_VALUE_INCOR_PASS "value passed incorrectly in a line\n"
@@ -32,7 +33,7 @@
 //pixels for mlx window (Linux/Mac)
 # ifdef __linux__
 #  define WIN_X 1280
-#  define WIN_Y 720
+#  define WIN_Y 690
 # else
 #  define WIN_X 1920
 #  define WIN_Y 1200
@@ -41,11 +42,26 @@
 //events
 # define EV_KEY 2
 # define EV_DESTROY 17
-# define EV_MOUSE 21322//add int later because i dont remember
 
 //keys
 # ifdef __linux__
 #  define KEY_ESC 65307
+#  define KEY_ENTER 65293
+#  define KEY_DELETE 65288
+#  define KEY_SPACE 32
+#  define KEY_PLUS 65451
+#  define KEY_MINUS 65453
+#  define KEY_ARROW_UP 65362
+#  define KEY_ARROW_DOWN 65364
+#  define KEY_ARROW_LEFT 65361
+#  define KEY_ARROW_RIGHT 65363
+#  define KEY_W 119
+#  define KEY_A 97
+#  define KEY_S 115
+#  define KEY_D 100
+#  define KEY_Z 122
+#  define KEY_X 120
+#  define KEY_C 99
 # else
 #  define KEY_ESC 53
 #  define KEY_ENTER 36
@@ -64,6 +80,21 @@
 #  define KEY_Z 6
 #  define KEY_X 7
 #  define KEY_C 8
+# endif
+
+//mouse control
+# ifdef __linux__
+#  define MOUSE_LEFT 1
+#  define MOUSE_RIGHT 3
+#  define MOUSE_MIDDLE 2
+#  define MOUSE_SCROLL_DOWN 5
+#  define MOUSE_SCROLL_UP 4
+# else
+#  define MOUSE_LEFT 1//i dont know in mac
+#  define MOUSE_RIGHT 1
+#  define MOUSE_MIDDLE 1
+#  define MOUSE_SCROLL_DOWN 1
+#  define MOUSE_SCROLL_UP 1
 # endif
 
 //masks mlx

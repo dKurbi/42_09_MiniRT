@@ -6,12 +6,13 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 20:37:34 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:36:43 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//mac doesnt have mlx_destroy_display
 #ifdef __linux__
 
 void	destroy_display(void *mlx_ptr)
@@ -40,6 +41,7 @@ char	*free_str(char **s)
 	return (NULL);
 }
 
+//destroy all in mlx
 void	free_mlx(t_mlx *rtmlx)
 {
 	mlx_destroy_image(rtmlx->init, rtmlx->img);

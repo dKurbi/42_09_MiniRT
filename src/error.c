@@ -6,13 +6,16 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:30:33 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 20:02:57 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/27 02:30:16 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 ////linux -O3 err - if (write...
+/*print error, !!! free t_rt !!!
+flag_free_mlx if need to destroy mlx (segfault can ocurr)
+Flag passing flag_free_mlx: 1 - free mlx(destroy), 0 - dont*/
 int	print_error(t_rt rt, char *s_err, int flag_free_mlx)
 {
 	if (!s_err)

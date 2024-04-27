@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 20:32:43 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/27 02:20:17 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void	pixel_put(t_rt rt, int x, int y, int color);
 
 //utils.c
 void	ft_close(int *fd);
+int		skip_spaces(char *s, int i_provided);
 
 #endif
