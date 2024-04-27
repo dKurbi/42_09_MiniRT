@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 17:39:50 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:04:21 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define ERR_NOT_FLOAT "number or string is not a float\n"
 # define ERR_RANGE "value is out of range\n"
 # define ERR_RGB "values are not RGB\n"
+# define ERR_NOT_VECTOR "values are not vectors\n"
+# define ERR_VECTOR_RANGE "values in vector are out of range\n"
 
 //normal strings
 # define STR_MINIRT "miniRT: "
@@ -118,6 +120,7 @@
 //other defines
 # define ERROR 1
 # define SPACE 32
+# define POINT 46
 # define FREE_MLX 1
 # define NO_FREE_MLX 0
 

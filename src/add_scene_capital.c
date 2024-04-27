@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_scene_capital.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/04/27 18:00:39 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/04/27 20:20:38 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int add_ambient_light(t_rt *rt,char *line)
 	return (0);
 
 }
-
 
 int add_camera(t_rt *rt,char *line)
 {
