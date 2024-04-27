@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 19:11:21 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 19:13:31 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:15:44 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	check_extension(char **av)
 	char	*s_strrchr;
 
 	s_strrchr = ft_strrchr(av[1], '/');
+	printf("strrch %s\n", s_strrchr);
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 3, ".rt", 3) == 0 \
 		&& ft_strlen(av[1]) == 3 && av[1][0] == '.')
 		return (1);

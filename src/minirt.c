@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/26 18:36:57 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/27 16:33:39 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int ac, char **av)
 		exit(print_error(rt, ERR_INC_ARGS, NO_FREE_MLX));
 	if (check_file(rt) > 0)
 		exit(ERROR);
+	if (init_scene(rt) > 0)
+		exit(print_error(rt, ERR_INIT_SCENE, NO_FREE_MLX));
 	mlxnew(&rt);
 	mlx_hook(rt.rtmlx.win, EV_KEY, 0, event_key, &rt);
 	mlx_mouse_hook(rt.rtmlx.win, event_mouse, &rt);

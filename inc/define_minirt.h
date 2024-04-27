@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 02:25:03 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/27 17:39:50 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define ERR_EXTENSION "file doesn't have *.rt extension\n"
 # define ERR_INC_ARGS "incorrect arguments passed\n"
 # define ERR_EMPTY "the file is empty\n"
+# define ERR_INIT_SCENE "error initializing scene\n"
 # define ERR_VALUE_NUM "values in line are not numbers\n"
 # define ERR_VALUE_STR "only numbers in line, no string arguments\n"
 # define ERR_VALUE_MUCH "too much values in a scene description\n"
@@ -26,9 +27,19 @@
 # define ERR_VALUE_LACK "not enough values in a scene description\n"
 # define ERR_VALUE_NOT_SCENE "string is not a one of scene descriptions\n"
 # define ERR_VALUE_INCOR_PASS "value passed incorrectly in a line\n"
+# define ERR_NOT_FLOAT "number or string is not a float\n"
+# define ERR_RANGE "value is out of range\n"
+# define ERR_RGB "values are not RGB\n"
 
 //normal strings
 # define STR_MINIRT "miniRT: "
+# define STR_AMBIENT_LIGHT "ambient light"
+# define STR_CAMERA "camera"
+# define STR_LIGHT "light"
+# define STR_SPHERE "sphere"
+# define STR_PLANE "plane"
+# define STR_CYLINDER "cylinder"
+
 
 //pixels for mlx window (Linux/Mac)
 # ifdef __linux__
@@ -39,11 +50,11 @@
 #  define WIN_Y 1200
 # endif
 
-//events
+//events mlx
 # define EV_KEY 2
 # define EV_DESTROY 17
 
-//keys
+//keys mlx
 # ifdef __linux__
 #  define KEY_ESC 65307
 #  define KEY_ENTER 65293
@@ -82,7 +93,7 @@
 #  define KEY_C 8
 # endif
 
-//mouse control
+//mouse control mlx
 # ifdef __linux__
 #  define MOUSE_LEFT 1
 #  define MOUSE_RIGHT 3
@@ -90,11 +101,11 @@
 #  define MOUSE_SCROLL_DOWN 5
 #  define MOUSE_SCROLL_UP 4
 # else
-#  define MOUSE_LEFT 1//i dont know in mac
-#  define MOUSE_RIGHT 1
-#  define MOUSE_MIDDLE 1
-#  define MOUSE_SCROLL_DOWN 1
-#  define MOUSE_SCROLL_UP 1
+#  define MOUSE_LEFT 1
+#  define MOUSE_RIGHT 2
+#  define MOUSE_MIDDLE 3
+#  define MOUSE_SCROLL_DOWN 4
+#  define MOUSE_SCROLL_UP 5
 # endif
 
 //masks mlx
