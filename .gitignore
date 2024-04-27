@@ -13,3 +13,11 @@ inc/a.out
 .DS_Store
 .vscode
 src/.DS_Store
+inc/.DS_Store
+inc/libft/.DS_Store
+inc/minilibx-linux/*.o
+inc/minilibx-mac/*.o
+a
+scene.rt
+minirt
+src/minirt

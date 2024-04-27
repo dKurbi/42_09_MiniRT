@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/23 05:14:39 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/27 02:20:17 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,46 @@
 # include "./define_minirt.h"
 # include "./libft/libft.h"
 
-# ifndef __linux__
-#  include "./minilibx-mac/mlx.h"
-# else
+# ifdef __linux__
 #  include "./minilibx-linux/mlx.h"
+# else
+#  include "./minilibx-mac/mlx.h"
 # endif
 
-
 //check_file.c
-int		check_if_empty_str(char *s);
-int		check_if_empty_fd(int fd, char *s);
+int		check_correct_value_fd(t_rt rt);
 int		check_file(t_rt rt);
 
+//check.c
+int		check_if_empty_str(char *s);
+int		check_if_empty_fd(t_rt rt, int fd);
+int		check_extension(char **av);
+
 //error.c
-int		print_error(t_rt rt, char *s_err, int status);
-int		print_error_arg(t_rt rt, char *s_err, char *s_arg, int status);
+int		print_error(t_rt rt, char *s_err, int flag_free_mlx);
+int		print_error_arg(t_rt rt, char *s_err, char *s_arg, int flag_free_mlx);
+
+//event.c
+int		event_mouse(int mouse, t_rt *rt);
+int		event_key(int key, t_rt *rt);
+int		event_destroy(t_rt *rt);
 
 //free.c
 char	*free_str(char **s);
-int		free_rt(t_rt *rt);
+void	free_mlx(t_mlx *rtmlx);
+int		free_rt(t_rt *rt, int if_free_mlx);
 
 //minirt.c
 
 //struct.c
 void	rtnew(t_rt *rt, int ac, char **av);
+void	mlxnew(t_rt *rt);
+
+//utils_mlx.c
+void	pixel_put(t_rt rt, int x, int y, int color);
 
 //utils.c
 void	ft_close(int *fd);
+int		skip_spaces(char *s, int i_provided);
 
 #endif

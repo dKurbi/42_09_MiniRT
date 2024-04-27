@@ -6,81 +6,72 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/23 05:36:52 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/27 02:33:41 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	check_if_empty_str(char *s)
+/*
+what it checks:
+check if it doesnt start for letter (sp, C, etc..) or only nums (132 43 24 2)
+check if this word is from scene description
+check if capital rules (A, C, etc..) are appeared once
+*/
+int	check_value_str_num_correctstr_capital(t_rt rt)
 {
-	size_t	i;
-
-	if (ft_strlen(s) == 0 || s[0] == '\0')
-		return (1);
-	i = 0;
-	while (s && s[i] && (s[i] == SPACE || s[i] == '\t' || s[i] == '\n'))
-		i++;
-	if (i == ft_strlen(s))
-		return (1);
+	(void)rt;
 	return (0);
 }
 
-int	check_if_empty_fd(int fd, char *s)
+//check if it passed like iin this form: sp(0, sp 43//, etc...)
+int	check_value_syntax(t_rt rt)
 {
-	int	count_lines;
-	int	count_empty;
+	(void)rt;
+	return (0);
+}
 
-	count_lines = 0;
-	count_empty = 0;
-	while (s != NULL)
+/*main check: check if every line has the right order, number, syntax, etc.
+scenes:
+A, C, L, sp, pl, cy
+*/
+int	check_correct_value_fd(t_rt rt)
+{
+	rt.fd = open(rt.av[1], O_RDONLY);
+	rt.line = get_next_line(rt.fd);
+	while (rt.line != NULL)
 	{
-		if (check_if_empty_str(s))
-			count_empty++;
-		free_str(&s);
-		count_lines++;
-		s = get_next_line(fd);
+		if (check_if_empty_str(rt.line) == 0)
+		{
+			if (check_value_str_num_correctstr_capital(rt) > 0)
+				return (ERROR);//en la funcion arriva hay que utilizar funcion print_error (porque hacemos free_rt ahi)
+			if (check_value_syntax(rt) > 0)
+				return (print_error(rt, ERR_VALUE_SYNTAX, NO_FREE_MLX));
+		}
+		free(rt.line);
+		rt.line = get_next_line(rt.fd);
 	}
-	ft_close(&fd);
-	if (count_lines == count_empty)
-	{
-		printf("emptao\n");
-		return (1);
-	}
+	ft_close(&rt.fd);
 	return (0);
 }
 
-int	check_extension(char **av)
-{
-	char	*s_strrchr;
-
-	s_strrchr = ft_strrchr(av[1], '/');
-	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 3, ".rt", 3) == 0 \
-		&& ft_strlen(av[1]) == 3 && av[1][0] == '.')
-		return (1);
-	else if (ft_strncmp(av[1] + ft_strlen(av[1]) - 3, ".rt", 3) != 0)
-		return (1);
-	if (s_strrchr != NULL && s_strrchr[1] == '.' && ft_strlen(s_strrchr) == 4)
-		return (1);
-	return (0);
-}
-
+//main file check
 int	check_file(t_rt rt)
 {
 	rt.fd = open(rt.av[1], O_RDONLY);
 	if (rt.fd < 0)
 	{
-		if (write(STDERR_FILENO, STR_MINIRT, ft_strlen(STR_MINIRT)))
-			exit(free_rt(&rt));
+		if (write(STDERR_FILENO, STR_MINIRT, ft_strlen(STR_MINIRT)) < 0)
+			exit(free_rt(&rt, NO_FREE_MLX));
 		perror(rt.av[1]);
-		exit(free_rt(&rt));
+		exit(free_rt(&rt, NO_FREE_MLX));
 	}
 	if (check_extension(rt.av) > 0)
-		return (print_error_arg(rt, ERR_EXTENSION, rt.av[1], ERROR));
-	rt.line = get_next_line(rt.fd);
-	if (!rt.line || check_if_empty_fd(rt.fd, rt.line) > 0)
-		return (print_error_arg(rt, ERR_EMPTY, rt.av[1], ERROR));
-	rt.fd = open(rt.av[1], O_RDONLY);
-	ft_close(&rt.fd);
+		return (print_error_arg(rt, ERR_EXTENSION, rt.av[1], NO_FREE_MLX));
+	else if (check_if_empty_fd(rt, rt.fd) > 0)
+		return (print_error_arg(rt, ERR_EMPTY, rt.av[1], NO_FREE_MLX));
+	else if (check_correct_value_fd(rt))
+		return (ERROR);
+		//return (print_error_arg(rt, ERR_VALUE, rt.av[1], NO_FREE_MLX));
 	return (0);
 }

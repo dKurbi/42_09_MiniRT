@@ -6,28 +6,55 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/23 05:38:56 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:36:43 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//mac doesnt have mlx_destroy_display
+#ifdef __linux__
+
+void	destroy_display(void *mlx_ptr)
+{
+	mlx_destroy_display(mlx_ptr);
+}
+
+#else
+
+void	destroy_display(void *mlx_ptr)
+{
+	(void)mlx_ptr;
+}
+
+#endif
+
 char	*free_str(char **s)
 {
-	printf("our s - %s\n", *s);
 	if (!*s | !s)
 	{
 		*s = NULL;
 		return (NULL);
 	}
 	free(*s);
-	*s = (void *)0;
+	*s = NULL;
 	return (NULL);
 }
 
-int	free_rt(t_rt *rt)
+//destroy all in mlx
+void	free_mlx(t_mlx *rtmlx)
 {
-	if (rt->line)
+	mlx_destroy_image(rtmlx->init, rtmlx->img);
+	mlx_destroy_window(rtmlx->init, rtmlx->win);
+	destroy_display(rtmlx->init);
+}
+
+int	free_rt(t_rt *rt, int if_free_mlx)
+{
+	if (rt->line || rt->line != NULL)
 		free_str(&rt->line);
+	ft_close(&rt->fd);
+	if (if_free_mlx == 1)
+		free_mlx(&rt->rtmlx);
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/04/22 18:39:51 by iassambe         ###   ########.fr        #
+#    Updated: 2024/04/25 19:38:53 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ endif
 #	Colors
 COLOR_GREEN = \033[0;32m
 COLOR_RED = \033[0;31m
-COLOR_BOLD_RED = \033[1;31m
+COLOR_YELLOW = \033[0;93m
+COLOR_LIGHT_RED = \033[0;91m
 COLOR_BOLD_WHITE = \033[1;97m
 COLOR_RESET = \033[0m
 
@@ -78,19 +79,22 @@ COMPILED_LIBFT = libft.a
 COMPILED_MINILIBX = libmlx.a
 
 #	Files .c and .o
-SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c
+SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
+		event.c check.c
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
 
 #	Compiling process
 all: $(NAME)
 
-$(NAME): $(COMPILED_LIBFT) $(COMPILED_MINILIBX) $(OBJS)
+$(NAME): $(COMPILED_LIBFT) $(COMPILED_MINILIBX) $(DIR_OBJS) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) $(MINILIBXCOMPILEFLAGS) -o $(NAME)
 	@$(ECHO) "$(COLOR_BOLD_WHITE)MiniRT $(COLOR_GREEN)Compiled!$(COLOR_RESET)"
 
-$(DIR_OBJS)%.o: $(DIR_SRC)%.c $(LIB_MINIRT) $(LIB_STRUCT_MINIRT) $(LIB_DEFINE_MINIRT) Makefile
+$(DIR_OBJS):
 	@$(MKDIR) $(DIR_OBJS)
+
+$(DIR_OBJS)%.o: $(DIR_SRC)%.c $(LIB_MINIRT) $(LIB_STRUCT_MINIRT) $(LIB_DEFINE_MINIRT) Makefile
 	$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDEFLAGS) -c $< -o $@
 
 $(COMPILED_LIBFT):
@@ -103,12 +107,12 @@ clean:
 	@$(MAKE) -C $(DIR_LIBFT) clean
 	@$(MAKE) -C $(DIR_MINILIBX) clean
 	@$(RM) -rf $(DIR_OBJS)
-	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_RED)Cleaned!$(COLOR_RESET)"
+	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_LIGHT_RED)Cleaned!$(COLOR_RESET)"
 
 fclean: clean
 	@$(MAKE) -C $(DIR_LIBFT) fclean
 	@$(RM) -f $(NAME)
-	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_BOLD_RED)FCleaned!$(COLOR_RESET)"
+	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_RED)FCleaned!$(COLOR_RESET)"
 
 re: fclean all
 
@@ -123,6 +127,8 @@ fcl: fclean
 
 norminette:
 	norminette inc/libft/*.c inc/libft/*.h inc/*.h src/*.c
+
+norm: norminette
 
 n: norminette
 
