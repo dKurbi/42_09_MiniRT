@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 02:33:41 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:38:40 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ int	check_value_syntax(t_rt rt)
 scenes:
 A, C, L, sp, pl, cy
 */
-int	check_correct_value_fd(t_rt rt)
+int	check_save_value(t_rt rt)
 {
+	char	*line;
+
 	rt.fd = open(rt.av[1], O_RDONLY);
-	rt.line = get_next_line(rt.fd);
-	while (rt.line != NULL)
+	line = get_next_line(rt.fd);
+	while (line != NULL)
 	{
-		if (check_if_empty_str(rt.line) == 0)
+		if (check_if_empty_str(line) == 0)
 		{
-			if (check_value_str_num_correctstr_capital(rt) > 0)
-				return (ERROR);//en la funcion arriva hay que utilizar funcion print_error (porque hacemos free_rt ahi)
-			if (check_value_syntax(rt) > 0)
-				return (print_error(rt, ERR_VALUE_SYNTAX, NO_FREE_MLX));
+			if (add_line_to_scene(rt, line))
+				return (1);
 		}
 		free(rt.line);
 		rt.line = get_next_line(rt.fd);
@@ -70,7 +70,7 @@ int	check_file(t_rt rt)
 		return (print_error_arg(rt, ERR_EXTENSION, rt.av[1], NO_FREE_MLX));
 	else if (check_if_empty_fd(rt, rt.fd) > 0)
 		return (print_error_arg(rt, ERR_EMPTY, rt.av[1], NO_FREE_MLX));
-	else if (check_correct_value_fd(rt))
+	else if (check_save_value(rt))
 		return (ERROR);
 		//return (print_error_arg(rt, ERR_VALUE, rt.av[1], NO_FREE_MLX));
 	return (0);
