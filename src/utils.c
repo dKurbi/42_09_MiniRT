@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:53:44 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 01:07:10 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:46:14 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,16 @@ int	if_space(char c)
 	if (c == SPACE || (c >= 9 && c <= 13))
 		return (1);
 	return (0);
+}
+
+int	len_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	if (!split)
+		return (0);
+	while (split[i])
+		i++;
+	return (i);
 }

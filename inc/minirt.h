@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 15:11:47 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/04/29 21:07:41 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	    add_sphere_lst(t_rt *rt, t_sphere *new_sphere);
 t_sphere	*init_sphere(void);
 
 //add_scene_capital.c
-int     add_ambient_light(t_rt *rt,char *line);
+int		add_ambient_light(t_rt *rt,char *line);
 int     add_camera(t_rt *rt,char *line);
 int     add_light(t_rt *rt,char *line);
 
@@ -57,8 +57,8 @@ int		check_file(t_rt rt);
 
 //check_str_number.c
 int     check_is_a_vector(char *str, int *i, t_vector *vector);
-int     check_is_a_float(char *str, int *i, float *fl);
-int     check_is_rgb(char *line, int *i, t_rgb *color);
+int     check_is_a_float(char *str, int *i, double *fl);
+int 	check_is_a_rgb(char *line, int *i, t_rgb *color);
 int     check_is_a_vector_range(char *line, int *i, t_vector *vec);
 
 
@@ -73,11 +73,12 @@ int		event_destroy(t_rt *rt);
 
 //free.c
 char	*free_str(char **s);
+char	*free_double_str(char ***s);
 void	free_mlx(t_mlx *rtmlx);
 int		free_rt(t_rt *rt, int if_free_mlx);
 
 //ft_atof.c
-float	ft_atof(char *str);
+double	ft_atof(char *str);
 
 //minirt.c
 
@@ -91,9 +92,13 @@ int		add_line_to_scene(t_rt *rt, char *line);
 //utils_mlx.c
 void	pixel_put(t_rt rt, int x, int y, int color);
 
+//utils_scene.c
+int		rgb_limit(int r, int g, int b);
+
 //utils.c
 void	ft_close(int *fd);
 int		skip_spaces(char *s, int i_provided);
 int		if_space(char c);
+int		len_split(char **split);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_scene_capital.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/04/29 15:00:36 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:09:08 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int add_ambient_light(t_rt *rt,char *line)
 	if (rt->scene.a_l_ratio < 0 || rt->scene.a_l_ratio > 1)
 		return (print_error_arg(*rt, ERR_RANGE, STR_AMBIENT_LIGHT, NO_FREE_MLX));
 	i = skip_spaces(line, i);
-	if (check_is_rgb(line, &i, &rt->scene.a_l_color))
+	if (check_is_a_rgb(line, &i, &rt->scene.a_l_color))
 		return (print_error_arg(*rt, ERR_RGB, STR_AMBIENT_LIGHT, NO_FREE_MLX));
 	if (!check_if_empty_str(&line[i]))
 		return (print_error_arg(*rt, ERR_VALUE_MUCH, STR_AMBIENT_LIGHT, NO_FREE_MLX));

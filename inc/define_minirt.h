@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 21:04:21 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:40:25 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "./minirt.h"
 
 //error strings
+# define ERR_MALLOC "memory allocation error (*malloc)\n"
 # define ERR_EXTENSION "file doesn't have *.rt extension\n"
 # define ERR_INC_ARGS "incorrect arguments passed\n"
 # define ERR_EMPTY "the file is empty\n"

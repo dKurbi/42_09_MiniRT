@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 19:17:48 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:32:46 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,27 @@ char	*free_str(char **s)
 	return (NULL);
 }
 
+char	*free_double_str(char ***s)
+{
+	int	i;
+
+	i = 0;
+	if (!*s)
+	{
+		*s = NULL;
+		return (NULL);
+	}
+	while ((*s)[i])
+	{
+		if ((*s)[i] != NULL)
+			free(*s[i]);
+		i++;
+	}
+	free(*s);
+	*s = NULL;
+	return (NULL);
+}
+
 //destroy all in mlx
 void	free_mlx(t_mlx *rtmlx)
 {
@@ -56,5 +77,6 @@ int	free_rt(t_rt *rt, int if_free_mlx)
 	ft_close(&rt->fd);
 	if (if_free_mlx == 1)
 		free_mlx(&rt->rtmlx);
+	//free_double_str(rt->split);
 	return (1);
 }

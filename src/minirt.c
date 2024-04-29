@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 15:26:55 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:35:49 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // test check_str_number
 int main(int ac, char **av)
 {
-	float	fl;
+	double	fl;
 	int		i;
 
 	i = 0;
@@ -25,9 +25,11 @@ int main(int ac, char **av)
 		printf("el numero es el float = %f\n", fl);
 	else	
 		printf("el argumento no es float\n");
+	printf("atof orig - %f\n", atof(av[1]));
+	return 0;
 }
-/*
-int	main(int ac, char **av)
+
+/* int	main(int ac, char **av)
 {
 	t_rt	rt;
 
@@ -37,8 +39,6 @@ int	main(int ac, char **av)
 		exit(print_error(rt, ERR_INC_ARGS, NO_FREE_MLX));
 	if (check_file(rt) > 0)
 		exit(ERROR);
-	if (init_scene(rt) > 0)
-		exit(print_error(rt, ERR_INIT_SCENE, NO_FREE_MLX));
 	mlxnew(&rt);
 	mlx_hook(rt.rtmlx.win, EV_KEY, 0, event_key, &rt);
 	mlx_mouse_hook(rt.rtmlx.win, event_mouse, &rt);
@@ -46,5 +46,5 @@ int	main(int ac, char **av)
 	mlx_loop(rt.rtmlx.init);
 	free_rt(&rt, FREE_MLX);
 	return (0);
-}
-*/
+} */
+
