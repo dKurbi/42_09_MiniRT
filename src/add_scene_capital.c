@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_scene_capital.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/04/28 19:39:36 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:00:36 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int add_ambient_light(t_rt *rt,char *line)
 
 	i = 1;
 	i = skip_spaces(line, i);
-	if (check_is_a_float(line, &i &rt->scene.a_l_ratio))
+	if (check_is_a_float(line, &i, &rt->scene.a_l_ratio))
 		return (print_error_arg(*rt, ERR_NOT_FLOAT, STR_AMBIENT_LIGHT, NO_FREE_MLX));
 	if (rt->scene.a_l_ratio < 0 || rt->scene.a_l_ratio > 1)
 		return (print_error_arg(*rt, ERR_RANGE, STR_AMBIENT_LIGHT, NO_FREE_MLX));
@@ -37,12 +37,12 @@ int add_camera(t_rt *rt,char *line)
 
 	i = 1;
 	i = skip_spaces(line, i);
-	if (check_is_a_vector(line, &i &rt->scene.c_pos))
+	if (check_is_a_vector(line, &i, &rt->scene.c_pos))
 		return (print_error_arg(*rt, ERR_NOT_VECTOR, STR_CAMERA, NO_FREE_MLX));
 	i = skip_spaces(line, i);
 	if (check_is_a_vector_range(line, &i, &rt->scene.c_dir))
 		return (print_error_arg(*rt, ERR_VECTOR_RANGE, STR_CAMERA, NO_FREE_MLX));
-	if (check_is_a_float(line, &i &rt->scene.c_fov))
+	if (check_is_a_float(line, &i, &rt->scene.c_fov))
 		return (print_error_arg(*rt, ERR_NOT_FLOAT, STR_CAMERA, NO_FREE_MLX));
 	if (!(rt->scene.c_fov >= 0 && rt->scene.c_fov <= 180))
 		return (print_error_arg(*rt, ERR_RANGE, STR_CAMERA, NO_FREE_MLX));
@@ -57,7 +57,7 @@ int add_light(t_rt *rt,char *line)
 
 	i = 1;
 	i = skip_spaces(line, i);
-	if (check_is_a_vector(line, &i &rt->scene.l_pos))
+	if (check_is_a_vector(line, &i, &rt->scene.l_pos))
 		return (print_error_arg(*rt, ERR_NOT_VECTOR, STR_LIGHT, NO_FREE_MLX));
 	i = skip_spaces(line, i);
 	if (check_is_a_float(line, &i, &rt->scene.l_bright))

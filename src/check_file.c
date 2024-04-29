@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 01:01:55 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:09:08 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_save_value(t_rt rt)
 	{
 		if (check_if_empty_str(line) == 0)
 		{
-			if (add_line_to_scene(rt, line))
+			if (add_line_to_scene(&rt, line))
 				return (1);
 		}
 		free(line);

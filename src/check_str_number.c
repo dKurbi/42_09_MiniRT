@@ -13,9 +13,11 @@
 #include "../inc/minirt.h"
 
 //check if we have a vector, without range limits
-int chech_is_a_vector(char *str, int *i, t_vector *vector)
+int check_is_a_vector(char *str, int *i, t_vector *vector)
 {
-	
+	(void) str;
+    (void) *i;
+    (void) *vector;
 	return (0);
 }
 
@@ -44,6 +46,7 @@ int	check_is_a_float(char *str, int *i, float *fl)
     if (str[end - 1] == '.')
         return (1);
     number = ft_substr(str, *i, end - *i);
+    printf("el numero para hacer float es %s\n", number);
 	if (!number)
 		return (1);
     *fl = ft_atof(number);
@@ -58,6 +61,7 @@ int check_is_rgb(char *line, int *i, t_rgb *color)
 	int	i_copy;
 	int	coma_count;
 
+    (void) color;
 	coma_count = 0;
 	i_copy = *i;
 	while (line[i_copy] && (if_space(line[i_copy]) == 0))
@@ -74,5 +78,8 @@ int check_is_rgb(char *line, int *i, t_rgb *color)
 //check if we have a vector, WITH range limits
 int	check_is_a_vector_range(char *line, int *i, t_vector *vec)
 {
+    (void) line;
+    (void) *i;
+    (void) *vec;
 	return (0);
 }

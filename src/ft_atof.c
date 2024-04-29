@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:31:57 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/04/27 17:40:17 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:29:03 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,5 @@ float	ft_atof(char *str)
 				return (0);
 		i++;
 	}
-	return (sign * (n / (pow(10, posdot))));
+	return (sign * (n / ((int) pow(10, posdot))));
 }

@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 16:43:22 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/04/29 14:52:26 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ typedef struct s_mlx
 	int		line_len;
 	int		endian;
 }	t_mlx;
-
-typedef struct s_rt
-{
-	t_mlx	rtmlx;
-	int		fd;
-	char	**av;
-	int		ac;
-	char	*line;
-	char	**split;
-	t_scene	scene;
-}	t_rt;
 
 typedef struct s_vector
 {
@@ -99,5 +88,15 @@ typedef struct s_scene
 	t_cylinder	*cy;
 } t_scene;
 
+typedef struct s_rt
+{
+	t_mlx	rtmlx;
+	int		fd;
+	char	**av;
+	int		ac;
+	char	*line;
+	char	**split;
+	t_scene	scene;
+}	t_rt;
 
 #endif

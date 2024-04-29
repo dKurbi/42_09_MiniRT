@@ -6,12 +6,27 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 16:33:39 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:26:55 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+// test check_str_number
+int main(int ac, char **av)
+{
+	float	fl;
+	int		i;
+
+	i = 0;
+	if (ac == 1)
+		return(0);
+	if (!check_is_a_float(av[1], &i, &fl))
+		printf("el numero es el float = %f\n", fl);
+	else	
+		printf("el argumento no es float\n");
+}
+/*
 int	main(int ac, char **av)
 {
 	t_rt	rt;
@@ -32,3 +47,4 @@ int	main(int ac, char **av)
 	free_rt(&rt, FREE_MLX);
 	return (0);
 }
+*/

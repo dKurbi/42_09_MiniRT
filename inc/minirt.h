@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 01:07:33 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:11:47 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,37 @@
 #  include "./minilibx-mac/mlx.h"
 # endif
 
-//check_file.c
-int		check_correct_value_fd(t_rt rt);
-int		check_file(t_rt rt);
+//add_scene_lower.c
+int         add_sphere(t_rt *rt,char *line);
+int         add_plane(t_rt *rt,char *line);
+int         add_cylinder(t_rt *rt,char *line);
+void	    add_sphere_lst(t_rt *rt, t_sphere *new_sphere);
+t_sphere	*init_sphere(void);
+
+//add_scene_capital.c
+int     add_ambient_light(t_rt *rt,char *line);
+int     add_camera(t_rt *rt,char *line);
+int     add_light(t_rt *rt,char *line);
 
 //check.c
 int		check_if_empty_str(char *s);
 int		check_if_empty_fd(t_rt rt, int fd);
 int		check_extension(char **av);
+
+//check_and_file.c
+int	    add_line_to_scene(t_rt *rt, char *line);
+
+//check_file.c
+int		check_correct_value_fd(t_rt rt);
+int		check_file(t_rt rt);
+
+
+//check_str_number.c
+int     check_is_a_vector(char *str, int *i, t_vector *vector);
+int     check_is_a_float(char *str, int *i, float *fl);
+int     check_is_rgb(char *line, int *i, t_rgb *color);
+int     check_is_a_vector_range(char *line, int *i, t_vector *vec);
+
 
 //error.c
 int		print_error(t_rt rt, char *s_err, int flag_free_mlx);
@@ -63,7 +86,7 @@ void	rtnew(t_rt *rt, int ac, char **av);
 void	mlxnew(t_rt *rt);
 
 //struct_scene.c
-int		add_line_to_scene(t_rt rt, char *line);
+int		add_line_to_scene(t_rt *rt, char *line);
 
 //utils_mlx.c
 void	pixel_put(t_rt rt, int x, int y, int color);
