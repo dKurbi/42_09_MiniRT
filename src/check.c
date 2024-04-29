@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 19:11:21 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 19:13:31 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/27 20:15:11 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,13 @@ int	check_extension(char **av)
 	char	*s_strrchr;
 
 	s_strrchr = ft_strrchr(av[1], '/');
+	printf("strrch %s\n", s_strrchr);
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 3, ".rt", 3) == 0 \
 		&& ft_strlen(av[1]) == 3 && av[1][0] == '.')
 		return (1);
 	else if (ft_strncmp(av[1] + ft_strlen(av[1]) - 3, ".rt", 3) != 0)
 		return (1);
-	if (s_strrchr != NULL && s_strrchr[1] == '.' && ft_strlen(s_strrchr) == 4)
+	if (s_strrchr != NULL && s_strrchr[1] == '.' && ft_strlen(s_strrchr) == 4)//dffbbdffdnnbbopdodpdofpffbbbbdffbbdffdnnbbopdodpdofpffbbbbdffbbdffdnnbbopdodpdofpffbbbbdffbbdffdnnbbopdodpdofpffbbbbdffbbdffdnnbbopdodpdofpffbbbbdffbbdffdnnbbopdodpdofpffbbbb
 		return (1);
 	return (0);
 }

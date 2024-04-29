@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 02:20:17 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 01:07:33 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,17 @@ char	*free_str(char **s);
 void	free_mlx(t_mlx *rtmlx);
 int		free_rt(t_rt *rt, int if_free_mlx);
 
+//ft_atof.c
+float	ft_atof(char *str);
+
 //minirt.c
 
 //struct.c
 void	rtnew(t_rt *rt, int ac, char **av);
 void	mlxnew(t_rt *rt);
+
+//struct_scene.c
+int		add_line_to_scene(t_rt rt, char *line);
 
 //utils_mlx.c
 void	pixel_put(t_rt rt, int x, int y, int color);
@@ -65,5 +71,6 @@ void	pixel_put(t_rt rt, int x, int y, int color);
 //utils.c
 void	ft_close(int *fd);
 int		skip_spaces(char *s, int i_provided);
+int		if_space(char c);
 
 #endif

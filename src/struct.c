@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/25 20:01:51 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:33:55 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ void	rtnew(t_rt *rt, int ac, char **av)
 	rt->fd = -1;
 	rt->line = NULL;
 	rt->split = NULL;
+	rt->scene.sp = NULL;
+	rt->scene.pl = NULL;
+	rt->scene.cy = NULL;
+	rt->scene.a_l_ratio = -1;
+	rt->scene.c_fov = -1;
+	rt->scene.l_bright = -1;
 }
 
 void	mlxnew(t_rt *rt)
