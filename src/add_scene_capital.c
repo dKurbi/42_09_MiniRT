@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/04/27 20:20:38 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:39:36 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int add_camera(t_rt *rt,char *line)
 	if (check_is_a_vector(line, &i &rt->scene.c_pos))
 		return (print_error_arg(*rt, ERR_NOT_VECTOR, STR_CAMERA, NO_FREE_MLX));
 	i = skip_spaces(line, i);
-	if (check_is_vector_normal(line, &i, &rt->scene.c_dir))
+	if (check_is_a_vector_range(line, &i, &rt->scene.c_dir))
 		return (print_error_arg(*rt, ERR_VECTOR_RANGE, STR_CAMERA, NO_FREE_MLX));
 	if (check_is_a_float(line, &i &rt->scene.c_fov))
 		return (print_error_arg(*rt, ERR_NOT_FLOAT, STR_CAMERA, NO_FREE_MLX));

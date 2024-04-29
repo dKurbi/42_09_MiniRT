@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:53:44 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 02:32:23 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 01:07:10 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,12 @@ int	skip_spaces(char *s, int i_provided)
 		(s[i] == SPACE || s[i] == '\t' || s[i] == '\n' || s[i] == '\v'))
 		i++;
 	return (i);
+}
+
+//if space - return 1, if NOT space - return 0
+int	if_space(char c)
+{
+	if (c == SPACE || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
 }

@@ -6,30 +6,11 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/28 17:38:40 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 01:01:55 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
-/*
-what it checks:
-check if it doesnt start for letter (sp, C, etc..) or only nums (132 43 24 2)
-check if this word is from scene description
-check if capital rules (A, C, etc..) are appeared once
-*/
-int	check_value_str_num_correctstr_capital(t_rt rt)
-{
-	(void)rt;
-	return (0);
-}
-
-//check if it passed like iin this form: sp(0, sp 43//, etc...)
-int	check_value_syntax(t_rt rt)
-{
-	(void)rt;
-	return (0);
-}
 
 /*main check: check if every line has the right order, number, syntax, etc.
 scenes:
@@ -48,8 +29,8 @@ int	check_save_value(t_rt rt)
 			if (add_line_to_scene(rt, line))
 				return (1);
 		}
-		free(rt.line);
-		rt.line = get_next_line(rt.fd);
+		free(line);
+		line = get_next_line(rt.fd);
 	}
 	ft_close(&rt.fd);
 	return (0);

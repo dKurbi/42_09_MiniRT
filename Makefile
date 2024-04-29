@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+         #
+#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/04/27 17:35:37 by dkurcbar         ###   ########.fr        #
+#    Updated: 2024/04/28 19:13:25 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ COMPILED_MINILIBX = libmlx.a
 
 #	Files .c and .o
 SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
-		event.c check.c ft_atof.c add_scene.c struct_scene.c
+		event.c check.c ft_atof.c add_scene.c check_and_save.c
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
 

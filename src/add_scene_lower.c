@@ -6,12 +6,11 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:27 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/04/27 19:08:53 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 01:01:14 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
 
 int add_sphere(t_rt *rt,char *line)
 {
@@ -21,7 +20,7 @@ int add_sphere(t_rt *rt,char *line)
 	new_sphere = init_sphere();
 	i = 2;
 	i = skip_spaces(line, i);
-	if (check_is_a_vector(line, &i, new_sphere->sp_center))
+	if (check_is_a_vector(line, &i, &new_sphere->sp_center))
 		return (print_error_arg(*rt, ERR_NOT_VECTOR, STR_SPHERE, NO_FREE_MLX));
 	i = skip_spaces(line, i);
 	if (check_is_a_float(line, &i, new_sphere->sp_diam))
@@ -59,11 +58,11 @@ void	add_sphere(t_rt *rt, t_sphere *new_sphere)
 		lst_sphere->next = new_sphere;
 	}
 }
-t_sphere	*init_sphere (void)
+t_sphere	*init_sphere(void)
 {
 	t_sphere *new_sphere;
 
-	new_sphere = malloc (sizeof(t_sphere));
+	new_sphere = (t_sphere *)malloc(sizeof(t_sphere));
 	new_sphere->next = NULL;
 	return (new_sphere);
 }

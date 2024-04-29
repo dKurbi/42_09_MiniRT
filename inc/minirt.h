@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/27 17:41:30 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/04/29 01:07:33 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void	pixel_put(t_rt rt, int x, int y, int color);
 //utils.c
 void	ft_close(int *fd);
 int		skip_spaces(char *s, int i_provided);
+int		if_space(char c);
 
 #endif
