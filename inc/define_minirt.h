@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 16:40:25 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:43:11 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@
 # define STR_SPHERE "sphere"
 # define STR_PLANE "plane"
 # define STR_CYLINDER "cylinder"
-
 
 //pixels for mlx window (Linux/Mac)
 # ifdef __linux__

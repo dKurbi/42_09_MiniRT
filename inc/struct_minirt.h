@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 16:33:42 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:45:38 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_vector
 	double	z;
 }	t_vector;
 
-typedef	struct s_rgb
+typedef struct s_rgb
 {
 	int	r;
 	int	g;
@@ -54,7 +54,7 @@ typedef struct s_plane
 	t_vector		pl_normal;
 	t_rgb			pl_color;
 	struct s_plane	*next;
-} t_plane;
+}	t_plane;
 
 typedef struct s_cylinder
 {
@@ -64,9 +64,7 @@ typedef struct s_cylinder
 	double				cy_height;
 	t_rgb				cy_color;
 	struct s_cylinder	*next;
-	
-} t_cylinder;
-
+}	t_cylinder;
 
 // a_l = ambient lightning
 // c_ = camera
@@ -86,7 +84,7 @@ typedef struct s_scene
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
-} t_scene;
+}	t_scene;
 
 typedef struct s_rt
 {

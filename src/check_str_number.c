@@ -6,43 +6,11 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 20:58:49 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 21:06:54 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/30 02:12:01 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
-//check if we have a vector, without range limits
-int	check_is_a_vector(char *str, int *i, t_vector *vector)
-{
-	int		i_copy;
-	int		coma_count;
-	int		point_count;
-	char	*number;
-	char	**split;
-
-	coma_count = 0;
-	point_count = 0;
-	i_copy = *i;
-	while (str[i_copy] && (if_space(str[i_copy]) == 0))
-	{
-		if (str[i_copy] == '.' || str[i_copy] == ',')
-		{
-			if (str[i_copy] == '.')
-				point_count++;
-			else
-				coma_count++;
-		}
-		else if (!ft_isdigit(str[i_copy]))
-			return (1);
-		i++;
-	}
-	number = ft_substr(str, *i, i_copy - *i);
-	split = ft_split(number, ',');
-    //falta algo mas
-	(void)vector;
-	return (0);
-}
 
 // 1 si es no es float 0 si es float
 static int	len_str(char *str, int *i)
@@ -60,6 +28,8 @@ static int	len_str(char *str, int *i)
 	return (len);
 }
 
+//checking if float passed correctly, set *i to the next spaces
+//save float in *fl ||| 1 - incorrect, 0 - correct
 int	check_is_a_float(char *str, int *i, double *fl)
 {
 	int		end;
@@ -95,6 +65,41 @@ int	check_is_a_float(char *str, int *i, double *fl)
 	return (0);
 }
 
+//check if we have a vector, without range limits
+int	check_is_a_vector(char *str, int *i, t_vector *vector)
+{
+	int		i_copy;
+	int		coma_count;
+	int		point_count;
+	char	*number;
+	char	**split;
+
+	coma_count = 0;
+	point_count = 0;
+	i_copy = *i;
+	while (str[i_copy] && (if_space(str[i_copy]) == 0))
+	{
+		if (str[i_copy] == '.' || str[i_copy] == ',')
+		{
+			if (str[i_copy] == '.')
+				point_count++;
+			else
+				coma_count++;
+		}
+		else if (!ft_isdigit(str[i_copy]))
+			return (1);
+		i++;
+	}
+	number = ft_substr(str, *i, i_copy - *i);
+	split = ft_split(number, ',');
+	if (!number || !split)
+		return (free_str(&number), 1);
+	free(number);
+    //falta algo mas
+	(void)(vector);
+	return (0);
+}
+
 int	check_is_a_rgb(char *str, int *i, t_rgb *color)
 {
 	int		i_copy;
@@ -108,7 +113,7 @@ int	check_is_a_rgb(char *str, int *i, t_rgb *color)
 	{
 		if (str[i_copy] == ',')
 		{
-			if (i_copy - 1 > 0 || str[i_copy - 1] == ',')
+			if ((i_copy - 1) > 0 && str[i_copy - 1] == ',')
 				return (1);
 			coma_count++;
 		}
@@ -116,19 +121,23 @@ int	check_is_a_rgb(char *str, int *i, t_rgb *color)
 			return (1);
 		i_copy++;
 	}
+	printf("checkout seg\n");
 	number = ft_substr(str, *i, i_copy - *i);
 	split = ft_split(number, ',');
 	if (!number || !split)
-		return (free(number), 1);
+		return (free_str(&number), 1);
 	free(number);
 	if (len_split(split) != 3 || coma_count != 2)
 		return (free_double_str(&split), 1);
+	printf("checkout seg\n");
 	color->r = ft_atoi(split[0]);
 	color->g = ft_atoi(split[1]);
 	color->b = ft_atoi(split[2]);
 	free_double_str(&split);
+	printf("checkout seg\n");
 	if (rgb_limit(color->r, color->g, color->b) > 0)
 		return (1);
+	printf("checkout seg\n");
 	*i = i_copy;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 19:32:46 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/30 02:13:25 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ char	*free_double_str(char ***s)
 	}
 	while ((*s)[i])
 	{
+		printf("doblstr free\n");
 		if ((*s)[i] != NULL)
-			free(*s[i]);
+			free((*s)[i]);
 		i++;
 	}
 	free(*s);

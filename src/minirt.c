@@ -6,29 +6,44 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 20:35:49 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/04/30 02:09:29 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//MAIN: TESTER MAIN FOR FUNCTIONS test test test
 // test check_str_number
 int main(int ac, char **av)
 {
 	double	fl;
 	int		i;
+	t_rgb	color;
 
+	(void)color;
+	(void)i;
+	(void)fl;
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
 	i = 0;
 	if (ac == 1)
-		return(0);
-	if (!check_is_a_float(av[1], &i, &fl))
+		return (0);
+/* 	if (!check_is_a_float(av[1], &i, &fl))
 		printf("el numero es el float = %f\n", fl);
 	else	
 		printf("el argumento no es float\n");
-	printf("atof orig - %f\n", atof(av[1]));
+	printf("atof orig - %f\n", atof(av[1])); */
+	
+	printf("part check_rgb -----------------\n\n\n\n");
+
+	if (check_is_a_rgb(av[1], &i, &color))
+		return (1);
+	printf("r - %d, g - %d, b - %d\n", color.r, color.g, color.b);
 	return 0;
 }
 
+//MAIN: MAIN
 /* int	main(int ac, char **av)
 {
 	t_rt	rt;
