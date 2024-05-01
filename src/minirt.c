@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/30 02:09:29 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/01 03:56:07 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@
 // test check_str_number
 int main(int ac, char **av)
 {
-	double	fl;
-	int		i;
-	t_rgb	color;
+	double		fl;
+	int			i;
+	t_rgb		color;
+	t_vector	vector;
 
 	(void)color;
 	(void)i;
 	(void)fl;
+	(void)vector;
 	color.r = 0;
 	color.g = 0;
 	color.b = 0;
+	vector.x = 0;
+	vector.y = 0;
+	vector.z = 0;
 	i = 0;
 	if (ac == 1)
 		return (0);
@@ -37,9 +42,19 @@ int main(int ac, char **av)
 	
 	printf("part check_rgb -----------------\n\n\n\n");
 
-	if (check_is_a_rgb(av[1], &i, &color))
+/* 	if (check_is_a_rgb(av[1], &i, &color))
 		return (1);
-	printf("r - %d, g - %d, b - %d\n", color.r, color.g, color.b);
+	printf("r - %d, g - %d, b - %d\n", color.r, color.g, color.b); */
+	if (check_is_a_vector(av[1], &i, &vector))
+		return (1);
+	printf("x - %f, y - %f, z - %f\n", vector.x, vector.y, vector.z);
+	t_vector vector2;
+	vector2.x = 0;
+	vector2.y = 0;
+	vector2.z = 0;
+	if (check_is_a_vector_range(av[1], &i, &vector2))
+		return (1);
+	printf("ranga x - %f, y - %f, z - %f\n", vector2.x, vector2.y, vector2.z);
 	return 0;
 }
 
