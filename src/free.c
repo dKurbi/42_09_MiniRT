@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/30 02:13:25 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/01 20:24:01 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ char	*free_double_str(char ***s)
 	}
 	while ((*s)[i])
 	{
-		printf("doblstr free\n");
 		if ((*s)[i] != NULL)
 			free((*s)[i]);
 		i++;
@@ -78,6 +77,6 @@ int	free_rt(t_rt *rt, int if_free_mlx)
 	ft_close(&rt->fd);
 	if (if_free_mlx == 1)
 		free_mlx(&rt->rtmlx);
-	//free_double_str(rt->split);
+	free_double_str(&rt->split);
 	return (1);
 }

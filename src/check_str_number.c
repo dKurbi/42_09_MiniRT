@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 20:58:49 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/01 03:54:35 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/01 20:23:40 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	check_is_a_vector(char *str, int *i, t_vector *vector)
 	if (check_is_a_float(split[2], &i_for_float, &vector->z))
 		return (free_double_str(&split), 1);
 	free_double_str(&split);
+	*i = i_copy;
 	return (0);
 }
 
@@ -134,7 +135,6 @@ int	check_is_a_rgb(char *str, int *i, t_rgb *color)
 			return (1);
 		i_copy++;
 	}
-	printf("checkout seg\n");
 	number = ft_substr(str, *i, i_copy - *i);
 	split = ft_split(number, ',');
 	if (!number || !split)
@@ -142,15 +142,12 @@ int	check_is_a_rgb(char *str, int *i, t_rgb *color)
 	free(number);
 	if (len_split(split) != 3 || coma_count != 2)
 		return (free_double_str(&split), 1);
-	printf("checkout seg\n");
 	color->r = ft_atoi(split[0]);
 	color->g = ft_atoi(split[1]);
 	color->b = ft_atoi(split[2]);
 	free_double_str(&split);
-	printf("checkout seg\n");
 	if (rgb_limit(color->r, color->g, color->b) > 0)
 		return (1);
-	printf("checkout seg\n");
 	*i = i_copy;
 	return (0);
 }

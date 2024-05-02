@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 23:45:38 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/02 05:57:37 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_cylinder
 	t_rgb				cy_color;
 	struct s_cylinder	*next;
 }	t_cylinder;
+
 
 // a_l = ambient lightning
 // c_ = camera
