@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   add_scene_capital.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/04/29 15:00:36 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/05/02 06:06:09 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int add_ambient_light(t_rt *rt,char *line)
+int add_ambient_light(t_rt *rt, char *line)
 {
 	int	i;
 
@@ -23,9 +23,11 @@ int add_ambient_light(t_rt *rt,char *line)
 	if (rt->scene.a_l_ratio < 0 || rt->scene.a_l_ratio > 1)
 		return (print_error_arg(*rt, ERR_RANGE, STR_AMBIENT_LIGHT, NO_FREE_MLX));
 	i = skip_spaces(line, i);
-	if (check_is_rgb(line, &i, &rt->scene.a_l_color))
+	if (check_is_a_rgb(line, &i, &rt->scene.a_l_color))
 		return (print_error_arg(*rt, ERR_RGB, STR_AMBIENT_LIGHT, NO_FREE_MLX));
-	if (!check_if_empty_str(&line[i]))
+	printf("i that skips - %d, str - %s\n", i, &line[i]);
+	printf("strlen - %zu, str - %s\n", ft_strlen(line), line);
+	if (i >= (int)ft_strlen(line) || !check_if_empty_str(&line[i]))
 		return (print_error_arg(*rt, ERR_VALUE_MUCH, STR_AMBIENT_LIGHT, NO_FREE_MLX));
 	return (0);
 
@@ -51,6 +53,7 @@ int add_camera(t_rt *rt,char *line)
 	return (0);
 	
 }
+
 int add_light(t_rt *rt,char *line)
 {
 	int	i;

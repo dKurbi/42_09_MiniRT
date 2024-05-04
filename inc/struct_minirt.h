@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 14:52:26 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/05/02 05:57:37 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ typedef struct s_mlx
 
 typedef struct s_vector
 {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 }	t_vector;
 
-typedef	struct s_rgb
+typedef struct s_rgb
 {
 	int	r;
 	int	g;
@@ -43,7 +43,7 @@ typedef	struct s_rgb
 typedef struct s_sphere
 {
 	t_vector		sp_center;
-	float			sp_diam;
+	double			sp_diam;
 	t_rgb			sp_color;
 	struct s_sphere	*next;
 }	t_sphere;
@@ -54,18 +54,17 @@ typedef struct s_plane
 	t_vector		pl_normal;
 	t_rgb			pl_color;
 	struct s_plane	*next;
-} t_plane;
+}	t_plane;
 
 typedef struct s_cylinder
 {
 	t_vector			cy_center;
 	t_vector			cy_axis;
-	float				cy_diam;
-	float				cy_height;
+	double				cy_diam;
+	double				cy_height;
 	t_rgb				cy_color;
 	struct s_cylinder	*next;
-	
-} t_cylinder;
+}	t_cylinder;
 
 
 // a_l = ambient lightning
@@ -76,17 +75,17 @@ typedef struct s_cylinder
 // cy = cylinder
 typedef struct s_scene
 {
-	float		a_l_ratio;
+	double		a_l_ratio;
 	t_rgb		a_l_color;
 	t_vector	c_pos;
 	t_vector	c_dir;
-	float		c_fov;
+	double		c_fov;
 	t_vector	l_pos;
-	float		l_bright;
+	double		l_bright;
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
-} t_scene;
+}	t_scene;
 
 typedef struct s_rt
 {
