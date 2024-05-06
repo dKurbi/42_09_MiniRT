@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_scene.c                                      :+:      :+:    :+:   */
+/*   free_struct_lst.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 16:53:17 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/05 22:34:21 by iassambe         ###   ########.fr       */
+/*   Created: 2024/05/06 04:04:42 by iassambe          #+#    #+#             */
+/*   Updated: 2024/05/06 04:11:39 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//check if after checking all, there is empty or only spaces
-int	empty_after_line(char *line, int i_provide)
+void	free_sphere(t_sphere **sphere)
 {
-	i_provide = skip_spaces(line, i_provide);
-	if (i_provide >= (int)ft_strlen(line))
-		return (1);
-	return (0);
+	t_sphere	*copy_sphere;
+
+	if (*sphere == NULL)
+		return ;
+	(void)*sphere;
+	(void)copy_sphere;
 }
 
-//limit: 0 and 255
-//0 if in limit, 1 if out of limit
-int	rgb_limit(int r, int g, int b)
+void	free_plane(t_plane **plane)
 {
-	if (!(r >= 0 && r <= 255) || \
-		!(g >= 0 && g <= 255) || \
-		!(b >= 0 && b <= 255))
-		return (1);
-	return (0);
+	t_plane	*copy_plane;
+
+	if (*plane == NULL)
+		return ;
+	(void)*plane;
+	(void)copy_plane;
+}
+
+void	free_cylinder(t_cylinder **cylinder)
+{
+	t_cylinder	*copy_cylinder;
+
+	if (*cylinder == NULL)
+		return ;
+	(void)copy_cylinder;
+	(void)*cylinder;
 }

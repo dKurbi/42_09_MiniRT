@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/28 17:33:55 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/06 03:43:52 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,40 @@ void	mlxnew(t_rt *rt)
 	rt->rtmlx.img = mlx_new_image(rt->rtmlx.init, WIN_X, WIN_Y);
 	rt->rtmlx.addr = mlx_get_data_addr(rt->rtmlx.img, \
 					&rt->rtmlx.bitspp, &rt->rtmlx.line_len, &rt->rtmlx.endian);
+}
+
+t_sphere	*init_sphere(void)
+{
+	t_sphere	*new_sphere;
+
+	new_sphere = (t_sphere *) malloc(sizeof(t_sphere));
+	if (!new_sphere)
+		return (NULL);
+	new_sphere->sp_diam = 0;
+	new_sphere->next = NULL;
+	return (new_sphere);
+}
+
+t_plane	*init_plane(void)
+{
+	t_plane	*new_plane;
+
+	new_plane = (t_plane *) malloc(sizeof(t_plane));
+	if (!new_plane)
+		return (NULL);
+	new_plane->next = NULL;
+	return (new_plane);
+}
+
+t_cylinder	*init_cylinder(void)
+{
+	t_cylinder	*new_cylinder;
+
+	new_cylinder = (t_cylinder *) malloc(sizeof(t_cylinder));
+	if (!new_cylinder)
+		return (NULL);
+	new_cylinder->cy_diam = 0;
+	new_cylinder->cy_height = 0;
+	new_cylinder->next = NULL;
+	return (new_cylinder);
 }
