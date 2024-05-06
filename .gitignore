@@ -17,6 +17,8 @@ inc/.DS_Store
 inc/libft/.DS_Store
 inc/minilibx-linux/*.o
 inc/minilibx-mac/*.o
+inc/minilibx-linux/obj/
+inc/minilibx-linux/libmlx_Linux.a
 a
 scene.rt
 minirt

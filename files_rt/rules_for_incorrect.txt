@@ -1,0 +1,14 @@
+AQUI ESTARAN TODOS POSIBLES ERRORES DE ESCENAS .rt:
+
+//
+A 0.2 255.155.55
+A 0.2 255.155.55
+
+//
+0.2 255.255.21
+
+//
+A 2.0 255.234.4
+
+//
+etc... (anadir despues)

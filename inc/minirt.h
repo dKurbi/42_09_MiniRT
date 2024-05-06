@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/30 01:51:59 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/06 04:09:23 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,17 @@
 int			add_sphere(t_rt *rt, char *line);
 int			add_plane(t_rt *rt, char *line);
 int			add_cylinder(t_rt *rt, char *line);
-void		add_sphere_lst(t_rt *rt, t_sphere *new_sphere);
-t_sphere	*init_sphere(void);
 
 //add_scene_capital.c
 int			add_ambient_light(t_rt *rt, char *line);
 int			add_camera(t_rt *rt, char *line);
 int			add_light(t_rt *rt, char *line);
+
+//add_structure_figure.c
+void		add_sphere_lst(t_rt *rt, t_sphere *new_sphere);
+void		add_plane_lst(t_rt *rt, t_plane *new_plane);
+void		add_cylinder_lst(t_rt *rt, t_cylinder *new_cyl);
+
 
 //check.c
 int			check_if_empty_str(char *s);
@@ -75,6 +79,11 @@ char		*free_double_str(char ***s);
 void		free_mlx(t_mlx *rtmlx);
 int			free_rt(t_rt *rt, int if_free_mlx);
 
+//free_struct_lst.c
+void	free_sphere(t_sphere **sphere);
+void	free_plane(t_plane **plane);
+void	free_cylinder(t_cylinder **cylinder);
+
 //ft_atof.c
 double		ft_atof(char *str);
 
@@ -83,6 +92,9 @@ double		ft_atof(char *str);
 //struct.c
 void		rtnew(t_rt *rt, int ac, char **av);
 void		mlxnew(t_rt *rt);
+t_sphere	*init_sphere(void);
+t_plane		*init_plane(void);
+t_cylinder	*init_cylinder(void);
 
 //struct_scene.c
 int			add_line_to_scene(t_rt *rt, char *line);
@@ -91,6 +103,7 @@ int			add_line_to_scene(t_rt *rt, char *line);
 void		pixel_put(t_rt rt, int x, int y, int color);
 
 //utils_scene.c
+int			empty_after_line(char *line, int i_provide);
 int			rgb_limit(int r, int g, int b);
 
 //utils.c

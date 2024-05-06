@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 19:11:21 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/02 06:07:31 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/06 04:02:06 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	check_if_empty_str(char *s)
 	i = 0;
 	while (s && s[i] && (s[i] == SPACE || s[i] == '\t' || s[i] == '\n'))
 		i++;
-	printf("in checkempty: i %zu and strlen %zu\n", i, ft_strlen(s));
 	if (i == ft_strlen(s))
 		return (1);
 	return (0);
@@ -59,7 +58,6 @@ int	check_extension(char **av)
 	char	*s_strrchr;
 
 	s_strrchr = ft_strrchr(av[1], '/');
-	printf("strrch %s\n", s_strrchr);
 	if (ft_strncmp(av[1] + ft_strlen(av[1]) - 3, ".rt", 3) == 0 \
 		&& ft_strlen(av[1]) == 3 && av[1][0] == '.')
 		return (1);
