@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/07 03:09:00 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 09:42:28 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	add_ambient_light(t_rt *rt, char *line)
 {
 	int	i;
 
+	rt->a_l_count++;
 	i = 1;
 	i = skip_spaces(line, i);
 	if (check_is_a_float(line, &i, &rt->scene.a_l_ratio))
@@ -34,13 +35,15 @@ int	add_camera(t_rt *rt, char *line)
 {
 	int	i;
 
+	rt->c_count++;
 	i = 1;
 	i = skip_spaces(line, i);
 	if (check_is_a_vector(line, &i, &rt->scene.c_pos))
 		return (print_error_arg(*rt, ERR_NOT_VECTOR, STR_CAMERA, NO_FREE_MLX));
 	i = skip_spaces(line, i);
 	if (check_is_a_vector_range(line, &i, &rt->scene.c_dir))
-		return (print_error_arg(*rt, ERR_VECTOR_RANGE, STR_CAMERA, NO_FREE_MLX));
+		return (print_error_arg(*rt, ERR_VECTOR_RANGE, \
+								STR_CAMERA, NO_FREE_MLX));
 	i = skip_spaces(line, i);
 	if (check_is_a_float(line, &i, &rt->scene.c_fov))
 		return (print_error_arg(*rt, ERR_NOT_FLOAT, STR_CAMERA, NO_FREE_MLX));
@@ -51,10 +54,11 @@ int	add_camera(t_rt *rt, char *line)
 	return (0);
 }
 
-int	add_light(t_rt *rt,char *line)
+int	add_light(t_rt *rt, char *line)
 {
 	int	i;
 
+	rt->l_count++;
 	i = 1;
 	i = skip_spaces(line, i);
 	if (check_is_a_vector(line, &i, &rt->scene.l_pos))

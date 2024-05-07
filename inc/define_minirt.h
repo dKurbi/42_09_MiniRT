@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/06 04:13:11 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 09:36:03 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define ERR_RGB "values are not RGB\n"
 # define ERR_NOT_VECTOR "values are not vectors\n"
 # define ERR_VECTOR_RANGE "values in vector are out of range\n"
+# define ERR_A_C_L "file doesn't have only 1 ambient light (A), \
+1 camera (C) and 1 light (L)\n"
 
 //normal strings
 # define STR_MINIRT "miniRT: "

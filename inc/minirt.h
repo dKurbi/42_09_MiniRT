@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 03:07:44 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 09:40:34 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ int			event_destroy(t_rt *rt);
 
 //free.c
 char		*free_str(char **s);
-char		*free_double_str(char ***s);
 void		free_mlx(t_mlx *rtmlx);
 int			free_rt(t_rt *rt, int if_free_mlx);
 
 //free_struct_lst.c
+char		*free_double_str(char ***s);
 void		free_sphere(t_sphere **sphere);
 void		free_plane(t_plane **plane);
 void		free_cylinder(t_cylinder **cylinder);

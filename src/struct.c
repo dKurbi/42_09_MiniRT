@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/06 03:43:52 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 08:51:54 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	rtnew(t_rt *rt, int ac, char **av)
 	rt->scene.a_l_ratio = -1;
 	rt->scene.c_fov = -1;
 	rt->scene.l_bright = -1;
+	rt->a_l_count = 0;
+	rt->c_count = 0;
+	rt->l_count = 0;
 }
 
 void	mlxnew(t_rt *rt)

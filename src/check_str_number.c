@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 20:58:49 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/01 20:23:40 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 09:43:38 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	check_is_a_vector(char *str, int *i, t_vector *vector)
 	char	*number;
 	char	**split;
 	int		i_for_float;
-	
+
 	i_for_float = 0;
 	coma_count = 0;
 	point_count = 0;
