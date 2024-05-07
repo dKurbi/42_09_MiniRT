@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/05/06 04:08:13 by iassambe         ###   ########.fr        #
+#    Updated: 2024/05/07 03:07:18 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,8 @@ COMPILED_MINILIBX = libmlx.a
 
 #	Files .c and .o
 SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
-		event.c check.c ft_atof.c add_scene_capital.c add_scene_lower.c check_and_save.c \
-		check_str_number.c utils_scene.c add_struct_figure.c free_struct_lst.c
+		event.c check.c ft_atof.c add_scene_capital.c add_scene_lower.c \
+		check_str_number.c utils_check.c add_struct_figure.c free_struct_lst.c
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
 

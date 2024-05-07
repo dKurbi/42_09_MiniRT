@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 04:04:42 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/06 04:11:39 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 04:53:34 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ void	free_sphere(t_sphere **sphere)
 
 	if (*sphere == NULL)
 		return ;
-	(void)*sphere;
-	(void)copy_sphere;
+	while (*sphere)
+	{
+		copy_sphere = (*sphere);
+		*sphere = (*sphere)->next;
+		free(copy_sphere);
+	}
+	*sphere = NULL;
 }
 
 void	free_plane(t_plane **plane)
@@ -28,8 +33,12 @@ void	free_plane(t_plane **plane)
 
 	if (*plane == NULL)
 		return ;
-	(void)*plane;
-	(void)copy_plane;
+	while (*plane)
+	{
+		copy_plane = (*plane);
+		*plane = (*plane)->next;
+		free(copy_plane);
+	}
 }
 
 void	free_cylinder(t_cylinder **cylinder)
@@ -38,6 +47,10 @@ void	free_cylinder(t_cylinder **cylinder)
 
 	if (*cylinder == NULL)
 		return ;
-	(void)copy_cylinder;
-	(void)*cylinder;
+	while (*cylinder)
+	{
+		copy_cylinder = (*cylinder);
+		*cylinder = (*cylinder)->next;
+		free(copy_cylinder);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/06 04:09:23 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 03:07:44 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,9 @@ int			check_if_empty_str(char *s);
 int			check_if_empty_fd(t_rt rt, int fd);
 int			check_extension(char **av);
 
-//check_and_file.c
-int			add_line_to_scene(t_rt *rt, char *line);
-
 //check_file.c
-int			check_correct_value_fd(t_rt rt);
+int			add_line_to_scene(t_rt *rt, char *line);
+int			check_save_value(t_rt *rt);
 int			check_file(t_rt rt);
 
 //check_str_number.c
@@ -80,9 +78,9 @@ void		free_mlx(t_mlx *rtmlx);
 int			free_rt(t_rt *rt, int if_free_mlx);
 
 //free_struct_lst.c
-void	free_sphere(t_sphere **sphere);
-void	free_plane(t_plane **plane);
-void	free_cylinder(t_cylinder **cylinder);
+void		free_sphere(t_sphere **sphere);
+void		free_plane(t_plane **plane);
+void		free_cylinder(t_cylinder **cylinder);
 
 //ft_atof.c
 double		ft_atof(char *str);
@@ -102,7 +100,7 @@ int			add_line_to_scene(t_rt *rt, char *line);
 //utils_mlx.c
 void		pixel_put(t_rt rt, int x, int y, int color);
 
-//utils_scene.c
+//utils_check.c
 int			empty_after_line(char *line, int i_provide);
 int			rgb_limit(int r, int g, int b);
 
