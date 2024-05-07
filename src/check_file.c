@@ -6,11 +6,22 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 09:23:07 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 22:15:06 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+
+//limit: 0 and 255
+//0 if in limit, 1 if out of limit
+int	rgb_limit(int r, int g, int b)
+{
+	if (!(r >= 0 && r <= 255) || \
+		!(g >= 0 && g <= 255) || \
+		!(b >= 0 && b <= 255))
+		return (1);
+	return (0);
+}
 
 //adding, judging which scene is
 int	add_line_to_scene(t_rt *rt, char *line)
@@ -41,7 +52,9 @@ A, C, L, sp, pl, cy
 int	check_save_value(t_rt *rt)
 {
 	char	*line;
+	int		count_line;
 
+	count_line = 1;
 	rt->fd = open(rt->av[1], O_RDONLY);
 	line = get_next_line(rt->fd);
 	while (line != NULL)
@@ -50,12 +63,13 @@ int	check_save_value(t_rt *rt)
 		{
 			if (add_line_to_scene(rt, line))
 			{
-				free(line);
-				return (1);
+				print_ocurred_line(count_line);
+				return (free(line), 1);
 			}
 		}
 		free_str(&line);
 		line = get_next_line(rt->fd);
+		count_line++;
 	}
 	free_str(&line);
 	ft_close(&rt->fd);

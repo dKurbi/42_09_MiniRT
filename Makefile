@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/05/07 03:07:18 by iassambe         ###   ########.fr        #
+#    Updated: 2024/05/07 22:16:02 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,8 @@ COMPILED_MINILIBX = libmlx.a
 #	Files .c and .o
 SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
 		event.c check.c ft_atof.c add_scene_capital.c add_scene_lower.c \
-		check_str_number.c utils_check.c add_struct_figure.c free_struct_lst.c
+		check_str_number.c utils_check.c free_struct_lst.c utils_check_2.c \
+		add_struct_figure.c
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
 
@@ -90,7 +91,7 @@ all: $(NAME)
 
 $(NAME): $(COMPILED_LIBFT) $(COMPILED_MINILIBX) $(DIR_OBJS) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) $(MINILIBXCOMPILEFLAGS) -o $(NAME)
-	@$(ECHO) "$(COLOR_BOLD_WHITE)MiniRT $(COLOR_GREEN)Compiled!$(COLOR_RESET)"
+	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_GREEN)Compiled!$(COLOR_RESET)"
 
 $(DIR_OBJS):
 	@$(MKDIR) $(DIR_OBJS)
@@ -117,7 +118,7 @@ fclean: clean
 
 re: fclean all
 
-#	Addictional compiling rules
+#	Additional compiling rules
 r: re
 
 fcle: fclean

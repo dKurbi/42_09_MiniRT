@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 09:36:03 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 22:07:04 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define STR_SPHERE "sphere"
 # define STR_PLANE "plane"
 # define STR_CYL "cylinder"
+# define STR_ERR_OCCURR "Error occurred in line: "
 
 //pixels for mlx window (Linux/Mac)
 # ifdef __linux__

@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:30:33 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/30 01:53:28 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 22:20:16 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,14 @@ int	print_error_arg(t_rt rt, char *s_err, char *s_arg, int flag_mlx)
 	}
 	free_rt(&rt, flag_mlx);
 	return (1);
+}
+
+int	print_ocurred_line(int number)
+{
+	if (write(STDERR_FILENO, STR_ERR_OCCURR, ft_strlen(STR_ERR_OCCURR)) < 0)
+		return (1);
+	ft_putnbr_fd(number, STDERR_FILENO);
+	if (write(STDERR_FILENO, "\n", ft_strlen("\n")) < 0)
+		return (1);
+	return (0);
 }

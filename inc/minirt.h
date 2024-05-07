@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 09:40:34 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 22:20:22 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ void		add_sphere_lst(t_rt *rt, t_sphere *new_sphere);
 void		add_plane_lst(t_rt *rt, t_plane *new_plane);
 void		add_cylinder_lst(t_rt *rt, t_cylinder *new_cyl);
 
-
 //check.c
 int			check_if_empty_str(char *s);
 int			check_if_empty_fd(t_rt rt, int fd);
 int			check_extension(char **av);
 
 //check_file.c
+int			rgb_limit(int r, int g, int b);
 int			add_line_to_scene(t_rt *rt, char *line);
 int			check_save_value(t_rt *rt);
 int			check_file(t_rt rt);
@@ -65,6 +65,7 @@ int			check_is_a_vector_range(char *line, int *i, t_vector *vec);
 //error.c
 int			print_error(t_rt rt, char *s_err, int flag_mlx);
 int			print_error_arg(t_rt rt, char *s_err, char *s_arg, int flag_mlx);
+int			print_ocurred_line(int number);
 
 //event.c
 int			event_mouse(int mouse, t_rt *rt);
@@ -100,9 +101,15 @@ int			add_line_to_scene(t_rt *rt, char *line);
 //utils_mlx.c
 void		pixel_put(t_rt rt, int x, int y, int color);
 
-//utils_check.c
+//utils_check_2.c
 int			empty_after_line(char *line, int i_provide);
-int			rgb_limit(int r, int g, int b);
+int			check_is_a_rgb_create(char *str, int *i, int i_copy, t_rgb *color);
+
+//utils_check.c
+int			check_is_a_vector_loop(char *str, int i_c, int *point, int *coma);
+int			check_is_a_vector_add(char *str, int *i, t_vector *vec, int i_cop);
+int			check_is_a_float_first_check(char *str, int *i, int *end);
+int			check_is_a_float_add(char *str, int *i, int end, double *fl);
 
 //utils.c
 void		ft_close(int *fd);

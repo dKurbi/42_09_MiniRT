@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:27 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/07 05:10:53 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:44:03 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,21 @@ int	add_plane(t_rt *rt, char *line)
 
 int	add_cylinder_second_part(t_rt *rt, char *line, int i, t_cylinder *new_cyl)
 {
-	(void)(rt);
-	(void)(line);
-	(void)(i);
-	(void)(new_cyl);
+	i = skip_spaces(line, i);
+	if (check_is_a_float(line, &i, &new_cyl->cy_diam))
+		return (free_cylinder(&new_cyl), \
+			print_error_arg(*rt, ERR_NOT_FLOAT, STR_CYL, NO_FREE_MLX), 1);
+	i = skip_spaces(line, i);
+	if (check_is_a_float(line, &i, &new_cyl->cy_height))
+		return (free_cylinder(&new_cyl), \
+			print_error_arg(*rt, ERR_NOT_FLOAT, STR_CYL, NO_FREE_MLX), 1);
+	i = skip_spaces(line, i);
+	if (check_is_a_rgb(line, &i, &new_cyl->cy_color))
+		return (free_cylinder(&new_cyl), \
+			print_error_arg(*rt, ERR_RGB, STR_CYL, NO_FREE_MLX), 1);
+	if (empty_after_line(line, i) == 0)
+		return (free_cylinder(&new_cyl), \
+			print_error_arg(*rt, ERR_VALUE_MUCH, STR_CYL, NO_FREE_MLX), 1);
 	return (0);
 }
 
@@ -93,21 +104,8 @@ int	add_cylinder(t_rt *rt, char *line)
 	if (check_is_a_vector_range(line, &i, &new_cyl->cy_axis))
 		return (free_cylinder(&new_cyl), \
 			print_error_arg(*rt, ERR_VECTOR_RANGE, STR_CYL, NO_FREE_MLX), 1);
-	i = skip_spaces(line, i);
-	if (check_is_a_float(line, &i, &new_cyl->cy_diam))
-		return (free_cylinder(&new_cyl), \
-			print_error_arg(*rt, ERR_NOT_FLOAT, STR_CYL, NO_FREE_MLX), 1);
-	i = skip_spaces(line, i);
-	if (check_is_a_float(line, &i, &new_cyl->cy_height))
-		return (free_cylinder(&new_cyl), \
-			print_error_arg(*rt, ERR_NOT_FLOAT, STR_CYL, NO_FREE_MLX), 1);
-	i = skip_spaces(line, i);
-	if (check_is_a_rgb(line, &i, &new_cyl->cy_color))
-		return (free_cylinder(&new_cyl), \
-			print_error_arg(*rt, ERR_RGB, STR_CYL, NO_FREE_MLX), 1);
-	if (empty_after_line(line, i) == 0)
-		return (free_cylinder(&new_cyl), \
-			print_error_arg(*rt, ERR_VALUE_MUCH, STR_CYL, NO_FREE_MLX), 1);
+	if (add_cylinder_second_part(rt, line, i, new_cyl) > 0)
+		return (ERROR);
 	add_cylinder_lst(rt, new_cyl);
 	return (0);
 }
