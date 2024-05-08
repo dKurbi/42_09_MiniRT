@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 22:20:22 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/08 22:35:13 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,20 @@
 #  include "./minilibx-mac/mlx.h"
 # endif
 
-//add_scene_lower.c
-int			add_sphere(t_rt *rt, char *line);
-int			add_plane(t_rt *rt, char *line);
-int			add_cylinder(t_rt *rt, char *line);
-
 //add_scene_capital.c
 int			add_ambient_light(t_rt *rt, char *line);
 int			add_camera(t_rt *rt, char *line);
 int			add_light(t_rt *rt, char *line);
+
+//add_scene_lower_second.c
+int			add_sp_second_part(t_rt *rt, char *line, int i, t_sphere *new_sp);
+int			add_pl_second_part(t_rt *rt, char *line, int i, t_plane *new_pl);
+int			add_cy_second_part(t_rt *rt, char *line, int i, t_cylinder *new_cy);
+
+//add_scene_lower.c
+int			add_sphere(t_rt *rt, char *line);
+int			add_plane(t_rt *rt, char *line);
+int			add_cylinder(t_rt *rt, char *line);
 
 //add_structure_figure.c
 void		add_sphere_lst(t_rt *rt, t_sphere *new_sphere);
@@ -104,6 +109,7 @@ void		pixel_put(t_rt rt, int x, int y, int color);
 //utils_check_2.c
 int			empty_after_line(char *line, int i_provide);
 int			check_is_a_rgb_create(char *str, int *i, int i_copy, t_rgb *color);
+int			skip_space_check_not_enough_values(char *line, int *i);
 
 //utils_check.c
 int			check_is_a_vector_loop(char *str, int i_c, int *point, int *coma);
