@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 20:58:49 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 21:25:48 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:29:06 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	check_is_a_vector(char *str, int *i, t_vector *vector)
 	return (0);
 }
 
+//check if only ints and if in range
 int	check_is_a_rgb(char *str, int *i, t_rgb *color)
 {
 	int		i_copy;

@@ -6,12 +6,13 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:27 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/08 22:33:37 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:27:32 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//check and add sp and its values
 int	add_sphere(t_rt *rt, char *line)
 {
 	int			i;
@@ -39,6 +40,7 @@ int	add_sphere(t_rt *rt, char *line)
 	return (0);
 }
 
+//check and add pl and its values
 int	add_plane(t_rt *rt, char *line)
 {
 	int		i;
@@ -66,6 +68,7 @@ int	add_plane(t_rt *rt, char *line)
 	return (0);
 }
 
+//check and add cy and its values
 int	add_cylinder(t_rt *rt, char *line)
 {
 	int			i;

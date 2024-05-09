@@ -6,12 +6,13 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/08 22:12:17 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:26:32 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//check and add A and its values
 int	add_ambient_light(t_rt *rt, char *line)
 {
 	int	i;
@@ -33,6 +34,7 @@ int	add_ambient_light(t_rt *rt, char *line)
 	return (0);
 }
 
+//check and add C and its values
 int	add_camera(t_rt *rt, char *line)
 {
 	int	i;
@@ -59,6 +61,7 @@ int	add_camera(t_rt *rt, char *line)
 	return (0);
 }
 
+//check and add L and its values
 int	add_light(t_rt *rt, char *line)
 {
 	int	i;

@@ -6,11 +6,16 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 22:22:24 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:34:48 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+
+void	raytracing(t_rt *rt)
+{
+	(void)(rt);
+}
 
 //MAIN: MAIN
 int	main(int ac, char **av)
@@ -24,6 +29,7 @@ int	main(int ac, char **av)
 	if (check_file(rt) > 0 || check_save_value(&rt) > 0)
 		exit(ERROR);
 	mlxnew(&rt);
+	//raytracing(&rt);
 	mlx_hook(rt.rtmlx.win, EV_KEY, 0, event_key, &rt);
 	mlx_mouse_hook(rt.rtmlx.win, event_mouse, &rt);
 	mlx_hook(rt.rtmlx.win, EV_DESTROY, MASK_DESTROY, event_destroy, &rt);

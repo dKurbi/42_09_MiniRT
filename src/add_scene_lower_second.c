@@ -6,12 +6,13 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 22:18:13 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/08 22:37:30 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:27:06 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//second part sphere because norminette
 int	add_sp_second_part(t_rt *rt, char *line, int i, t_sphere *new_sp)
 {
 	if (skip_space_check_not_enough_values(line, &i))
@@ -26,6 +27,7 @@ int	add_sp_second_part(t_rt *rt, char *line, int i, t_sphere *new_sp)
 	return (0);
 }
 
+//second part plane because norminette
 int	add_pl_second_part(t_rt *rt, char *line, int i, t_plane *new_pl)
 {
 	if (skip_space_check_not_enough_values(line, &i))
@@ -40,6 +42,7 @@ int	add_pl_second_part(t_rt *rt, char *line, int i, t_plane *new_pl)
 	return (0);
 }
 
+//second part cylinder because norminette
 int	add_cy_second_part(t_rt *rt, char *line, int i, t_cylinder *new_cy)
 {
 	if (skip_space_check_not_enough_values(line, &i))

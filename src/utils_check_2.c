@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 20:32:28 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/08 22:37:21 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:36:12 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	empty_after_line(char *line, int i_provide)
 	return (0);
 }
 
+//continue form check_rgb function
 int	check_is_a_rgb_create(char *str, int *i, int i_copy, t_rgb *color)
 {
 	char	*number;
@@ -44,6 +45,7 @@ int	check_is_a_rgb_create(char *str, int *i, int i_copy, t_rgb *color)
 	return (0);
 }
 
+//skip spaces, save in *i and then check if we don't have nothing after
 int	skip_space_check_not_enough_values(char *line, int *i)
 {
 	*i = skip_spaces(line, *i);

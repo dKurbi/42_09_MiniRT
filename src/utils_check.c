@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 03:05:15 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 21:00:20 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:38:33 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int	len_str(char *str, int *i)
 	return (len);
 }
 
+//continue for check_vector but for loop saving lines
 int	check_is_a_vector_loop(char *str, int i_c, int *point, int *coma)
 {
 	if (str[i_c] == '.')
@@ -39,6 +40,7 @@ int	check_is_a_vector_loop(char *str, int i_c, int *point, int *coma)
 	return (0);
 }
 
+//continue for check_vector check
 int	check_is_a_vector_add(char *str, int *i, t_vector *vec, int i_cop)
 {
 	char	*number;
@@ -66,6 +68,7 @@ int	check_is_a_vector_add(char *str, int *i, t_vector *vec, int i_cop)
 	return (0);
 }
 
+//continue for check_float but the first check
 int	check_is_a_float_first_check(char *str, int *i, int *end)
 {
 	if (!str || str[*end] == '.' || len_str(str, i) > 15 || \
@@ -77,6 +80,7 @@ int	check_is_a_float_first_check(char *str, int *i, int *end)
 	return (0);
 }
 
+//continue for check_float function
 int	check_is_a_float_add(char *str, int *i, int end, double *fl)
 {
 	char	*number;

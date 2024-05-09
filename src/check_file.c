@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 22:15:06 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:28:40 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	add_line_to_scene(t_rt *rt, char *line)
 	return (0);
 }
 
-/*main check: check if every line has the right order, number, syntax, etc.
+/*
+main check: check if every line has the right order, number, syntax, etc.
 scenes:
 A, C, L, sp, pl, cy
 */
