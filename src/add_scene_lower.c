@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_scene_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:27 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/09 05:27:32 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:49:58 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	add_sphere(t_rt *rt, char *line)
 			print_error_arg(*rt, ERR_NOT_VECTOR, STR_SPHERE, NO_FREE_MLX), 1);
 	if (skip_space_check_not_enough_values(line, &i))
 		return (free_sphere(&new_sphere), \
-			print_error_arg(*rt, ERR_NOT_ENOUGH, STR_SPHERE, NO_FREE_MLX));
+			print_error_arg(*rt, ERR_NOT_ENOUGH, STR_SPHERE, NO_FREE_MLX), 1);
 	if (check_is_a_float(line, &i, &new_sphere->sp_diam))
 		return (free_sphere(&new_sphere), \
 			print_error_arg(*rt, ERR_NOT_FLOAT, STR_SPHERE, NO_FREE_MLX), 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/09 05:28:40 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:58:32 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ int	check_file(t_rt rt)
 		return (print_error_arg(rt, ERR_EXTENSION, rt.av[1], NO_FREE_MLX));
 	else if (check_if_empty_fd(rt, rt.fd) > 0)
 		return (print_error_arg(rt, ERR_EMPTY, rt.av[1], NO_FREE_MLX));
+	ft_close(&rt.fd);
 	return (0);
 }
