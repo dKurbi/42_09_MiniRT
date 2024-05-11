@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/02 05:57:37 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 09:42:20 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_cylinder
 	struct s_cylinder	*next;
 }	t_cylinder;
 
-
 // a_l = ambient lightning
 // c_ = camera
 // l_ = light
@@ -95,6 +94,9 @@ typedef struct s_rt
 	int		ac;
 	char	*line;
 	char	**split;
+	int		a_l_count;
+	int		c_count;
+	int		l_count;
 	t_scene	scene;
 }	t_rt;
 

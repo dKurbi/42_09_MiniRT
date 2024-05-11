@@ -6,13 +6,12 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:30:33 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/30 01:53:28 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:31:11 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-////linux -O3 err - if (write...
 /*print error, !!! free t_rt !!!
 flag_mlx if need to destroy mlx (segfault can ocurr)
 Flag passing flag_mlx: 1 - free mlx(destroy), 0 - dont*/
@@ -30,6 +29,7 @@ int	print_error(t_rt rt, char *s_err, int flag_mlx)
 	return (1);
 }
 
+//the same as above but with additional arg (example minirt: scene.rt: ...)
 int	print_error_arg(t_rt rt, char *s_err, char *s_arg, int flag_mlx)
 {
 	if (!s_err)
@@ -44,4 +44,15 @@ int	print_error_arg(t_rt rt, char *s_err, char *s_arg, int flag_mlx)
 	}
 	free_rt(&rt, flag_mlx);
 	return (1);
+}
+
+//only for error when checking values
+int	print_ocurred_line(int number)
+{
+	if (write(STDERR_FILENO, STR_ERR_OCCURR, ft_strlen(STR_ERR_OCCURR)) < 0)
+		return (1);
+	ft_putnbr_fd(number, STDERR_FILENO);
+	if (write(STDERR_FILENO, "\n", ft_strlen("\n")) < 0)
+		return (1);
+	return (0);
 }

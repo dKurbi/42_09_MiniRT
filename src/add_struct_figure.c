@@ -6,12 +6,13 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 03:34:49 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/06 04:12:01 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/09 05:28:28 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//lstadd sphere
 void	add_sphere_lst(t_rt *rt, t_sphere *new_sphere)
 {
 	t_sphere	*lst_sphere;
@@ -27,6 +28,7 @@ void	add_sphere_lst(t_rt *rt, t_sphere *new_sphere)
 	}
 }
 
+//lstadd plane
 void	add_plane_lst(t_rt *rt, t_plane *new_plane)
 {
 	t_plane	*lst_plane;
@@ -42,6 +44,7 @@ void	add_plane_lst(t_rt *rt, t_plane *new_plane)
 	}
 }
 
+//lstadd cylinder
 void	add_cylinder_lst(t_rt *rt, t_cylinder *new_cyl)
 {
 	t_cylinder	*lst_cylinder;

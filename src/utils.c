@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:53:44 by iassambe          #+#    #+#             */
-/*   Updated: 2024/04/29 19:46:14 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:40:48 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_close(int *fd)
 	*fd = -1;
 }
 
+//return i that skips spaces
 int	skip_spaces(char *s, int i_provided)
 {
 	int	i;
@@ -42,6 +43,7 @@ int	if_space(char c)
 	return (0);
 }
 
+//strlen for **s
 int	len_split(char **split)
 {
 	int	i;

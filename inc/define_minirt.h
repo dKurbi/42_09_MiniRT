@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/06 04:13:11 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/08 21:36:57 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define ERR_VALUE_STR "only numbers in line, no string arguments\n"
 # define ERR_VALUE_MUCH "too much values in a scene description\n"
 # define ERR_VALUE_SYNTAX "syntax of values is incorrect\n"
-# define ERR_VALUE_LACK "not enough values in a scene description\n"
+# define ERR_NOT_ENOUGH "not enough values in a scene description\n"
 # define ERR_VALUE_NOT_SCENE "string is not a one of scene descriptions\n"
 # define ERR_VALUE_INCOR_PASS "value passed incorrectly in a line\n"
 # define ERR_NOT_FLOAT "number or string is not a float\n"
@@ -33,6 +33,8 @@
 # define ERR_RGB "values are not RGB\n"
 # define ERR_NOT_VECTOR "values are not vectors\n"
 # define ERR_VECTOR_RANGE "values in vector are out of range\n"
+# define ERR_A_C_L "file doesn't have only 1 ambient light (A), \
+1 camera (C) and 1 light (L)\n"
 
 //normal strings
 # define STR_MINIRT "miniRT: "
@@ -42,6 +44,7 @@
 # define STR_SPHERE "sphere"
 # define STR_PLANE "plane"
 # define STR_CYL "cylinder"
+# define STR_ERR_OCCURR "Error occurred in line: "
 
 //pixels for mlx window (Linux/Mac)
 # ifdef __linux__

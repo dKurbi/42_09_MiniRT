@@ -23,3 +23,8 @@ a
 scene.rt
 minirt
 src/minirt
+minirt.dSYM
+src/minirt.dSYM
+inc/minirt.dSYM
+inc/minilibx-linux/minirt.dSYM
+inc/minilibx-mac/minirt.dSYM
