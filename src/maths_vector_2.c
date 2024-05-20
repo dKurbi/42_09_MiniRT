@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   maths_vector__2.c                                  :+:      :+:    :+:   */
+/*   maths_vector_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:05:39 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/20 16:07:41 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/05/20 20:02:23 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ t_vector	v_normalized(t_vector vector)
 	v_ret.x = vector.x / len;
 	v_ret.y = vector.y / len;
 	v_ret.z = vector.z / len;
-
 	return (v_ret);
 }

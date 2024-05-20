@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersecction.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:33:44 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/20 18:08:17 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/05/20 20:03:14 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_intersection	inter_ray_sp(t_sphere sp, t_ray ray)
 	i_ret.object = NO_INTER;
 	a = v_lenght2(ray.direction);
 	b = 2 * v_dot(ray.direction, v_rest(ray.start, sp.sp_center));
-	c = v_lenght2(v_rest(ray.start, sp.sp_center)) - pow(sp.sp_diam/2, 2);
+	c = v_lenght2(v_rest(ray.start, sp.sp_center)) - pow(sp.sp_diam / 2, 2);
 	det = pow(b, 2) - 4 * a * c;
 	if (det >= 0)
 	{
