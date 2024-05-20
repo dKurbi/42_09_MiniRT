@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 09:42:20 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/20 19:02:33 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCT_MINIRT_H
 
 # include "./minirt.h"
+
 
 typedef struct s_mlx
 {
@@ -32,6 +33,12 @@ typedef struct s_vector
 	double	y;
 	double	z;
 }	t_vector;
+
+typedef struct s_vector2
+{
+	double	x;
+	double	y;
+}	t_vector2;
 
 typedef struct s_rgb
 {
@@ -66,6 +73,21 @@ typedef struct s_cylinder
 	struct s_cylinder	*next;
 }	t_cylinder;
 
+typedef struct s_ray
+{
+	t_vector	direction;
+	t_vector	start;
+
+}	t_ray;
+
+typedef struct s_intersection
+{
+	t_ray	ray;
+	double	t1;
+	double	t2;
+	int		object;
+	t_rgb	color;
+} t_intersection; 
 // a_l = ambient lightning
 // c_ = camera
 // l_ = light
@@ -79,6 +101,9 @@ typedef struct s_scene
 	t_vector	c_pos;
 	t_vector	c_dir;
 	double		c_fov;
+	t_vector	c_foward;
+	t_vector	c_right;
+	t_vector	c_up;
 	t_vector	l_pos;
 	double		l_bright;
 	t_sphere	*sp;
@@ -97,6 +122,7 @@ typedef struct s_rt
 	int		a_l_count;
 	int		c_count;
 	int		l_count;
+	double	aspect_ratio;
 	t_scene	scene;
 }	t_rt;
 

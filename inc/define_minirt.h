@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/08 21:36:57 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:11:56 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,13 @@
 # else
 #  define MASK_DESTROY 0
 # endif
+
+//shapes intersection
+# define NO_INTER -1
+# define SPHERE 0
+# define PLANE 1
+# define CYLINDER 2
+
 
 //other defines
 # define ERROR 1
