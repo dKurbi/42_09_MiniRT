@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/08 22:35:13 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/20 18:34:01 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,20 @@ int			skip_spaces(char *s, int i_provided);
 int			if_space(char c);
 int			len_split(char **split);
 
+//maths_vector.c
+t_vector	v_expand(t_vector v, double k);
+t_vector	v_add(t_vector v1, t_vector v2);
+t_vector	v_rest(t_vector v1, t_vector v2);
+double		v_dot(t_vector v1, t_vector v2);
+t_vector	v_cross(t_vector v1, t_vector v2);
+
+//maths_vector_2.c
+double		v_lenght2(t_vector vector);
+double		v_lenght(t_vector vector);
+t_vector	v_normalized(t_vector vector);
+
+//maths_others.c
+double		get_rad(double angle);
+
 #endif
+

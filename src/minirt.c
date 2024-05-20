@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/11 18:03:43 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/05/20 18:59:45 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(int ac, char **av)
 		exit(print_error(rt, ERR_INC_ARGS, NO_FREE_MLX));
 	if (check_file(rt) > 0 || check_save_value(&rt) > 0)
 		exit(ERROR);
-		///printf part
+	rt.aspect_ratio = WIN_X / WIN_Y;
+	///printf part
 	printf("A - ratio - %f; rgb - %d, %d, %d\n", rt.scene.a_l_ratio, rt.scene.a_l_color.r, rt.scene.a_l_color.g, rt.scene.a_l_color.b);
 	printf("C - vector - %f, %f, %f; vector - %f, %f, %f; dir - %f\n", rt.scene.c_pos.x, rt.scene.c_pos.y, rt.scene.c_pos.z, rt.scene.c_dir.x, rt.scene.c_dir.y, rt.scene.c_dir.z, rt.scene.c_fov);
 	printf("L - vector - %f, %f, %f; float - %f\n", rt.scene.l_pos.x, rt.scene.l_pos.y, rt.scene.l_pos.z, rt.scene.l_bright);
