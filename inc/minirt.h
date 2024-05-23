@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/20 20:06:10 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/23 16:45:48 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,6 @@ double		v_lenght(t_vector vector);
 t_vector	v_normalized(t_vector vector);
 
 //maths_others.c
-double		get_rad(double angle);
+double		get_radian(double angle);
 
 #endif

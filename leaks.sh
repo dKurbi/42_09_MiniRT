@@ -1,6 +1,10 @@
-if [ $# -ge 2  ] || [ $# -eq 0 ]
+if [ $# -ge 2  ]
 then
-	echo "noooo"
+	echo "noooo";
+	exit 1;
+elif [ $# -eq 0 ]
+then
+	leaks --atExit -- ./minirt files_rt/scene.rt
 else
-	echo "yesssss"
+	leaks --atExit -- ./minirt $1
 fi

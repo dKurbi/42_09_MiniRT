@@ -6,7 +6,7 @@
 #    By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/05/20 18:34:14 by dkurcbar         ###   ########.fr        #
+#    Updated: 2024/05/23 16:28:57 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ DIR_SRC = src/
 DIR_INC = inc/
 DIR_OBJS = objs/
 DIR_LIBFT = inc/libft/
+DIR_FILES_RT = files_rt/
 
 #	Shell commands
 MKDIR = mkdir -p
@@ -135,6 +136,11 @@ norminette:
 norm: norminette
 
 n: norminette
+
+go:
+	./$(NAME) $(DIR_FILES_RT)/scene.rt
+
+g: go
 
 -include $(DEPS)
 
