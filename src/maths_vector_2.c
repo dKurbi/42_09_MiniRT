@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:05:39 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/20 20:02:23 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:31:16 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_vector	v_normalized(t_vector vector)
 	double		len;
 
 	len = v_lenght(vector);
+	if (len == 0)
+		return (vector);
 	v_ret.x = vector.x / len;
 	v_ret.y = vector.y / len;
 	v_ret.z = vector.z / len;

@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/20 21:32:34 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:04:38 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ typedef struct s_ray
 	double		len;
 }	t_ray;
 
-typedef struct s_intersection
+typedef struct s_intersec
 {
 	t_ray	ray;
 	double	t1;
 	double	t2;
 	int		object;
 	t_rgb	color;
-}	t_intersection;
+}	t_intersec;
 
 // a_l_ = ambient lightning
 // c_ = camera

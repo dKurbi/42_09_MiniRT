@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/20 20:00:59 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/24 20:24:25 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	raytracing(t_rt *rt)
 {
-	(void)(rt);
+	init_cam(rt);
 }
 
 //MAIN: MAIN
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 {
 	t_rt	rt;
 
-	printf("BITWISE MASKS: 1L - %ld\n", 1L << 0);
+	printf("BITWISE MASKS: 1L << 0 - %ld\n", 1L << 0);
 	rtnew(&rt, ac, av);
 	if (ac != 2 || !av)
 		exit(print_error(rt, ERR_INC_ARGS, NO_FREE_MLX));

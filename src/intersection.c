@@ -6,19 +6,19 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/22 05:38:28 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:05:05 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_intersection	inter_ray_sp(t_sphere sp, t_ray ray)
+t_intersec	inter_ray_sp(t_sphere sp, t_ray ray)
 {
-	t_intersection	i_ret;
-	double			a;
-	double			b;
-	double			c;
-	double			det;
+	t_intersec	i_ret;
+	double		a;
+	double		b;
+	double		c;
+	double		det;
 
 	i_ret.object = NO_INTER;
 	a = v_lenght2(ray.direction);
@@ -36,10 +36,10 @@ t_intersection	inter_ray_sp(t_sphere sp, t_ray ray)
 	return (i_ret);
 }
 
-t_intersection	inter_ray_pl(t_plane pl, t_ray ray)
+t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 {
-	t_intersection	i_ret;
-	double			dn;
+	t_intersec	i_ret;
+	double		dn;
 
 	i_ret.object = NO_INTER;
 	dn = v_dot(ray.direction, pl.pl_normal);
