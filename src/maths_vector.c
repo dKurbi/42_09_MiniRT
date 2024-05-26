@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:33:20 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/24 19:13:37 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/25 05:49:57 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ double	v_dot(t_vector v1, t_vector v2)
 	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
 
+//new vecotr, perpendicular to v1 && v2
 t_vector	v_cross(t_vector v1, t_vector v2)
 {
 	t_vector	v_ret;

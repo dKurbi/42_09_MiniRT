@@ -6,22 +6,25 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:05:39 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/24 18:31:16 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/25 05:52:12 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//square of len of vector
 double	v_lenght2(t_vector vector)
 {
 	return (pow(vector.x, 2) + pow(vector.y, 2) + pow(vector.z, 2));
 }
 
+//len of vector
 double	v_lenght(t_vector vector)
 {
 	return (sqrt(v_lenght2(vector)));
 }
 
+//get normal vector
 t_vector	v_normalized(t_vector vector)
 {
 	t_vector	v_ret;
