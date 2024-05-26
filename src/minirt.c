@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/26 16:19:37 by diego            ###   ########.fr       */
+/*   Updated: 2024/05/26 17:20:20 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	raytracing(t_rt *rt)
     
     i = -1;
     j = -1; 
-    print_scene(rt->scene);
     while (++j < WIN_Y)
     {
         while (++i< WIN_X)
@@ -30,24 +29,22 @@ void	raytracing(t_rt *rt)
             v_rot = calc_ang_rot(i, j, rt->scene.c_fov, rt->aspect_ratio);
             ray = make_ray(v_rot, rt->scene.c_pos, rt->scene.c_dir);
             inter = inter_ray_sp(rt->scene.sp[0], ray);
-            //print_v("rayo", ray.direction);
-            //printf ("v_rot x:%.3f, y:%.3f\n",v_rot.x, v_rot.y);
+
             if (inter.object != NO_INTER)
             {
                 pixel_put(*rt, i, j, color(inter.color.r,inter.color.g, inter.color.b));
-               // printf("x");
+                //printf("t1= %f\n",inter.t1);
             }
             else
-            {
                 pixel_put(*rt, i, j, 0x0);
-              //  printf("o");
-            }   
+
         }
         i = -1;
         //printf("\n");
         
     }
     mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, rt->rtmlx.img, 0, 0);
+    print_scene(rt->scene);
 	//init_cam(rt);
 }
 

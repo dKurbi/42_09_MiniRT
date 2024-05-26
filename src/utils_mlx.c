@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 05:23:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/26 06:02:51 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/26 16:35:40 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	pixel_put(t_rt rt, int x, int y, int color)
 	}
 }
 
-//return int color from 3 int: r, g, ,b
+//return int color from 3 int: r, g, b
 int	color(int r, int g, int b)
 {
 	return ((r << 16) | (g << 8) | b);

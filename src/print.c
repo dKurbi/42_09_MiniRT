@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 11:54:44 by diego             #+#    #+#             */
-/*   Updated: 2024/05/26 12:40:30 by diego            ###   ########.fr       */
+/*   Updated: 2024/05/26 16:39:42 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ void print_scene(t_scene s)
     print_v("Camara position", s.c_pos);
     print_v("Camara direction", s.c_dir);
     printf("Camera FOV: %f\n", s.c_fov);
-    print_v("Camera right", s.c_right);
-    print_v("camera foward", s.c_foward);
-    print_v("Camera up", s.c_up);
     printf("\nLIGHT\n");
     print_v("Light Position", s.l_pos);
     printf("Light bright: %f\n", s.l_bright);

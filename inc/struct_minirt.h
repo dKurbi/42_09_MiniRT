@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/26 16:07:49 by diego            ###   ########.fr       */
+/*   Updated: 2024/05/26 16:39:03 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,6 @@ typedef struct s_scene
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
-	t_vector	c_right;
-	t_vector	c_foward;
-	t_vector	c_up;
 }	t_scene;
 
 //main structure: we add all to this t_rt

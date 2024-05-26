@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/24 18:05:05 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/26 16:56:55 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 	dn = v_dot(ray.direction, pl.pl_normal);
 	if (dn != 0)
 	{
-		i_ret.t1 = (v_dot(pl.pl_point, pl.pl_normal) - \
-			v_dot(ray.start, pl.pl_normal)) / dn;
+		i_ret.t1 = (v_dot(pl.pl_point, pl.pl_normal) - v_dot(ray.start, pl.pl_normal)) / dn;
 		i_ret.color = pl.pl_color;
 		i_ret.ray = ray;
 		i_ret.object = PLANE;
