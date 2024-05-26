@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:31:57 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/04/30 01:57:32 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/17 18:03:29 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,5 @@ double	ft_atof(char *str)
 	}
 	if (posdot > 0)
 		posdot--;
-	//printf("sign - %d\n, int n - %ld\n, float n - %f\n, pow -  %ld\n, posdot - %d\n", sign, n, (double) n, (long) (pow(10, posdot)), posdot);
 	return (sign * ((double) n / (long)(pow(10, posdot))));
 }

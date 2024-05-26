@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+         #
+#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/05/20 18:34:14 by dkurcbar         ###   ########.fr        #
+#    Updated: 2024/05/24 15:55:49 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ DIR_SRC = src/
 DIR_INC = inc/
 DIR_OBJS = objs/
 DIR_LIBFT = inc/libft/
+DIR_FILES_RT = files_rt/
 
 #	Shell commands
 MKDIR = mkdir -p
@@ -83,7 +84,8 @@ SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
 		event.c check.c ft_atof.c add_scene_capital.c add_scene_lower.c \
 		check_str_number.c utils_check.c free_struct_lst.c utils_check_2.c \
 		add_struct_figure.c add_scene_lower_second.c maths_vector.c \
-		maths_vector_2.c maths_others.c
+		maths_vector_2.c maths_others.c intersection.c ray_and_pixel.c \
+		init_cam.c
 		
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
@@ -135,6 +137,11 @@ norminette:
 norm: norminette
 
 n: norminette
+
+go:
+	./$(NAME) $(DIR_FILES_RT)/scene.rt
+
+g: go
 
 -include $(DEPS)
 

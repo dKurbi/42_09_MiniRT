@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/20 17:11:56 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/05/25 05:53:59 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,14 @@
 #  define MOUSE_LEFT 1
 #  define MOUSE_RIGHT 3
 #  define MOUSE_MIDDLE 2
-#  define MOUSE_SCROLL_DOWN 5
 #  define MOUSE_SCROLL_UP 4
+#  define MOUSE_SCROLL_DOWN 5
 # else
 #  define MOUSE_LEFT 1
 #  define MOUSE_RIGHT 2
 #  define MOUSE_MIDDLE 3
-#  define MOUSE_SCROLL_DOWN 4
-#  define MOUSE_SCROLL_UP 5
+#  define MOUSE_SCROLL_UP 4
+#  define MOUSE_SCROLL_DOWN 5
 # endif
 
 //masks mlx
@@ -126,6 +126,9 @@
 # define PLANE 1
 # define CYLINDER 2
 
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
 //other defines
 # define ERROR 1

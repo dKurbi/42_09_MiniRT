@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/20 19:02:33 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:04:38 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STRUCT_MINIRT_H
 
 # include "./minirt.h"
-
 
 typedef struct s_mlx
 {
@@ -77,23 +76,24 @@ typedef struct s_ray
 {
 	t_vector	direction;
 	t_vector	start;
-
+	double		len;
 }	t_ray;
 
-typedef struct s_intersection
+typedef struct s_intersec
 {
 	t_ray	ray;
 	double	t1;
 	double	t2;
 	int		object;
 	t_rgb	color;
-} t_intersection; 
-// a_l = ambient lightning
+}	t_intersec;
+
+// a_l_ = ambient lightning
 // c_ = camera
 // l_ = light
-// sp = spheres
-// pl = plane
-// cy = cylinder
+// sp_ = spheres
+// pl_ = plane
+// cy_ = cylinder
 typedef struct s_scene
 {
 	double		a_l_ratio;
@@ -101,16 +101,17 @@ typedef struct s_scene
 	t_vector	c_pos;
 	t_vector	c_dir;
 	double		c_fov;
-	t_vector	c_foward;
-	t_vector	c_right;
-	t_vector	c_up;
 	t_vector	l_pos;
 	double		l_bright;
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
+	t_vector	c_right;
+	t_vector	c_foward;
+	t_vector	c_up;
 }	t_scene;
 
+//main structure: we add all to this t_rt
 typedef struct s_rt
 {
 	t_mlx	rtmlx;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_scene_capital.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/20 18:37:13 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/05/24 16:15:48 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	add_camera(t_rt *rt, char *line)
 		return (print_error_arg(*rt, ERR_NOT_FLOAT, STR_CAMERA, NO_FREE_MLX));
 	if (!(rt->scene.c_fov >= 0 && rt->scene.c_fov <= 180))
 		return (print_error_arg(*rt, ERR_RANGE, STR_CAMERA, NO_FREE_MLX));
-	rt->scene.c_fov= get_rad(rt->scene.c_fov);
+	rt->scene.c_fov = get_radian(rt->scene.c_fov);
 	if (empty_after_line(line, i) == 0)
 		return (print_error_arg(*rt, ERR_VALUE_MUCH, STR_CAMERA, NO_FREE_MLX));
 	return (0);

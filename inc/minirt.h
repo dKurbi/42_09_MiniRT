@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/20 18:34:01 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/05/24 20:12:56 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,28 @@ void		free_cylinder(t_cylinder **cylinder);
 //ft_atof.c
 double		ft_atof(char *str);
 
+//init_cam.c
+void		init_cam(t_rt *rt);
+
+//intersection.c
+t_intersec	inter_ray_sp(t_sphere sp, t_ray ray);
+t_intersec	inter_ray_pl(t_plane pl, t_ray ray);
+
+//maths_others.c
+double		get_radian(double angle);
+
+//maths_vector_2.c
+double		v_lenght2(t_vector vector);
+double		v_lenght(t_vector vector);
+t_vector	v_normalized(t_vector vector);
+
+//maths_vector.c
+t_vector	v_expand(t_vector v, double k);
+t_vector	v_add(t_vector v1, t_vector v2);
+t_vector	v_rest(t_vector v1, t_vector v2);
+double		v_dot(t_vector v1, t_vector v2);
+t_vector	v_cross(t_vector v1, t_vector v2);
+
 //minirt.c
 
 //struct.c
@@ -105,6 +127,7 @@ int			add_line_to_scene(t_rt *rt, char *line);
 
 //utils_mlx.c
 void		pixel_put(t_rt rt, int x, int y, int color);
+int			color(int r, int g, int b);
 
 //utils_check_2.c
 int			empty_after_line(char *line, int i_provide);
@@ -123,20 +146,4 @@ int			skip_spaces(char *s, int i_provided);
 int			if_space(char c);
 int			len_split(char **split);
 
-//maths_vector.c
-t_vector	v_expand(t_vector v, double k);
-t_vector	v_add(t_vector v1, t_vector v2);
-t_vector	v_rest(t_vector v1, t_vector v2);
-double		v_dot(t_vector v1, t_vector v2);
-t_vector	v_cross(t_vector v1, t_vector v2);
-
-//maths_vector_2.c
-double		v_lenght2(t_vector vector);
-double		v_lenght(t_vector vector);
-t_vector	v_normalized(t_vector vector);
-
-//maths_others.c
-double		get_rad(double angle);
-
 #endif
-

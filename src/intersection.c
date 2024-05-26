@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersecction.c                                    :+:      :+:    :+:   */
+/*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 16:33:44 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/20 18:08:17 by dkurcbar         ###   ########.fr       */
+/*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
+/*   Updated: 2024/05/24 18:05:05 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_intersection	inter_ray_sp(t_sphere sp, t_ray ray)
+t_intersec	inter_ray_sp(t_sphere sp, t_ray ray)
 {
-	t_intersection	i_ret;
-	double			a;
-	double			b;
-	double			c;
-	double			det;
+	t_intersec	i_ret;
+	double		a;
+	double		b;
+	double		c;
+	double		det;
 
 	i_ret.object = NO_INTER;
 	a = v_lenght2(ray.direction);
 	b = 2 * v_dot(ray.direction, v_rest(ray.start, sp.sp_center));
-	c = v_lenght2(v_rest(ray.start, sp.sp_center)) - pow(sp.sp_diam/2, 2);
+	c = v_lenght2(v_rest(ray.start, sp.sp_center)) - pow(sp.sp_diam / 2, 2);
 	det = pow(b, 2) - 4 * a * c;
 	if (det >= 0)
 	{
@@ -36,10 +36,10 @@ t_intersection	inter_ray_sp(t_sphere sp, t_ray ray)
 	return (i_ret);
 }
 
-t_intersection	inter_ray_pl(t_plane pl, t_ray ray)
+t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 {
-	t_intersection	i_ret;
-	double			dn;
+	t_intersec	i_ret;
+	double		dn;
 
 	i_ret.object = NO_INTER;
 	dn = v_dot(ray.direction, pl.pl_normal);
