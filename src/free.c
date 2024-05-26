@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/07 09:40:22 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/26 16:07:49 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ char	*free_str(char **s)
 //destroy all in mlx
 void	free_mlx(t_mlx *rtmlx)
 {
-	mlx_destroy_image(rtmlx->init, rtmlx->img);
-	mlx_destroy_window(rtmlx->init, rtmlx->win);
-	destroy_display(rtmlx->init);
+	mlx_destroy_image(rtmlx->mlx_ptr, rtmlx->img);
+	mlx_destroy_window(rtmlx->mlx_ptr, rtmlx->win);
+	destroy_display(rtmlx->mlx_ptr);
 }
 
 int	free_rt(t_rt *rt, int if_free_mlx)

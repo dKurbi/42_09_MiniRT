@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/20 20:00:52 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/26 16:07:55 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	rtnew(t_rt *rt, int ac, char **av)
 
 void	mlxnew(t_rt *rt)
 {
-	rt->rtmlx.init = mlx_init();
-	rt->rtmlx.win = mlx_new_window(rt->rtmlx.init, WIN_X, WIN_Y, "miniRT");
-	rt->rtmlx.img = mlx_new_image(rt->rtmlx.init, WIN_X, WIN_Y);
+	rt->rtmlx.mlx_ptr = mlx_init();
+	rt->rtmlx.win = mlx_new_window(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y, "miniRT");
+	rt->rtmlx.img = mlx_new_image(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y);
 	rt->rtmlx.addr = mlx_get_data_addr(rt->rtmlx.img, \
 					&rt->rtmlx.bitspp, &rt->rtmlx.line_len, &rt->rtmlx.endian);
 }

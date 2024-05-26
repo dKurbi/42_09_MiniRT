@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/24 20:24:25 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/26 16:19:37 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,41 @@
 
 void	raytracing(t_rt *rt)
 {
-	init_cam(rt);
+    int         i;
+    int         j;
+    t_vector2   v_rot;
+    t_ray       ray;
+    t_intersec  inter;
+    
+    i = -1;
+    j = -1; 
+    print_scene(rt->scene);
+    while (++j < WIN_Y)
+    {
+        while (++i< WIN_X)
+        {
+            v_rot = calc_ang_rot(i, j, rt->scene.c_fov, rt->aspect_ratio);
+            ray = make_ray(v_rot, rt->scene.c_pos, rt->scene.c_dir);
+            inter = inter_ray_sp(rt->scene.sp[0], ray);
+            //print_v("rayo", ray.direction);
+            //printf ("v_rot x:%.3f, y:%.3f\n",v_rot.x, v_rot.y);
+            if (inter.object != NO_INTER)
+            {
+                pixel_put(*rt, i, j, color(inter.color.r,inter.color.g, inter.color.b));
+               // printf("x");
+            }
+            else
+            {
+                pixel_put(*rt, i, j, 0x0);
+              //  printf("o");
+            }   
+        }
+        i = -1;
+        //printf("\n");
+        
+    }
+    mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, rt->rtmlx.img, 0, 0);
+	//init_cam(rt);
 }
 
 //MAIN: MAIN
@@ -33,7 +67,7 @@ int	main(int ac, char **av)
 	mlx_hook(rt.rtmlx.win, EV_KEY, 0, event_key, &rt);
 	mlx_mouse_hook(rt.rtmlx.win, event_mouse, &rt);
 	mlx_hook(rt.rtmlx.win, EV_DESTROY, MASK_DESTROY, event_destroy, &rt);
-	mlx_loop(rt.rtmlx.init);
+	mlx_loop(rt.rtmlx.mlx_ptr);
 	free_rt(&rt, FREE_MLX);
 	return (0);
 }
