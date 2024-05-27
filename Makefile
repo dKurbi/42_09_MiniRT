@@ -6,7 +6,7 @@
 #    By: diego <diego@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/05/26 15:28:30 by diego            ###   ########.fr        #
+#    Updated: 2024/05/27 20:35:02 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,6 +113,7 @@ clean:
 	@$(MAKE) -C $(DIR_LIBFT) clean
 	@$(MAKE) -C $(DIR_MINILIBX) clean
 	@$(RM) -rf $(DIR_OBJS)
+	@$(RM) -rf $(NAME).dSYM
 	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_LIGHT_RED)Cleaned!$(COLOR_RESET)"
 
 fclean: clean

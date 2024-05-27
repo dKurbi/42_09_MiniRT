@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/27 04:32:09 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/27 19:58:38 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	raytracing(t_rt *rt)
 	t_intersec	inter;
 
 	i = -1;
-	j = -1; 
+	j = -1;
 	while (++j < WIN_Y)
 	{
 		while (++i < WIN_X)
@@ -31,7 +31,8 @@ void	raytracing(t_rt *rt)
 			inter = inter_ray_sp(rt->scene.sp[0], ray);
 			if (inter.object != NO_INTER)
 			{
-				pixel_put(*rt, i, j, color(inter.color.r,inter.color.g, inter.color.b));
+				pixel_put(*rt, i, j, \
+						color(inter.color.r, inter.color.g, inter.color.b));
 				//printf("t1= %f\n",inter.t1);
 			}
 			else
@@ -40,9 +41,9 @@ void	raytracing(t_rt *rt)
 		i = -1;
 		//printf("\n");
 	}
-	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, rt->rtmlx.img, 0, 0);
 	print_scene(rt->scene);
-	//init_cam(rt);
+	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
+							rt->rtmlx.img, 0, 0);
 }
 
 //MAIN: MAIN

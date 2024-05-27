@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 11:54:44 by diego             #+#    #+#             */
-/*   Updated: 2024/05/27 04:31:55 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/27 19:26:29 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	print_scene(t_scene s)
 	int			i;
 
 	printf("--------SCENE-------\n");
+	printf("\nAMBIENT\n");
 	printf("Ratio: %f\n", s.a_l_ratio);
 	print_rgb("Color", s.a_l_color);
 	printf("\nCAMERA\n");
@@ -83,9 +84,9 @@ void	print_scene(t_scene s)
 		print_plane("Plane", *pl);
 		pl = pl->next;
 	}
+	cy = s.cy;
 	i = 1;
 	printf("\nLIST OF CYLINDER\n");
-	cy = s.cy;
 	while (cy != NULL)
 	{
 		printf("%d: ", i++);

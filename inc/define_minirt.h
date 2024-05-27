@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/25 05:53:59 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/27 20:26:33 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,9 @@
 # define PLANE 1
 # define CYLINDER 2
 
+//3.14 not defined in Linux
 # ifndef M_PI
-#  define M_PI 3.14159265358979323846
+#  define M_PI 3.14159265358979323846264338327950288
 # endif
 
 //other defines
