@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: diego <diego@student.42.fr>                +#+  +:+       +#+         #
+#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/05/27 20:35:02 by iassambe         ###   ########.fr        #
+#    Updated: 2024/05/28 19:07:25 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,6 +138,13 @@ norminette:
 norm: norminette
 
 n: norminette
+
+error:
+	norminette inc/libft/*.c inc/libft/*.h inc/*.h src/*.c | grep "Error"
+
+err: error
+
+e: error
 
 go:
 	./$(NAME) $(DIR_FILES_RT)/scene.rt

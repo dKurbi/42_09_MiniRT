@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/27 19:58:38 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/28 19:39:54 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 
 void	raytracing(t_rt *rt)
 {
-	int			i;
-	int			j;
+	int			x;
+	int			y;
 	t_vector2	v_rot;
 	t_ray		ray;
 	t_intersec	inter;
 
-	i = -1;
-	j = -1;
-	while (++j < WIN_Y)
+	x = -1;
+	y = -1;
+	while (++y < WIN_Y)
 	{
-		while (++i < WIN_X)
+		while (++x < WIN_X)
 		{
-			v_rot = calc_ang_rot(i, j, rt->scene.c_fov, rt->aspect_ratio);
+			v_rot = calc_ang_rot(x, y, rt->scene.c_fov, rt->aspect_ratio);
 			ray = make_ray(v_rot, rt->scene.c_pos, rt->scene.c_dir);
 			inter = inter_ray_sp(rt->scene.sp[0], ray);
 			if (inter.object != NO_INTER)
 			{
-				pixel_put(*rt, i, j, \
+				pixel_put(*rt, x, y, \
 						color(inter.color.r, inter.color.g, inter.color.b));
 				//printf("t1= %f\n",inter.t1);
 			}
 			else
-				pixel_put(*rt, i, j, 0x0);
+				pixel_put(*rt, x, y, 0x0);
 		}
-		i = -1;
+		x = -1;
 		//printf("\n");
 	}
 	print_scene(rt->scene);

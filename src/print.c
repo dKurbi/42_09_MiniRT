@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 11:54:44 by diego             #+#    #+#             */
-/*   Updated: 2024/05/27 19:26:29 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/05/28 19:01:27 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,33 @@ void	print_cylinder(char *name, t_cylinder c)
 	print_rgb("Color", c.cy_color);
 }
 
+void	print_scene_figures(t_sphere *sp, t_plane *pl, t_cylinder *cy, int i)
+{
+	printf("\nLIST OF SPHERES\n");
+	while (sp != NULL)
+	{
+		printf("%d: ", i++);
+		print_sphere("Sphere", *sp);
+		sp = sp->next;
+	}
+	i = 1;
+	printf("\nLIST OF PLANES\n");
+	while (pl != NULL)
+	{
+		printf("%d: ", i++);
+		print_plane("Plane", *pl);
+		pl = pl->next;
+	}
+	i = 1;
+	printf("\nLIST OF CYLINDER\n");
+	while (cy != NULL)
+	{
+		printf("%d: ", i++);
+		print_cylinder("Cylinder", *cy);
+		cy = cy->next;
+	}
+}
+
 void	print_scene(t_scene s)
 {
 	t_sphere	*sp;
@@ -67,30 +94,8 @@ void	print_scene(t_scene s)
 	print_v("Light Position", s.l_pos);
 	printf("Light bright: %f\n", s.l_bright);
 	sp = s.sp;
-	i = 1;
-	printf("\nLIST OF SPHERES\n");
-	while (sp != NULL)
-	{
-		printf("%d: ", i++);
-		print_sphere("Sphere", *sp);
-		sp = sp->next;
-	}
 	pl = s.pl;
 	i = 1;
-	printf("\nLIST OF PLANES\n");
-	while (pl != NULL)
-	{
-		printf("%d: ", i++);
-		print_plane("Plane", *pl);
-		pl = pl->next;
-	}
 	cy = s.cy;
-	i = 1;
-	printf("\nLIST OF CYLINDER\n");
-	while (cy != NULL)
-	{
-		printf("%d: ", i++);
-		print_cylinder("Cylinder", *cy);
-		cy = cy->next;
-	}
+	print_scene_figures(sp, pl, cy, i);
 }
