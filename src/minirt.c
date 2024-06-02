@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/28 19:39:54 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:49:52 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	raytracing(t_rt *rt)
 		while (++x < WIN_X)
 		{
 			v_rot = calc_ang_rot(x, y, rt->scene.c_fov, rt->aspect_ratio);
-			ray = make_ray(v_rot, rt->scene.c_pos, rt->scene.c_dir);
+			ray = make_ray(v_rot, *rt);
 			inter = inter_ray_sp(rt->scene.sp[0], ray);
 			if (inter.object != NO_INTER)
 			{
@@ -57,6 +57,7 @@ int	main(int ac, char **av)
 		exit(print_error(rt, ERR_INC_ARGS, NO_FREE_MLX));
 	if (check_file(rt) > 0 || check_save_value(&rt) > 0)
 		exit(ERROR);
+	calc_up_right_vector(&rt);
 	mlxnew(&rt);
 	raytracing(&rt);
 	mlx_hook(rt.rtmlx.win, EV_KEY, 0, event_key, &rt);

@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/28 18:53:18 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:07:45 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ typedef struct s_scene
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
+	t_vector	v_up;
+	t_vector	v_right;
 }	t_scene;
 
 //main structure: we add all to this t_rt

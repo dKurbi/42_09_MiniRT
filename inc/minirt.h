@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/27 20:33:03 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:46:10 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,11 @@ void		print_cylinder(char *name, t_cylinder c);
 t_vector	rotation_x(t_vector v, double ang);
 t_vector	rotation_y(t_vector v, double ang);
 t_vector2	calc_ang_rot(int x, int y, double fov, double aspect_ratio);
+t_vector	rotation_axis(t_vector v, t_vector u, double ang);
+void		calc_up_right_vector(t_rt *rt);
+
 
 //ray_and_pixel.c
-t_ray		make_ray(t_vector2 point, t_vector start, t_vector c_direction);
+t_ray	make_ray(t_vector2 point, t_rt rt);
 
 #endif
