@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/05/28 19:07:25 by iassambe         ###   ########.fr        #
+#    Updated: 2024/06/02 20:09:58 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ UNAME_S := $(shell uname -s)
 
 #	Compile
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -O3 #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -O3# -fsanitize=address
 LIBFTFLAGS = -Linc/libft -lft
 INCLUDEFLAGS = -Iinc/ -Iinc/libft/
 DEPFLAGS = -MMD -MP
