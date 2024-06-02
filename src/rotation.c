@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:48:25 by diego             #+#    #+#             */
-/*   Updated: 2024/06/02 18:44:34 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/06/02 19:01:54 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,28 @@ t_vector rotation_axis(t_vector v, t_vector u, double ang)
 
 void calc_up_right_vector(t_rt *rt)
 {
-	rt->scene.v_up.x = rt->scene.c_dir.y;
-	rt->scene.v_up.y = -rt->scene.c_dir.x;
-	rt->scene.v_up.z = 0;
-	
-	rt->scene.v_up = v_normalized(rt->scene.v_up);
-	rt->scene.v_right = v_normalized(v_cross(rt->scene.v_up, rt->scene.c_dir));
+	if (rt->scene.c_dir.x || rt->scene.c_dir.y)
+	{
+		rt->scene.v_up.x = rt->scene.c_dir.y;
+		rt->scene.v_up.y = -rt->scene.c_dir.x;
+		rt->scene.v_up.z = 0;
+		rt->scene.v_up = v_normalized(rt->scene.v_up);
+		rt->scene.v_right = v_normalized(v_cross(rt->scene.v_up, rt->scene.c_dir));
+	}
+	else if (rt->scene.c_dir.z)
+	{
+		rt->scene.v_up.z = rt->scene.c_dir.y;
+		rt->scene.v_up.y = -rt->scene.c_dir.z;
+		rt->scene.v_up.x = 0;
+		rt->scene.v_up = v_normalized(rt->scene.v_up);
+		rt->scene.v_right = v_normalized(v_cross(rt->scene.v_up, rt->scene.c_dir));
+	} else
+	{
+		rt->scene.v_up.x = 1;
+		rt->scene.v_up.y = 0;
+		rt->scene.v_up.z = 0;
+		rt->scene.v_right.x = 0;
+		rt->scene.v_right.y = 1;
+		rt->scene.v_right.z = 0;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 11:54:44 by diego             #+#    #+#             */
-/*   Updated: 2024/05/28 19:01:27 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:54:37 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,6 @@ void	print_scene(t_scene s)
 	i = 1;
 	cy = s.cy;
 	print_scene_figures(sp, pl, cy, i);
+	print_v("vector up", s.v_up);
+	print_v("vector right", s.v_right);
 }
