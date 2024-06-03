@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/03 14:28:12 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/03 18:42:32 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ t_intersec	inter_ray_sp(t_sphere sp, t_ray ray)
 		i_ret.color = sp.sp_color;
 		i_ret.object = SPHERE;
 		i_ret.ray = ray;
-		i_ret.t1 = (-b + det) / (2 * a);
-		i_ret.t2 = (-b - det) / (2 * a);
-		i_ret.hit1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
-		i_ret.hit2 = v_add(v_expand(ray.direction, i_ret.t2), ray.start);
-		i_ret.n1 = v_normalized(v_rest(i_ret.hit1, sp.sp_center));
-		i_ret.n2 = v_normalized(v_rest(i_ret.hit2, sp.sp_center));
+		i_ret.t1 = (-b - det) / (2 * a);
+		i_ret.t2 = (-b + det) / (2 * a);
+		i_ret.h1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
+		i_ret.h2 = v_add(v_expand(ray.direction, i_ret.t2), ray.start);
+		i_ret.n1 = v_normalized(v_rest(i_ret.h1, sp.sp_center));
+		i_ret.n2 = v_normalized(v_rest(i_ret.h2, sp.sp_center));
 	}
 	return (i_ret);
 }
@@ -53,7 +53,7 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 					v_dot(ray.start, pl.pl_normal)) / dn;
 		i_ret.color = pl.pl_color;
 		i_ret.ray = ray;
-		i_ret.hit1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
+		i_ret.h1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
 		i_ret.n1 = v_normalized(pl.pl_normal);
 		i_ret.object = PLANE;
 	}

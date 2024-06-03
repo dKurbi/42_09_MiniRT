@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/03 14:43:41 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/03 18:52:43 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,18 @@ void	raytracing(t_rt *rt)
 			inter = inter_ray_sp(rt->scene.sp[0], ray);
 			if (inter.object != NO_INTER)
 			{
-				l_dir =v_normalized(v_rest(inter.hit1, rt->scene.l_pos ));
-				nxl = v_dot(l_dir, inter.n1);
+				l_dir =v_normalized(v_rest(inter.h1, rt->scene.l_pos));
+				nxl = pow (v_dot(l_dir, inter.n1), 100);
 				if (nxl < 0)
 					nxl = 0;
-				c =color(inter.color.r * nxl, inter.color.g * nxl, inter.color.b * nxl );
+				print_rgb("color", inter.color);
+				int r =inter.color.r * nxl; 
+				int g = inter.color.g * nxl;
+				int b = inter.color.b *nxl;
+				c = color(r, g ,b );
 				pixel_put(*rt, x, y, c);
-				//printf("t1= %f\n",inter.t1);
+				printf("x = %d, y = %d, t1 =  %f, t2 = %f, nxl = %f \n", x, y, inter.t1, inter.t2, nxl);
+				printf("c= %, r = %d, g = %d, b = %d\n", c, r, g, b);
 			}
 			else
 				pixel_put(*rt, x, y, 0x0);
