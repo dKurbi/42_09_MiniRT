@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: diego <diego@student.42.fr>                +#+  +:+       +#+         #
+#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/05/26 15:28:30 by diego            ###   ########.fr        #
+#    Updated: 2024/06/02 20:09:58 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ UNAME_S := $(shell uname -s)
 
 #	Compile
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -O3 #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -O3# -fsanitize=address
 LIBFTFLAGS = -Linc/libft -lft
 INCLUDEFLAGS = -Iinc/ -Iinc/libft/
 DEPFLAGS = -MMD -MP
@@ -113,6 +113,7 @@ clean:
 	@$(MAKE) -C $(DIR_LIBFT) clean
 	@$(MAKE) -C $(DIR_MINILIBX) clean
 	@$(RM) -rf $(DIR_OBJS)
+	@$(RM) -rf $(NAME).dSYM
 	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_LIGHT_RED)Cleaned!$(COLOR_RESET)"
 
 fclean: clean
@@ -137,6 +138,13 @@ norminette:
 norm: norminette
 
 n: norminette
+
+error:
+	norminette inc/libft/*.c inc/libft/*.h inc/*.h src/*.c | grep "Error"
+
+err: error
+
+e: error
 
 go:
 	./$(NAME) $(DIR_FILES_RT)/scene.rt

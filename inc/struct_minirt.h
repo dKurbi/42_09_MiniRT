@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/26 16:39:03 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/02 18:07:45 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,14 @@ typedef struct s_intersec
 	t_rgb	color;
 }	t_intersec;
 
-// a_l_ = ambient lightning
-// c_ = camera
-// l_ = light
-// sp_ = spheres
-// pl_ = plane
-// cy_ = cylinder
+/*
+	a_l_ = ambient lightning
+	c_ = camera
+	l_ = light
+	sp_ = spheres
+	pl_ = plane
+	cy_ = cylinder
+*/
 typedef struct s_scene
 {
 	double		a_l_ratio;
@@ -106,6 +108,8 @@ typedef struct s_scene
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
+	t_vector	v_up;
+	t_vector	v_right;
 }	t_scene;
 
 //main structure: we add all to this t_rt

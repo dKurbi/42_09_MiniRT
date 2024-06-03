@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/26 15:18:48 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/02 18:46:10 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray);
 
 //maths_others.c
 double		get_radian(double angle);
+double		get_degree(double radian);
+double		absolute(double num);
 
 //maths_vector_2.c
 double		v_lenght2(t_vector vector);
@@ -147,20 +149,22 @@ int			if_space(char c);
 int			len_split(char **split);
 
 //print.c
-void        print_v(char *name, t_vector v);
-void        print_rgb(char *name, t_rgb rgb);
-void        print_plane(char *name, t_plane p);
-void        print_sphere(char *name, t_sphere s);
-void        print_scene(t_scene s);
-void        print_cylinder(char *name, t_cylinder c);
-
+void		print_v(char *name, t_vector v);
+void		print_rgb(char *name, t_rgb rgb);
+void		print_plane(char *name, t_plane p);
+void		print_sphere(char *name, t_sphere s);
+void		print_scene(t_scene s);
+void		print_cylinder(char *name, t_cylinder c);
 
 //rotation.c 
 t_vector	rotation_x(t_vector v, double ang);
 t_vector	rotation_y(t_vector v, double ang);
 t_vector2	calc_ang_rot(int x, int y, double fov, double aspect_ratio);
+t_vector	rotation_axis(t_vector v, t_vector u, double ang);
+void		calc_up_right_vector(t_rt *rt);
+
 
 //ray_and_pixel.c
-t_ray	make_ray(t_vector2 point, t_vector start, t_vector c_direction);
+t_ray	make_ray(t_vector2 point, t_rt rt);
 
 #endif
