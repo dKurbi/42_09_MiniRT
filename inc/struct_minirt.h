@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/02 18:07:45 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:36:28 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,14 @@ typedef struct s_ray
 
 typedef struct s_intersec
 {
-	t_ray	ray;
-	double	t1;
-	double	t2;
-	int		object;
-	t_rgb	color;
+	t_ray   	ray;
+	double	    t1;
+	double	    t2;
+    t_vector    hit1;
+    t_vector    hit2;
+    t_vector    n1;
+	int		    object;
+	t_rgb	    color;
 }	t_intersec;
 
 /*
