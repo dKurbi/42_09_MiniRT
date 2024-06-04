@@ -6,13 +6,43 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/03 18:52:43 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/04 20:54:07 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 void	raytracing(t_rt *rt)
+{
+	int			x;
+	int			y;
+	t_ray		ray;
+	t_intersec	inter;
+	int			c;
+
+	x = -1;
+	y = -1;
+	while (++y < WIN_Y)
+	{
+		while (++x < WIN_X)
+		{			
+			ray = make_ray(calc_ang_rot(x, y, rt->scene.c_fov, rt->aspect_ratio), *rt);
+			inter = found_inter(ray, *rt);
+			if (inter.object != NO_INTER)
+				c = get_color_inter(inter, *rt);
+			else
+				c = 0;
+			pixel_put(*rt, x, y, c);
+		}
+		x = -1;
+		//printf("\n");
+	}
+	print_scene(rt->scene);
+	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
+							rt->rtmlx.img, 0, 0);
+}
+
+/* void	raytracing(t_rt *rt)
 {
 	int			x;
 	int			y;
@@ -38,14 +68,14 @@ void	raytracing(t_rt *rt)
 				nxl = pow (v_dot(l_dir, inter.n1), 100);
 				if (nxl < 0)
 					nxl = 0;
-				print_rgb("color", inter.color);
+				//print_rgb("color", inter.color);
 				int r =inter.color.r * nxl; 
 				int g = inter.color.g * nxl;
-				int b = inter.color.b *nxl;
+				int b = inter.color.b * nxl;
 				c = color(r, g ,b );
 				pixel_put(*rt, x, y, c);
-				printf("x = %d, y = %d, t1 =  %f, t2 = %f, nxl = %f \n", x, y, inter.t1, inter.t2, nxl);
-				printf("c= %, r = %d, g = %d, b = %d\n", c, r, g, b);
+				//printf("x = %d, y = %d, t1 =  %f, t2 = %f, nxl = %f \n", x, y, inter.t1, inter.t2, nxl);
+				//printf("c= %, r = %d, g = %d, b = %d\n", c, r, g, b);
 			}
 			else
 				pixel_put(*rt, x, y, 0x0);
@@ -57,7 +87,7 @@ void	raytracing(t_rt *rt)
 	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
 							rt->rtmlx.img, 0, 0);
 }
-
+ */
 //MAIN: MAIN
 int	main(int ac, char **av)
 {
