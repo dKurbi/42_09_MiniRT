@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/05 17:46:31 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/10 15:35:02 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,13 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 	dn = v_dot(ray.direction, pl.pl_normal);
 	if (dn != 0)
 	{
-		i_ret.t1 = (v_dot(pl.pl_point, pl.pl_normal) - v_dot(ray.start, pl.pl_normal)) / dn;
+		i_ret.t1 = (v_dot(pl.pl_point, pl.pl_normal) - \
+			v_dot(ray.start, pl.pl_normal)) / dn;
 		i_ret.color = pl.pl_color;
 		i_ret.ray = ray;
 		i_ret.h1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
 		i_ret.n1 = v_expand(v_normalized(pl.pl_normal), -1);
 		i_ret.object = PLANE;
-		//printf("t1 = %f ",i_ret.t1);
-		//print_v("hit ", i_ret.h1); 
 	}
 	return (i_ret);
 }

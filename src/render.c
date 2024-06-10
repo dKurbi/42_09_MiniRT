@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/06/10 11:03:33 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/10 16:27:11 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,18 +157,19 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 
  */
 
-int get_color_inter(t_intersec inter, t_rt rt) {
-    t_vector l_dir;
-    double nxl;
-    double intensity;
-    t_rgb final_color;
+int	get_color_inter(t_intersec inter, t_rt rt)
+{
+	t_vector	l_dir;
+	double		nxl;
+	double		intensity;
+	t_rgb		final_color;
 
-    nxl = 0;
-    intensity = rt.scene.a_l_ratio;
-
-    if (inter.object == SPHERE) {
-        l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.h1));
-        nxl = v_dot(l_dir, inter.n1);
+	nxl = 0;
+	intensity = rt.scene.a_l_ratio;
+	if (inter.object == SPHERE)
+	{
+		l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.h1));
+    	nxl = v_dot(v_expand(l_dir, -1), inter.n1);
         if (nxl < 0)
             nxl = 0;
         intensity += rt.scene.l_bright * nxl;

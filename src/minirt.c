@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/05 18:02:37 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/10 15:27:53 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,59 +37,12 @@ void	raytracing(t_rt *rt)
 			pixel_put(*rt, x, y, c);
 		}
 		x = -1;
-		//printf("\n");
 	}
 	print_scene(rt->scene);
 	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
 							rt->rtmlx.img, 0, 0);
 }
 
-/* void	raytracing(t_rt *rt)
-{
-	int			x;
-	int			y;
-	t_vector2	v_rot;
-	t_ray		ray;
-	t_intersec	inter;
-	int			c;
-	t_vector	l_dir;
-	double		nxl;
-
-	x = -1;
-	y = -1;
-	while (++y < WIN_Y)
-	{
-		while (++x < WIN_X)
-		{
-			v_rot = calc_ang_rot(x, y, rt->scene.c_fov, rt->aspect_ratio);
-			ray = make_ray(v_rot, *rt);
-			inter = inter_ray_sp(rt->scene.sp[0], ray);
-			if (inter.object != NO_INTER)
-			{
-				l_dir =v_normalized(v_rest(inter.h1, rt->scene.l_pos));
-				nxl = pow (v_dot(l_dir, inter.n1), 100);
-				if (nxl < 0)
-					nxl = 0;
-				//print_rgb("color", inter.color);
-				int r =inter.color.r * nxl; 
-				int g = inter.color.g * nxl;
-				int b = inter.color.b * nxl;
-				c = color(r, g ,b );
-				pixel_put(*rt, x, y, c);
-				//printf("x = %d, y = %d, t1 =  %f, t2 = %f, nxl = %f \n", x, y, inter.t1, inter.t2, nxl);
-				//printf("c= %, r = %d, g = %d, b = %d\n", c, r, g, b);
-			}
-			else
-				pixel_put(*rt, x, y, 0x0);
-		}
-		x = -1;
-		//printf("\n");
-	}
-	print_scene(rt->scene);
-	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
-							rt->rtmlx.img, 0, 0);
-}
- */
 //MAIN: MAIN
 int	main(int ac, char **av)
 {

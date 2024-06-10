@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 11:54:44 by diego             #+#    #+#             */
-/*   Updated: 2024/06/02 18:54:37 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:42:37 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ void	print_scene(t_scene s)
 
 	printf("--------SCENE-------\n");
 	printf("\nAMBIENT\n");
-	printf("Ratio: %f\n", s.a_l_ratio);
+	printf("Ratio: %f\n", s.a_l_ratio );
 	print_rgb("Color", s.a_l_color);
 	printf("\nCAMERA\n");
 	print_v("Camara position", s.c_pos);
 	print_v("Camara direction", s.c_dir);
-	printf("Camera FOV: %f\n", s.c_fov);
+	printf("Camera FOV: %f\n", s.c_fov * 180 / M_PI);
 	printf("\nLIGHT\n");
 	print_v("Light Position", s.l_pos);
 	printf("Light bright: %f\n", s.l_bright);
