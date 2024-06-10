@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/06/10 10:31:50 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/10 11:03:33 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_intersec found_inter_pl(t_ray ray, t_rt rt)
 	}
 	return (inter);
 }
-
+/* 
 int	get_color_inter(t_intersec inter, t_rt rt)
 {
 	t_vector	l_dir;
@@ -112,4 +112,80 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 	}
 	//nxl = 1;
 	return (color(inter.color.r * nxl, inter.color.g * nxl , inter.color.b * nxl ));
+} */
+/* int	get_color_inter(t_intersec inter, t_rt rt)
+{
+	t_vector	l_dir;
+	double		nxl;
+	double		intensity;
+	t_rgb		final_color;
+
+	nxl = 0;
+	intensity = rt.scene.a_l_ratio; // Initialize intensity with ambient light ratio
+
+	if (inter.object == SPHERE)
+	{
+		// Calculate the light direction
+		l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.h1));
+		// Calculate dot product between light direction and normal
+		nxl = v_dot(l_dir, inter.n1);
+		if (nxl < 0)
+			nxl = 0;
+		intensity += rt.scene.l_bright * nxl; // Add light intensity
+	}
+	else if (inter.object == PLANE)
+	{
+		// For planes, we assume the normal is constant, so light interaction is simpler
+		l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.h1));
+		nxl = v_dot(l_dir, inter.n1);
+		if (nxl < 0)
+			nxl = 0;
+		intensity += rt.scene.l_bright * nxl; // Add light intensity
+	}
+
+	// Clamp intensity to a maximum of 1.0
+	if (intensity > 1.0)
+		intensity = 1.0;
+
+	// Calculate final color based on the intensity
+	final_color.r = (int)(inter.color.r * intensity);
+	final_color.g = (int)(inter.color.g * intensity);
+	final_color.b = (int)(inter.color.b * intensity);
+
+	return color(final_color.r, final_color.g, final_color.b);
+}
+
+ */
+
+int get_color_inter(t_intersec inter, t_rt rt) {
+    t_vector l_dir;
+    double nxl;
+    double intensity;
+    t_rgb final_color;
+
+    nxl = 0;
+    intensity = rt.scene.a_l_ratio;
+
+    if (inter.object == SPHERE) {
+        l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.h1));
+        nxl = v_dot(l_dir, inter.n1);
+        if (nxl < 0)
+            nxl = 0;
+        intensity += rt.scene.l_bright * nxl;
+    } else if (inter.object == PLANE) {
+        l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.h1));
+        nxl = v_dot(l_dir, inter.n1);
+        if (nxl < 0)
+            nxl = 0;
+        intensity += rt.scene.l_bright * nxl;
+    }
+
+    if (intensity > 1.0)
+        intensity = 1.0;
+
+    final_color.r = (int)(inter.color.r * intensity);
+    final_color.g = (int)(inter.color.g * intensity);
+    final_color.b = (int)(inter.color.b * intensity);
+
+    return color(final_color.r, final_color.g, final_color.b);
 }
