@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/03 14:43:41 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/10 17:42:15 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ void	raytracing(t_rt *rt)
 {
 	int			x;
 	int			y;
-	t_vector2	v_rot;
 	t_ray		ray;
 	t_intersec	inter;
 	int			c;
-	t_vector	l_dir;
-	double		nxl;
+
 
 	x = -1;
 	y = -1;
@@ -29,21 +27,13 @@ void	raytracing(t_rt *rt)
 	{
 		while (++x < WIN_X)
 		{
-			v_rot = calc_ang_rot(x, y, rt->scene.c_fov, rt->aspect_ratio);
-			ray = make_ray(v_rot, *rt);
-			inter = inter_ray_sp(rt->scene.sp[0], ray);
+			ray = make_ray(calc_ang_rot(x, y, rt->scene.c_fov, rt->aspect_ratio), *rt);
+			inter = found_inter(ray, *rt);
 			if (inter.object != NO_INTER)
-			{
-				l_dir =v_normalized(v_rest(inter.hit1, rt->scene.l_pos ));
-				nxl = v_dot(l_dir, inter.n1);
-				if (nxl < 0)
-					nxl = 0;
-				c =color(inter.color.r * nxl, inter.color.g * nxl, inter.color.b * nxl );
-				pixel_put(*rt, x, y, c);
-				//printf("t1= %f\n",inter.t1);
-			}
+				c = get_color_inter(inter, *rt);
 			else
-				pixel_put(*rt, x, y, 0x0);
+				c = 0;
+			pixel_put(*rt, x, y, c);
 		}
 		x = -1;
 		//printf("\n");
