@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/04 20:56:12 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/05 17:46:31 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 		i_ret.h1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
 		i_ret.n1 = v_expand(v_normalized(pl.pl_normal), -1);
 		i_ret.object = PLANE;
-		/* printf("t1 = %f ",i_ret.t1);
-		print_v("hit ", i_ret.h1); */
+		//printf("t1 = %f ",i_ret.t1);
+		//print_v("hit ", i_ret.h1); 
 	}
 	return (i_ret);
 }
