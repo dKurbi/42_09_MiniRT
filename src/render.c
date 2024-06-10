@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/06/10 17:48:33 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:56:10 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ t_intersec found_inter_sp(t_ray ray, t_rt rt)
 	{	
 		temp = inter_ray_sp(*sp, ray);
 		if (temp.object != NO_INTER &&  temp.t1 > inter.t1)
-		{
-			printf("entro\n");
 			inter = temp;
-		}
 		sp = sp->next;
 	}
 	return (inter);
