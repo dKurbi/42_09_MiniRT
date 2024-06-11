@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/06/10 17:56:10 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/11 18:50:03 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,20 @@ t_intersec found_inter(t_ray ray, t_rt rt)
 {
 	t_intersec inter_sp;
 	t_intersec inter_pl;
+	t_intersec inter_cy;
 	static int global_print;
 
 	inter_sp.object = NO_INTER;
 	inter_pl.object = NO_INTER;
 
+	inter_cy.object = NO_INTER;
+	if (rt.scene.cy)
+		inter_cy = found_inter_cy(ray, rt);
+	if(inter_cy.object == CYLINDER)
+	{
+		printf("choco cylindro\n");
+		return (inter_cy);
+	}
 	if (rt.scene.sp)
 		inter_sp = found_inter_sp(ray, rt);
 	if (rt.scene.pl)
@@ -94,6 +103,27 @@ t_intersec found_inter_pl(t_ray ray, t_rt rt)
 	return (inter);
 }
 
+t_intersec found_inter_cy(t_ray ray, t_rt rt)
+{
+	t_cylinder *cy;
+	t_intersec inter;
+	t_intersec temp;
+
+	cy = rt.scene.cy;
+	inter = inter_ray_cy(*cy, ray);
+	if (inter.object == NO_INTER)
+		inter.t1 = 0;
+	cy = cy->next; 
+	while (cy)
+	{	
+		temp = inter_ray_cy(*cy, ray);
+		if (temp.object != NO_INTER && temp.t1 < inter.t1)
+			inter = temp;
+		cy = cy->next;
+	}
+	return (inter);
+}
+
 int	get_color_inter(t_intersec inter, t_rt rt)
 {
 	t_vector	l_dir;
@@ -110,13 +140,15 @@ int	get_color_inter(t_intersec inter, t_rt rt)
         if (nxl < 0)
             nxl = 0;
         intensity += rt.scene.l_bright * nxl;
-    } else if (inter.object == PLANE) {
+    } 
+	else if (inter.object == PLANE) 
+	{
         l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.hit1));
         nxl = v_dot(l_dir, inter.n1);
         if (nxl < 0)
             nxl = 0;
         intensity += rt.scene.l_bright * nxl;
-    }
+    } 
 
     if (intensity > 1.0)
         intensity = 1.0;
