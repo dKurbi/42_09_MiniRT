@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/04 20:55:13 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/11 05:18:31 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ void		calc_up_right_vector(t_rt *rt);
 
 
 //ray_and_pixel.c
-t_ray		make_ray(t_vector2 point, t_rt rt);
+t_ray	make_ray(t_vector2 point, t_rt rt);
 
 //render.c
 t_intersec	found_inter(t_ray ray, t_rt rt);

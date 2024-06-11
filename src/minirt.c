@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/04 20:54:07 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/11 05:11:58 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ void	raytracing(t_rt *rt)
 	t_ray		ray;
 	t_intersec	inter;
 	int			c;
-	t_vector	l_dir;
-	double		nxl;
+
 
 	x = -1;
 	y = -1;
@@ -59,9 +58,8 @@ void	raytracing(t_rt *rt)
 	{
 		while (++x < WIN_X)
 		{
-			v_rot = calc_ang_rot(x, y, rt->scene.c_fov, rt->aspect_ratio);
-			ray = make_ray(v_rot, *rt);
-			inter = inter_ray_sp(rt->scene.sp[0], ray);
+			ray = make_ray(calc_ang_rot(x, y, rt->scene.c_fov, rt->aspect_ratio), *rt);
+			inter = found_inter(ray, *rt);
 			if (inter.object != NO_INTER)
 			{
 				l_dir =v_normalized(v_rest(inter.h1, rt->scene.l_pos));

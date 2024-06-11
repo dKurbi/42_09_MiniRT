@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: diego <diego@student.42.fr>                +#+  +:+       +#+         #
+#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/06/04 19:51:00 by diego            ###   ########.fr        #
+#    Updated: 2024/06/11 05:15:56 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
 		check_str_number.c utils_check.c free_struct_lst.c utils_check_2.c \
 		add_struct_figure.c add_scene_lower_second.c maths_vector.c \
 		maths_vector_2.c maths_others.c intersection.c ray_and_pixel.c \
+		init_cam.c print.c rotation.c render.c
 		init_cam.c print.c rotation.c render.c
 		
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
