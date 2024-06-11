@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/10 17:37:31 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/11 16:07:46 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ double		absolute(double num);
 double		v_lenght2(t_vector vector);
 double		v_lenght(t_vector vector);
 t_vector	v_normalized(t_vector vector);
+t_vector 	v_new(double x, double y, double z);
 
 //maths_vector.c
 t_vector	v_expand(t_vector v, double k);
