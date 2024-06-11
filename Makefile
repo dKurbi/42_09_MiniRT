@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
+#    By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/06/11 05:32:14 by iassambe         ###   ########.fr        #
+#    Updated: 2024/06/10 17:38:45 by dkurcbar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
