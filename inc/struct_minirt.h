@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/12 14:03:20 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:41:19 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,15 @@ typedef struct s_rt
 	double	aspect_ratio;
 	t_scene	scene;
 }	t_rt;
+
+typedef struct s_cuadratica
+{
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+	double		sqrtDiscriminant;
+} t_cuadratica;
 
 typedef struct s_cy_inter_values
 {
