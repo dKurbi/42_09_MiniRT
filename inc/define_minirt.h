@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/27 20:26:33 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:33:49 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 //pixels for mlx window (Linux/Mac)
 # ifdef __linux__
 #  define WIN_X 1280
-#  define WIN_Y 690
+#  define WIN_Y 920
 # else
 #  define WIN_X 1920
 #  define WIN_Y 1200
@@ -130,6 +130,7 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
 # endif
+#define EPSILON 1e-6
 
 //other defines
 # define ERROR 1

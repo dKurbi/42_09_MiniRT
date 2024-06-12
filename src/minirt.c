@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/10 17:42:15 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/12 22:16:32 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,28 @@ void	raytracing(t_rt *rt)
 	int			y;
 	t_ray		ray;
 	t_intersec	inter;
-	int			c;
+	double		t;
 
 
 	x = -1;
 	y = -1;
+	t = tan(rt->scene.c_fov);
 	while (++y < WIN_Y)
 	{
 		while (++x < WIN_X)
 		{
-			ray = make_ray(calc_ang_rot(x, y, rt->scene.c_fov, rt->aspect_ratio), *rt);
+			ray = make_ray(calc_ang_rot(x, y, t, rt->aspect_ratio), *rt);
 			inter = found_inter(ray, *rt);
 			if (inter.object != NO_INTER)
-				c = get_color_inter(inter, *rt);
+				pixel_put(*rt, x, y, get_color_inter(inter, *rt));
 			else
-				c = 0;
-			pixel_put(*rt, x, y, c);
+				pixel_put(*rt, x, y, 0);
 		}
 		x = -1;
 		//printf("\n");
 	}
 	print_scene(rt->scene);
+	printf("fov = %f, tan = %f\n", rt->scene.c_fov, t);
 	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
 							rt->rtmlx.img, 0, 0);
 }
