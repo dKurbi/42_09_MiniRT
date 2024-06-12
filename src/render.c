@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/06/12 16:49:25 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:44:05 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 
 	nxl = 0;
 	intensity = rt.scene.a_l_ratio;
-	if (inter.object == SPHERE)
+	if (inter.object == SPHERE || inter.object == CYLINDER)
 	{
 		l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.hit1));
     	nxl = v_dot(v_expand(l_dir, -1), inter.n1);

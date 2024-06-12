@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/12 15:09:25 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:36:26 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	rtnew(t_rt *rt, int ac, char **av)
 	rt->a_l_count = 0;
 	rt->c_count = 0;
 	rt->l_count = 0;
-	rt->aspect_ratio = (double) WIN_X / WIN_Y;
+	rt->aspect_ratio = WIN_X / WIN_Y;
 }
 
 void	mlxnew(t_rt *rt)
