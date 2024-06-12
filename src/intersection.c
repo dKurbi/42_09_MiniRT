@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/12 17:26:52 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:44:03 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 	if (fabs(dn) > EPSILON)
 	{
 		i_ret.t1 = (v_dot(pl.pl_point, pl.pl_normal) - \
-			v_dot(ray.start, pl.pl_normal)) / dn;
+					v_dot(ray.start, pl.pl_normal)) / dn;
 		i_ret.color = pl.pl_color;
 		i_ret.ray = ray;
-		i_ret.h1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
-		i_ret.n1 = v_expand(v_normalized(pl.pl_normal), -1);
+		i_ret.hit1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
+		i_ret.n1 = v_normalized(pl.pl_normal);
 		i_ret.object = PLANE;
 	}
 	return (i_ret);

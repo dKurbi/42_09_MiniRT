@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/12 17:26:25 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:41:19 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ typedef struct s_intersec
 	t_ray   	ray;
 	double	    t1;
 	double	    t2;
-    t_vector	h1;
-    t_vector	h2;
+    t_vector	hit1;
+    t_vector	hit2;
     t_vector	n1;
     t_vector	n2;
 	int		    object;

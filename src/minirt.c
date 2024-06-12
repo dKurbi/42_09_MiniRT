@@ -5,15 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/06/12 17:24:47 by dkurcbar         ###   ########.fr       */
+/*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
+/*   Updated: 2024/06/12 16:56:25 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../inc/minirt.h"
-
-
 
 void	raytracing(t_rt *rt)
 {
@@ -39,6 +36,7 @@ void	raytracing(t_rt *rt)
 				pixel_put(*rt, x, y, 0);
 		}
 		x = -1;
+		//printf("\n");
 	}
 	print_scene(rt->scene);
 	printf("fov = %f, tan = %f\n", rt->scene.c_fov, t);
