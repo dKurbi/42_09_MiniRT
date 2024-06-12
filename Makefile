@@ -3,10 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
+<<<<<<< HEAD
 #    By: diego <diego@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
 #    Updated: 2024/06/04 19:51:00 by diego            ###   ########.fr        #
+=======
+#    By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
+#    Updated: 2024/06/12 13:28:53 by dkurcbar         ###   ########.fr        #
+>>>>>>> 2d1af38ddfb4af13cfd415f269137355e9c4f61c
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +92,11 @@ SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
 		check_str_number.c utils_check.c free_struct_lst.c utils_check_2.c \
 		add_struct_figure.c add_scene_lower_second.c maths_vector.c \
 		maths_vector_2.c maths_others.c intersection.c ray_and_pixel.c \
+<<<<<<< HEAD
 		init_cam.c print.c rotation.c render.c
+=======
+		init_cam.c print.c rotation.c render.c intersection_cy.c
+>>>>>>> 2d1af38ddfb4af13cfd415f269137355e9c4f61c
 		
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)

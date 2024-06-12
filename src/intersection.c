@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/10 15:35:02 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:26:52 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,25 @@
 t_intersec	inter_ray_sp(t_sphere sp, t_ray ray)
 {
 	t_intersec	i_ret;
-	double		a;
-	double		b;
-	double		c;
-	double		det;
+	t_cuadratica val;
 
 	i_ret.object = NO_INTER;
-	a = v_lenght2(ray.direction);
-	b = 2 * v_dot(ray.direction, v_rest(ray.start, sp.sp_center));
-	c = v_lenght2(v_rest(ray.start, sp.sp_center)) - pow(sp.sp_diam / 2, 2);
-	det = pow(b, 2) - 4 * a * c;
-	if (det >= 0)
+	val.a = v_lenght2(ray.direction);
+	val.b = 2 * v_dot(ray.direction, v_rest(ray.start, sp.sp_center));
+	val.c = v_lenght2(v_rest(ray.start, sp.sp_center)) - pow(sp.sp_diam / 2, 2);
+	val.discriminant = pow(val.b, 2) - 4 * val.a * val.c;
+	if (val.discriminant >= 0)
 	{
+		val.sqrtDiscriminant = sqrt(val.discriminant);
 		i_ret.color = sp.sp_color;
 		i_ret.object = SPHERE;
 		i_ret.ray = ray;
-		i_ret.t1 = (-b - det) / (2 * a);
-		i_ret.t2 = (-b + det) / (2 * a);
-		i_ret.h1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
-		i_ret.h2 = v_add(v_expand(ray.direction, i_ret.t2), ray.start);
-		i_ret.n1 = v_normalized(v_rest(i_ret.h1, sp.sp_center));
-		i_ret.n2 = v_normalized(v_rest(i_ret.h2, sp.sp_center));
+		i_ret.t1 = (-val.b + val.sqrtDiscriminant) / (2 * val.a);
+		i_ret.t2 = (-val.b - val.sqrtDiscriminant) / (2 * val.a);
+		i_ret.hit1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
+		i_ret.hit2 = v_add(v_expand(ray.direction, i_ret.t2), ray.start);
+		i_ret.n1 = v_normalized(v_rest(i_ret.hit1, sp.sp_center));
+		i_ret.n2 = v_normalized(v_rest(i_ret.hit2, sp.sp_center));
 	}
 	return (i_ret);
 }
@@ -46,8 +44,8 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 	double		dn;
 
 	i_ret.object = NO_INTER;
-	dn = v_dot(ray.direction, pl.pl_normal);
-	if (dn != 0)
+	dn = v_dot(v_normalized(ray.direction), v_normalized(pl.pl_normal));
+	if (fabs(dn) > EPSILON)
 	{
 		i_ret.t1 = (v_dot(pl.pl_point, pl.pl_normal) - \
 			v_dot(ray.start, pl.pl_normal)) / dn;

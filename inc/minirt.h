@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/05 18:09:50 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:25:47 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void		init_cam(t_rt *rt);
 //intersection.c
 t_intersec	inter_ray_sp(t_sphere sp, t_ray ray);
 t_intersec	inter_ray_pl(t_plane pl, t_ray ray);
+t_intersec inter_ray_cy(t_cylinder cy, t_ray ray);
 
 //maths_others.c
 double		get_radian(double angle);
@@ -107,6 +108,7 @@ double		absolute(double num);
 double		v_lenght2(t_vector vector);
 double		v_lenght(t_vector vector);
 t_vector	v_normalized(t_vector vector);
+t_vector 	v_new(double x, double y, double z);
 
 //maths_vector.c
 t_vector	v_expand(t_vector v, double k);
@@ -165,12 +167,13 @@ void		calc_up_right_vector(t_rt *rt);
 
 
 //ray_and_pixel.c
-t_ray		make_ray(t_vector2 point, t_rt rt);
+t_ray	make_ray(t_vector2 point, t_rt rt);
 
 //render.c
 t_intersec	found_inter(t_ray ray, t_rt rt);
 t_intersec	found_inter_sp(t_ray ray, t_rt rt);
 t_intersec	found_inter_pl(t_ray ray, t_rt rt);
+t_intersec 	found_inter_cy(t_ray ray, t_rt rt);
 int			get_color_inter(t_intersec inter, t_rt rt);
 
 
