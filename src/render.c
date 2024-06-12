@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/06/11 18:50:03 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/06/12 13:01:44 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_intersec found_inter(t_ray ray, t_rt rt)
 	t_intersec inter_sp;
 	t_intersec inter_pl;
 	t_intersec inter_cy;
-	static int global_print;
+	//static int global_print;
 
 	inter_sp.object = NO_INTER;
 	inter_pl.object = NO_INTER;
@@ -27,30 +27,13 @@ t_intersec found_inter(t_ray ray, t_rt rt)
 		inter_cy = found_inter_cy(ray, rt);
 	if(inter_cy.object == CYLINDER)
 	{
-		printf("choco cylindro\n");
 		return (inter_cy);
 	}
 	if (rt.scene.sp)
 		inter_sp = found_inter_sp(ray, rt);
 	if (rt.scene.pl)
 		inter_pl = found_inter_pl(ray, rt);
-	if ((inter_pl.object == PLANE && inter_sp.object == SPHERE))
-	{	
-		if (global_print++ % 50 == 0)
-		{
-			printf("----------------Print Number = %d, ---- Hit Number = %d\n", (global_print - 1) / 50, global_print);
-			print_v("Ray oringin ", ray.start);
-			print_v("Ray direction ", ray.direction);
-			printf("\nSphere\n ");
-			printf("Sp t1 = %f, ",inter_sp.t1);	
-			print_v("sphere hit ", inter_sp.hit1);
-			printf("\nPlane\n ");
-			printf("Pl t1 = %f, ",inter_pl.t1);	
-			print_v("Plane hit ", inter_pl.hit1);
-			printf("*********************************************\n\n");
-			
-		}
-	}
+
 	if ((inter_pl.object != NO_INTER && inter_sp.object == NO_INTER) || \
 		(inter_pl.object == PLANE && inter_sp.object == SPHERE && \
 		inter_pl.t1 < inter_sp.t1))

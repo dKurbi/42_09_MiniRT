@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/03 13:40:28 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/12 14:03:20 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,28 @@ typedef struct s_rt
 	double	aspect_ratio;
 	t_scene	scene;
 }	t_rt;
+
+typedef struct s_cy_inter_values
+{
+	t_vector	halfHeightVec;
+	t_vector	cylBase;
+	t_vector	cylTop;
+	t_vector	deltaP;
+	double		dDotV;
+	double		deltaPDotV;
+	t_vector	v_a;
+	t_vector	v_b;
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+	double		sqrtDiscriminant;
+	double		t1;
+	double		t2;
+	t_vector	hit1;
+	t_vector	hit2;
+	double		p1DotV;
+	double		p2DotV;
+} t_cy_inter_values;
 
 #endif
