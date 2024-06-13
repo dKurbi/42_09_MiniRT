@@ -5,10 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/06/12 22:17:17 by iassambe         ###   ########.fr        #
+#    Created: Invalid date        by                   #+#    #+#              #
+#    Updated: 2024/06/14 00:29:19 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 #	Executable program
 NAME = minirt
