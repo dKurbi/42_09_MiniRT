@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_cy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/13 18:38:29 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:45:26 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ t_cy_inter_values calc_inter_values(t_cylinder cy, t_ray ray)
 	return (val);
 }
 
+t_vector calculate_normal(t_cylinder cy, t_vector hit) 
+{
+    t_vector cy_to_hit = v_rest(hit, cy.cy_center);
+    double proj_length = v_dot(cy_to_hit, cy.cy_axis);
+    t_vector proj_point = v_add(cy.cy_center, v_expand(cy.cy_axis, proj_length));
+    return v_normalized(v_rest(hit, proj_point));
+}
+
 t_intersec inter_ray_cy(t_cylinder cy, t_ray ray) 
 {
 	t_cy_inter_values val;
@@ -58,18 +66,16 @@ t_intersec inter_ray_cy(t_cylinder cy, t_ray ray)
 		i_ret.object = CYLINDER;
 		i_ret.hit1 = val.hit1;
 		i_ret.color = cy.cy_color;
+        i_ret.n1 = v_expand(calculate_normal(cy, i_ret.hit1), -1);
 	}
 	if (val.p2DotV >= 0 && val.p2DotV <= cy.cy_height)
 	{
 		i_ret.object = CYLINDER;
 		i_ret.hit2 = val.hit2;
 		i_ret.color = cy.cy_color;
+         i_ret.n2 = calculate_normal(cy, i_ret.hit2);
 	}
     return (i_ret);
 }
 
-void a()
-{
-	
-}
 

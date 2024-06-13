@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:48:25 by diego             #+#    #+#             */
-/*   Updated: 2024/06/13 18:38:45 by diego            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:34:22 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ t_vector	rotation_y(t_vector v, double ang)
 }
 
 //calculate the rotation angle for each x,y pixel
-t_vector2	calc_ang_rot(int x, int y, double t, double aspect_ratio)
+t_vector2	calc_ang_rot(int x, int y, double tan, double aspect_ratio)
 {
 	t_vector2	ret;
 	double		norm_x;
 	double		norm_y;
 
 	norm_x = ((double) ( 2 * x - WIN_X )) / WIN_X ;
-	ret.x = norm_x * t;
+	ret.x = norm_x * tan;
 	norm_y= ((double) (2 * y - WIN_Y)) / WIN_X ;
-	ret.y = norm_y * (t / aspect_ratio);
+	ret.y = norm_y * (tan / aspect_ratio);
 
 	return (ret);
 }
