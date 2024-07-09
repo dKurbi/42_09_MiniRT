@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/12 16:33:49 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/09 20:33:36 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 #  define WIN_Y 920
 # else
 #  define WIN_X 1920
-#  define WIN_Y 1200
+#  define WIN_Y 1080
 # endif
 
 //events mlx
@@ -126,11 +126,11 @@
 # define PLANE 1
 # define CYLINDER 2
 
-//3.14 not defined in Linux
+//math defines
+#define EPSILON 1e-6
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
 # endif
-#define EPSILON 1e-6
 
 //other defines
 # define ERROR 1
