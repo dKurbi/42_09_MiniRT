@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/06/14 00:29:10 by iassambe         ###   ########.fr       */
+/*   Created: 2024/06/25 06:47:41 by iassambe          #+#    #+#             */
+/*   Updated: 2024/07/05 06:10:45 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/minirt.h"
 
@@ -20,7 +19,6 @@ void	raytracing(t_rt *rt)
 	t_ray		ray;
 	t_intersec	inter;
 	double		t;
-
 
 	x = -1;
 	y = -1;
@@ -44,6 +42,7 @@ void	raytracing(t_rt *rt)
 	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
 							rt->rtmlx.img, 0, 0);
 }
+
 
 //MAIN: MAIN
 int	main(int ac, char **av)

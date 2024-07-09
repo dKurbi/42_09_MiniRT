@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:48:25 by diego             #+#    #+#             */
-/*   Updated: 2024/06/12 17:34:22 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/05 06:52:54 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ t_vector2	calc_ang_rot(int x, int y, double tan, double aspect_ratio)
 	double		norm_x;
 	double		norm_y;
 
-	norm_x = ((double) ( 2 * x - WIN_X )) / WIN_X ;
+	norm_x = ((double)(2 * x - WIN_X)) / WIN_X ;
 	ret.x = norm_x * tan;
-	norm_y= ((double) (2 * y - WIN_Y)) / WIN_X ;
+	norm_y= ((double)(2 * y - WIN_Y)) / WIN_X ;
 	ret.y = norm_y * (tan / aspect_ratio);
 
 	return (ret);

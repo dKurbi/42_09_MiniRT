@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/06/14 00:29:57 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/09 17:05:20 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_intersec found_inter(t_ray ray, t_rt rt)
 	}
 	i++;
 	j++;
-	return(inter_sp);
+	return (inter_sp);
 }
 
 t_intersec found_inter_sp(t_ray ray, t_rt rt)
@@ -103,26 +103,26 @@ t_intersec found_inter_pl(t_ray ray, t_rt rt)
 	return (inter);
 }
 
-t_intersec found_inter_cy(t_ray ray, t_rt rt)
-{
-	t_cylinder *cy;
-	t_intersec inter;
-	t_intersec temp;
+	t_intersec found_inter_cy(t_ray ray, t_rt rt)
+	{
+		t_cylinder *cy;
+		t_intersec inter;
+		t_intersec temp;
 
-	cy = rt.scene.cy;
-	inter = inter_ray_cy(*cy, ray);
-	if (inter.object == NO_INTER)
-		inter.t1 = 0;
-	cy = cy->next; 
-	while (cy)
-	{	
-		temp = inter_ray_cy(*cy, ray);
-		if (temp.object != NO_INTER && temp.t1 < inter.t1)
-			inter = temp;
-		cy = cy->next;
+		cy = rt.scene.cy;
+		inter = inter_ray_cy(*cy, ray);
+		if (inter.object == NO_INTER)
+			inter.t1 = 0;
+		cy = cy->next; 
+		while (cy)
+		{	
+			temp = inter_ray_cy(*cy, ray);
+			if (temp.object != NO_INTER && temp.t1 < inter.t1)
+				inter = temp;
+			cy = cy->next;
+		}
+		return (inter);
 	}
-	return (inter);
-}
 
 int	get_color_inter(t_intersec inter, t_rt rt)
 {
