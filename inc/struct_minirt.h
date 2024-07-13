@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/09 19:44:43 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/13 21:45:15 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,15 +119,15 @@ typedef struct s_ray
 //intersection struct
 typedef struct s_intersec
 {
-	t_ray   	ray;
-	double	    t1;
-	double	    t2;
-    t_vector	hit1;
-    t_vector	hit2;
-    t_vector	n1;
-    t_vector	n2;
-	int		    object;
-	t_rgb	    color;
+	t_ray		ray;
+	double		t1;
+	double		t2;
+	t_vector	hit1;
+	t_vector	hit2;
+	t_vector	n1;
+	t_vector	n2;
+	int			object;
+	t_rgb		color;
 }	t_intersec;
 
 /*

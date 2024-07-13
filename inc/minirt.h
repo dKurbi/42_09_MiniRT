@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/06/14 00:29:26 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/13 21:21:15 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void		init_cam(t_rt *rt);
 //intersection.c
 t_intersec	inter_ray_sp(t_sphere sp, t_ray ray);
 t_intersec	inter_ray_pl(t_plane pl, t_ray ray);
-t_intersec inter_ray_cy(t_cylinder cy, t_ray ray);
+t_intersec	inter_ray_cy(t_cylinder cy, t_ray ray);
 
 //maths_others.c
 double		get_radian(double angle);
@@ -166,16 +166,14 @@ t_vector2	calc_ang_rot(int x, int y, double fov, double aspect_ratio);
 t_vector	rotation_axis(t_vector v, t_vector u, double ang);
 void		calc_up_right_vector(t_rt *rt);
 
-
 //ray_and_pixel.c
 t_ray	make_ray(t_vector2 point, t_rt rt);
 
 //render.c
-t_intersec	found_inter(t_ray ray, t_rt rt);
-t_intersec	found_inter_sp(t_ray ray, t_rt rt);
-t_intersec	found_inter_pl(t_ray ray, t_rt rt);
-t_intersec 	found_inter_cy(t_ray ray, t_rt rt);
+t_intersec	find_inter(t_ray ray, t_rt rt);
+t_intersec	find_inter_sp(t_ray ray, t_rt rt);
+t_intersec	find_inter_pl(t_ray ray, t_rt rt);
+t_intersec 	find_inter_cy(t_ray ray, t_rt rt);
 int			get_color_inter(t_intersec inter, t_rt rt);
-
 
 #endif

@@ -6,20 +6,19 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/09 17:05:20 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/13 21:20:05 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_intersec found_inter(t_ray ray, t_rt rt)
+t_intersec find_inter(t_ray ray, t_rt rt)
 {
 	t_intersec inter_sp;
 	t_intersec inter_pl;
 	t_intersec inter_cy;
 	static int i;
 	static int j;
-	//static int global_print;
 
 	inter_sp.object = NO_INTER;
 	inter_pl.object = NO_INTER;
@@ -27,7 +26,7 @@ t_intersec found_inter(t_ray ray, t_rt rt)
 	inter_cy.object = NO_INTER;
 	if (rt.scene.cy)
 		inter_cy = found_inter_cy(ray, rt);
-	if(inter_cy.object == CYLINDER)
+	if (inter_cy.object == CYLINDER)
 	{
 		return (inter_cy);
 	}

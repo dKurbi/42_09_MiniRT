@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/09 20:33:36 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/13 21:45:42 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@
 # define CYLINDER 2
 
 //math defines
-#define EPSILON 1e-6
+# define EPSILON 1e-6
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
 # endif
