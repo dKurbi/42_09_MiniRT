@@ -6,59 +6,33 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/15 13:13:37 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/15 14:29:37 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//inter[0] == plano, inter[1] == esfera, inter[2] == cilindro
 t_intersec found_inter(t_ray ray, t_rt rt)
 {
-	t_intersec inter_sp;
-	t_intersec inter_pl;
-	t_intersec inter_cy;
-	static int i;
-	static int j;
-	//static int global_print;
+	t_intersec inter[3]; 
+	t_intersec ret;
+	int 		i;
 
-	inter_sp.object = NO_INTER;
-	inter_pl.object = NO_INTER;
-
-	inter_cy.object = NO_INTER;
-	if (rt.scene.cy)
-		inter_cy = found_inter_cy(ray, rt);
-	if(inter_cy.object == CYLINDER)
-	{
-		return (inter_cy);
-	}
-	if (rt.scene.sp)
-		inter_sp = found_inter_sp(ray, rt);
 	if (rt.scene.pl)
-		inter_pl = found_inter_pl(ray, rt);
-
-	if ((inter_pl.object == PLANE && inter_sp.object == NO_INTER) || \
-		(inter_pl.object == PLANE && inter_sp.object == SPHERE && \
-		inter_pl.t1 < inter_sp.t1))
-	{	
-		if (i % 10 == 0 && (inter_pl.object == PLANE && inter_sp.object == SPHERE && \
-		inter_pl.t1 < inter_sp.t1))
-		{
-			print_v("ray = ", ray.direction);
-			printf("pl t1 = %f, sp t1 = %f, sp t2 = %f\n",inter_pl.t1, inter_sp.t1, inter_sp.t2);
-		}
-		return (inter_pl);
-	}
-	if (j % 1000 == 0 &&(inter_pl.object == PLANE && inter_sp.object == SPHERE && \
-		inter_pl.t1 > inter_sp.t1))
+		inter[0] = found_inter_pl(ray, rt);
+	if (rt.scene.sp)
+		inter[1] = found_inter_sp(ray, rt);
+	if (rt.scene.cy)
+		inter[2] = found_inter_cy(ray, rt);
+	i = 0;
+	ret = inter[0];
+	while (++i < 3)
 	{
-		printf("\033[1;31m");
-		print_v("ray = ", ray.direction);
-		printf("aaa pl t1 = %f, sp t1 = %f, sp t2 = %f\n",inter_pl.t1, inter_sp.t1, inter_sp.t2);
-		printf("\033[0m");
+		if (ret.object == NO_INTER || (inter[i].object != NO_INTER && inter[i].t1 < ret.t1))
+			ret = inter[i];
 	}
-	i++;
-	j++;
-	return(inter_sp);
+	return (ret);
 }
 
 t_intersec found_inter_sp(t_ray ray, t_rt rt)
