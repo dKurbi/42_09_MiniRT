@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_cy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/12 17:45:26 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:26:38 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ t_cy_inter_values calc_inter_values(t_cylinder cy, t_ray ray)
     val.sqrtDiscriminant = sqrt(val.discriminant);
  	val.t1 = (-val.b - val.sqrtDiscriminant) / (2 * val.a);
     val.t2 = (-val.b + val.sqrtDiscriminant) / (2 * val.a); 
+	if (val.t2 < val.t1)
+		val.t1 = val.t2;
 	val.hit1 = v_add(ray.start, v_expand(ray.direction, val.t1));
-    val.hit2 = v_add(ray.start, v_expand(ray.direction, val.t2));
 	val.p1DotV = v_dot(v_rest(val.hit1, val.cylBase), cy.cy_axis);
-    val.p2DotV = v_dot(v_rest(val.hit2, val.cylBase), cy.cy_axis);
 	return (val);
 }
 
@@ -56,24 +56,16 @@ t_intersec inter_ray_cy(t_cylinder cy, t_ray ray)
 	
 	val = calc_inter_values(cy, ray);
 	i_ret.object = NO_INTER;
-    if (val.discriminant < 0) 
+    if (val.discriminant < 0 || val.t1 < 0) 
         return (i_ret); 
     val.sqrtDiscriminant = sqrt(val.discriminant);
-    i_ret.t1 = val.t1;
-    i_ret.t2 = val.t2;
-    if (val.p1DotV >=0 && val.p1DotV <= cy.cy_height)
+	i_ret.t1 = val.t1;
+	if (val.p1DotV >=0 && val.p1DotV <= cy.cy_height)
 	{
 		i_ret.object = CYLINDER;
 		i_ret.hit1 = val.hit1;
 		i_ret.color = cy.cy_color;
-        i_ret.n1 = v_expand(calculate_normal(cy, i_ret.hit1), -1);
-	}
-	if (val.p2DotV >= 0 && val.p2DotV <= cy.cy_height)
-	{
-		i_ret.object = CYLINDER;
-		i_ret.hit2 = val.hit2;
-		i_ret.color = cy.cy_color;
-         i_ret.n2 = calculate_normal(cy, i_ret.hit2);
+        i_ret.n1 = calculate_normal(cy, i_ret.hit1);
 	}
     return (i_ret);
 }

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/06/14 00:29:10 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
+/*   Updated: 2024/06/13 18:19:10 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/minirt.h"
 
