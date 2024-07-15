@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/15 14:29:37 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/15 15:41:07 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ t_intersec found_inter(t_ray ray, t_rt rt)
 {
 	t_intersec inter[3]; 
 	t_intersec ret;
+	static int 	j;
 	int 		i;
 
+	i = -1;
+	while (++i < 3)
+		inter[0].object = NO_INTER; 
 	if (rt.scene.pl)
 		inter[0] = found_inter_pl(ray, rt);
 	if (rt.scene.sp)
@@ -32,6 +36,8 @@ t_intersec found_inter(t_ray ray, t_rt rt)
 		if (ret.object == NO_INTER || (inter[i].object != NO_INTER && inter[i].t1 < ret.t1))
 			ret = inter[i];
 	}
+	if (j++ % 10000 == 0 && ret.object != NO_INTER)
+		printf("ret t1 = %f, ret t2 = %f,\nret objetct = %d\n", ret.t1, ret.t2, ret.object);
 	return (ret);
 }
 
@@ -49,7 +55,7 @@ t_intersec found_inter_sp(t_ray ray, t_rt rt)
 	while (sp)
 	{	
 		temp = inter_ray_sp(*sp, ray);
-		if (temp.object != NO_INTER &&  temp.t1 > inter.t1)
+		if (inter.object == NO_INTER || (temp.object != NO_INTER &&  temp.t1 < inter.t1))
 			inter = temp;
 		sp = sp->next;
 	}
@@ -106,11 +112,11 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 	t_rgb		final_color;
 
 	nxl = 0;
-	intensity = rt.scene.a_l_ratio;
+	intensity = rt.scene.a_l_ratio * 0.8;
 	if (inter.object == SPHERE || inter.object == CYLINDER)
 	{
 		l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.hit1));
-    	nxl = v_dot(v_expand(l_dir, -1), inter.n1);
+    	nxl = v_dot(l_dir, inter.n1);
         if (nxl < 0)
             nxl = 0;
         intensity += rt.scene.l_bright * nxl;

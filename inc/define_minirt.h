@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/12 16:33:49 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:19:36 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,10 @@
 # endif
 
 //shapes intersection
-# define NO_INTER -1
-# define SPHERE 0
-# define PLANE 1
-# define CYLINDER 2
+# define NO_INTER 0
+# define SPHERE 1
+# define PLANE 2
+# define CYLINDER 3
 
 //3.14 not defined in Linux
 # ifndef M_PI
