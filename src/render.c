@@ -3,61 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/13 21:20:05 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:41:07 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_intersec find_inter(t_ray ray, t_rt rt)
+//inter[0] == plano, inter[1] == esfera, inter[2] == cilindro
+t_intersec found_inter(t_ray ray, t_rt rt)
 {
-	t_intersec inter_sp;
-	t_intersec inter_pl;
-	t_intersec inter_cy;
-	static int i;
-	static int j;
+	t_intersec inter[3]; 
+	t_intersec ret;
+	static int 	j;
+	int 		i;
 
-	inter_sp.object = NO_INTER;
-	inter_pl.object = NO_INTER;
-
-	inter_cy.object = NO_INTER;
-	if (rt.scene.cy)
-		inter_cy = found_inter_cy(ray, rt);
-	if (inter_cy.object == CYLINDER)
-	{
-		return (inter_cy);
-	}
-	if (rt.scene.sp)
-		inter_sp = found_inter_sp(ray, rt);
+	i = -1;
+	while (++i < 3)
+		inter[0].object = NO_INTER; 
 	if (rt.scene.pl)
-		inter_pl = found_inter_pl(ray, rt);
-
-	if ((inter_pl.object == PLANE && inter_sp.object == NO_INTER) || \
-		(inter_pl.object == PLANE && inter_sp.object == SPHERE && \
-		inter_pl.t1 < inter_sp.t1))
-	{	
-		if (i % 10 == 0 && (inter_pl.object == PLANE && inter_sp.object == SPHERE && \
-		inter_pl.t1 < inter_sp.t1))
-		{
-			print_v("ray = ", ray.direction);
-			printf("pl t1 = %f, sp t1 = %f, sp t2 = %f\n",inter_pl.t1, inter_sp.t1, inter_sp.t2);
-		}
-		return (inter_pl);
-	}
-	if (j % 1000 == 0 &&(inter_pl.object == PLANE && inter_sp.object == SPHERE && \
-		inter_pl.t1 > inter_sp.t1))
+		inter[0] = found_inter_pl(ray, rt);
+	if (rt.scene.sp)
+		inter[1] = found_inter_sp(ray, rt);
+	if (rt.scene.cy)
+		inter[2] = found_inter_cy(ray, rt);
+	i = 0;
+	ret = inter[0];
+	while (++i < 3)
 	{
-		printf("\033[1;31m");
-		print_v("ray = ", ray.direction);
-		printf("aaa pl t1 = %f, sp t1 = %f, sp t2 = %f\n",inter_pl.t1, inter_sp.t1, inter_sp.t2);
-		printf("\033[0m");
+		if (ret.object == NO_INTER || (inter[i].object != NO_INTER && inter[i].t1 < ret.t1))
+			ret = inter[i];
 	}
-	i++;
-	j++;
-	return (inter_sp);
+	if (j++ % 10000 == 0 && ret.object != NO_INTER)
+		printf("ret t1 = %f, ret t2 = %f,\nret objetct = %d\n", ret.t1, ret.t2, ret.object);
+	return (ret);
 }
 
 t_intersec found_inter_sp(t_ray ray, t_rt rt)
@@ -74,7 +55,7 @@ t_intersec found_inter_sp(t_ray ray, t_rt rt)
 	while (sp)
 	{	
 		temp = inter_ray_sp(*sp, ray);
-		if (temp.object != NO_INTER &&  temp.t1 > inter.t1)
+		if (inter.object == NO_INTER || (temp.object != NO_INTER &&  temp.t1 < inter.t1))
 			inter = temp;
 		sp = sp->next;
 	}
@@ -102,26 +83,26 @@ t_intersec found_inter_pl(t_ray ray, t_rt rt)
 	return (inter);
 }
 
-	t_intersec found_inter_cy(t_ray ray, t_rt rt)
-	{
-		t_cylinder *cy;
-		t_intersec inter;
-		t_intersec temp;
+t_intersec found_inter_cy(t_ray ray, t_rt rt)
+{
+	t_cylinder *cy;
+	t_intersec inter;
+	t_intersec temp;
 
-		cy = rt.scene.cy;
-		inter = inter_ray_cy(*cy, ray);
-		if (inter.object == NO_INTER)
-			inter.t1 = 0;
-		cy = cy->next; 
-		while (cy)
-		{	
-			temp = inter_ray_cy(*cy, ray);
-			if (temp.object != NO_INTER && temp.t1 < inter.t1)
-				inter = temp;
-			cy = cy->next;
-		}
-		return (inter);
+	cy = rt.scene.cy;
+	inter = inter_ray_cy(*cy, ray);
+	if (inter.object == NO_INTER)
+		inter.t1 = 0;
+	cy = cy->next; 
+	while (cy)
+	{	
+		temp = inter_ray_cy(*cy, ray);
+		if (temp.object != NO_INTER && temp.t1 < inter.t1)
+			inter = temp;
+		cy = cy->next;
 	}
+	return (inter);
+}
 
 int	get_color_inter(t_intersec inter, t_rt rt)
 {
@@ -131,11 +112,11 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 	t_rgb		final_color;
 
 	nxl = 0;
-	intensity = rt.scene.a_l_ratio;
+	intensity = rt.scene.a_l_ratio * 0.8;
 	if (inter.object == SPHERE || inter.object == CYLINDER)
 	{
 		l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.hit1));
-    	nxl = v_dot(v_expand(l_dir, -1), inter.n1);
+    	nxl = v_dot(l_dir, inter.n1);
         if (nxl < 0)
             nxl = 0;
         intensity += rt.scene.l_bright * nxl;

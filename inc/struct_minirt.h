@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/13 21:45:15 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:34:03 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_mlx
 	int		endian;
 }	t_mlx;
 
-//standard 3D vector
 typedef struct s_vector
 {
 	double	x;
@@ -34,7 +33,6 @@ typedef struct s_vector
 	double	z;
 }	t_vector;
 
-// 2D vector
 typedef struct s_vector2
 {
 	double	x;
@@ -74,41 +72,6 @@ typedef struct s_cylinder
 	struct s_cylinder	*next;
 }	t_cylinder;
 
-//values for rendering CYLINDER
-typedef struct s_cy_inter_val
-{
-	t_vector	half_height_vec;
-	t_vector	cy_base;
-	t_vector	cy_top;
-	t_vector	delta_p;
-	double		d_dot_v;
-	double		delta_p_dot_v;
-	t_vector	v_a;
-	t_vector	v_b;
-	double		a;
-	double		b;
-	double		c;
-	double		discrim;
-	double		sqrt_discrim;
-	double		t1;
-	double		t2;
-	t_vector	hit1;
-	t_vector	hit2;
-	double		p1_dot_v;
-	double		p2_dot_v;
-}	t_cy_inter_val;
-
-//quadratic formula structure
-typedef struct s_quadr
-{
-	double		a;
-	double		b;
-	double		c;
-	double		discrim;
-	double		sqrt_discrim;
-}	t_quadr;
-
-//structure for rays
 typedef struct s_ray
 {
 	t_vector	direction;
@@ -116,18 +79,15 @@ typedef struct s_ray
 	double		len;
 }	t_ray;
 
-//intersection struct
 typedef struct s_intersec
 {
-	t_ray		ray;
-	double		t1;
-	double		t2;
-	t_vector	hit1;
-	t_vector	hit2;
-	t_vector	n1;
-	t_vector	n2;
-	int			object;
-	t_rgb		color;
+	int		    object;
+	t_ray   	ray;
+	double	    t1;
+	double	    t2;
+    t_vector	hit1;
+    t_vector	n1;
+	t_rgb	    color;
 }	t_intersec;
 
 /*
@@ -169,5 +129,35 @@ typedef struct s_rt
 	double	aspect_ratio;
 	t_scene	scene;
 }	t_rt;
+
+typedef struct s_cuadratica
+{
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+	double		sqrtDiscriminant;
+} t_cuadratica;
+
+typedef struct s_cy_inter_values
+{
+	t_vector	halfHeightVec;
+	t_vector	cylBase;
+	t_vector	cylTop;
+	t_vector	deltaP;
+	double		dDotV;
+	double		deltaPDotV;
+	t_vector	v_a;
+	t_vector	v_b;
+	double		a;
+	double		b;
+	double		c;
+	double		discriminant;
+	double		sqrtDiscriminant;
+	double		t1;
+	double		t2;
+	t_vector	hit1;
+	double		p1DotV;
+} t_cy_inter_values;
 
 #endif

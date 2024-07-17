@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_scene_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:27 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/05/11 17:49:58 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:05:47 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	add_plane(t_rt *rt, char *line)
 			print_error_arg(*rt, ERR_VECTOR_RANGE, STR_PLANE, NO_FREE_MLX), 1);
 	if (add_pl_second_part(rt, line, i, new_plane))
 		return (ERROR);
+	new_plane->pl_normal = v_normalized(new_plane->pl_normal);
 	add_plane_lst(rt, new_plane);
 	return (0);
 }
@@ -92,6 +93,7 @@ int	add_cylinder(t_rt *rt, char *line)
 			print_error_arg(*rt, ERR_VECTOR_RANGE, STR_CYL, NO_FREE_MLX), 1);
 	if (add_cy_second_part(rt, line, i, new_cyl) > 0)
 		return (ERROR);
+	new_cyl->cy_axis = v_normalized(new_cyl->cy_axis);
 	add_cylinder_lst(rt, new_cyl);
 	return (0);
 }

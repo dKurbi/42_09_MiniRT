@@ -4,10 +4,7 @@ then
 	exit 1;
 elif [ $# -eq 0 ]
 then
-	valgrind --leak-check=full --track-fds=yes --trace-children=yes ./minirt files_rt/cylinder.rt
+	leaks --atExit -- ./minirt files_rt/scene.rt
 else
-	valgrind --leak-check=full --track-fds=yes --trace-children=yes ./minirt $1
+	leaks --atExit -- ./minirt $1
 fi
-
-# Mac
-# leaks --atExit -- ./minirt $1

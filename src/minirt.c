@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 06:47:41 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/13 21:20:16 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
+/*   Updated: 2024/06/13 18:19:10 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	raytracing(t_rt *rt)
 	t_intersec	inter;
 	double		t;
 
+
 	x = -1;
 	y = -1;
 	t = tan(rt->scene.c_fov);
@@ -28,7 +29,7 @@ void	raytracing(t_rt *rt)
 		while (++x < WIN_X)
 		{
 			ray = make_ray(calc_ang_rot(x, y, t, rt->aspect_ratio), *rt);
-			inter = find_inter(ray, *rt);
+			inter = found_inter(ray, *rt);
 			if (inter.object != NO_INTER)
 				pixel_put(*rt, x, y, get_color_inter(inter, *rt));
 			else
@@ -42,7 +43,6 @@ void	raytracing(t_rt *rt)
 	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
 							rt->rtmlx.img, 0, 0);
 }
-
 
 //MAIN: MAIN
 int	main(int ac, char **av)
