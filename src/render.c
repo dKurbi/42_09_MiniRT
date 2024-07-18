@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/18 15:07:06 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/18 18:23:47 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 		l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.hit1));
 		nxl = v_dot(l_dir, inter.n1);
 		if (nxl < 0)
-			nxl = 0;
+			nxl = -nxl;
 		intensity += rt.scene.l_bright * nxl;
 	}
 	if (intensity > 1.0)
