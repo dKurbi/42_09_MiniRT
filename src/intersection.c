@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/15 15:29:09 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/18 13:32:09 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_intersec	inter_ray_sp(t_sphere sp, t_ray ray)
 {
-	t_intersec	i_ret;
-	t_cuadratica val;
+	t_intersec		i_ret;
+	t_cuadratica	val;
 
 	i_ret.object = NO_INTER;
 	val.a = v_lenght2(ray.direction);
@@ -29,14 +29,12 @@ t_intersec	inter_ray_sp(t_sphere sp, t_ray ray)
 		i_ret.ray = ray;
 		i_ret.t1 = (-val.b + val.sqrtDiscriminant) / (2 * val.a);
 		i_ret.t2 = (-val.b - val.sqrtDiscriminant) / (2 * val.a);
-		if (i_ret.t1 < 0 && i_ret.t2 < 0)
-			return(i_ret);
-		if (i_ret.t2 < i_ret.t1)
-			i_ret.t1 =  i_ret.t2;
+		i_ret.t1 = choose_t(i_ret.t1, i_ret.t2);
+		if (i_ret.t1 < 0)
+			return (i_ret);
 		i_ret.object = SPHERE;
 		i_ret.hit1 = v_add(v_expand(ray.direction, i_ret.t1), ray.start);
 		i_ret.n1 = v_normalized(v_rest(i_ret.hit1, sp.sp_center));
-
 	}
 	return (i_ret);
 }
@@ -62,4 +60,19 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 			i_ret.object = NO_INTER;
 	}
 	return (i_ret);
+}
+
+double	choose_t(double t1, double t2)
+{
+	if (t1 > 0 && t2 > 0)
+	{
+		if (t2 < t1)
+			return (t2);
+		return (t1);
+	}
+	if (t1 < 0 && t2 > 0)
+		return (t2);
+	if (t1 > 0 && t2 < 0)
+		return (t1);
+	return (-1);
 }

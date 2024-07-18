@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/13 18:17:22 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/18 13:48:09 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,14 @@ void		init_cam(t_rt *rt);
 //intersection.c
 t_intersec	inter_ray_sp(t_sphere sp, t_ray ray);
 t_intersec	inter_ray_pl(t_plane pl, t_ray ray);
-t_intersec inter_ray_cy(t_cylinder cy, t_ray ray);
+t_intersec	inter_ray_cy(t_cylinder cy, t_ray ray);
+double		choose_t(double t1, double t2);
+
+//intersection_cy_calc.c
+t_cy_inter_values	calc_inter_values(t_cylinder cy, t_ray ray);
+t_vector			calculate_normal_cy(t_cylinder cy, t_vector hit);
+
+
 
 //maths_others.c
 double		get_radian(double angle);
