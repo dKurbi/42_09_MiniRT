@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/13 18:19:10 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/21 07:32:28 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	raytracing(t_rt *rt)
 	t_ray		ray;
 	t_intersec	inter;
 	double		t;
-
 
 	x = -1;
 	y = -1;
@@ -36,7 +35,6 @@ void	raytracing(t_rt *rt)
 				pixel_put(*rt, x, y, 0);
 		}
 		x = -1;
-		//printf("\n");
 	}
 	print_scene(rt->scene);
 	printf("fov = %f, tan = %f\n", rt->scene.c_fov, t);

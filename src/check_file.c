@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/02 18:32:16 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/18 18:03:51 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int	rgb_limit(int r, int g, int b)
 
 //adding, judging which scene is
 int	add_line_to_scene(t_rt *rt, char *line)
-{
+{	
+	if (line[0] == '/' && line[1] == '/')
+		return (0);
 	if (!line[1] || !line[2])
 		return (print_error(*rt, ERR_VALUE_NOT_SCENE, NO_FREE_MLX));
 	if (!ft_strncmp(line, "A", 1) && (line[1] == ' ' || line[1] == '\t'))
