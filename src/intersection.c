@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/18 18:19:36 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:27:01 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_intersec	inter_ray_sp(t_sphere sp, t_ray ray)
 	t_cuadratica	val;
 
 	i_ret.object = NO_INTER;
+	i_ret.t1 = -1;
 	val.a = v_lenght2(ray.direction);
 	val.b = 2 * v_dot(ray.direction, v_rest(ray.start, sp.sp_center));
 	val.c = v_lenght2(v_rest(ray.start, sp.sp_center)) - pow(sp.sp_diam / 2, 2);
@@ -45,6 +46,7 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 	double		dn;
 
 	i_ret.object = NO_INTER;
+	i_ret.t1 = -1;
 	dn = v_dot(ray.direction, pl.pl_normal);
 	if (fabs(dn) > EPSILON)
 	{
