@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/21 07:32:15 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/24 01:00:44 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ t_intersec	inter_ray_cy(t_cylinder cy, t_ray ray)
 
 	val = calc_inter_values(cy, ray);
 	i_ret.object = NO_INTER;
+	i_ret.t1 = -1;
 	if (val.discriminant < 0 || val.t1 < 0)
 		return (i_ret);
 	val.sqrtDiscriminant = sqrt(val.discriminant);

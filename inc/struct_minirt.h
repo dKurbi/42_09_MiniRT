@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/15 14:34:03 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/23 18:25:15 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct s_intersec
     t_vector	hit1;
     t_vector	n1;
 	t_rgb	    color;
+	int			index;
 }	t_intersec;
 
 /*

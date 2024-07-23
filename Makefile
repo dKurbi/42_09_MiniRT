@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/07/21 07:31:28 by iassambe         ###   ########.fr        #
+#    Updated: 2024/07/24 01:00:28 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,8 +85,8 @@ SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
 		check_str_number.c utils_check.c free_struct_lst.c utils_check_2.c \
 		add_struct_figure.c add_scene_lower_second.c maths_vector.c \
 		maths_vector_2.c maths_others.c intersection.c ray_and_pixel.c \
-		init_cam.c print.c rotation.c render.c intersection_cy.c \
-		intersection_cy_calc.c
+		init_cam.c print.c rotation.c found_inter.c intersection_cy.c \
+		intersection_cy_calc.c get_color.c
 		
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)

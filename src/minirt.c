@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/21 07:32:28 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/24 01:00:58 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	raytracing(t_rt *rt)
 		while (++x < WIN_X)
 		{
 			ray = make_ray(calc_ang_rot(x, y, t, rt->aspect_ratio), *rt);
-			inter = found_inter(ray, *rt);
+			inter = found_inter(ray, *rt, NO_INTER, -1);
 			if (inter.object != NO_INTER)
 				pixel_put(*rt, x, y, get_color_inter(inter, *rt));
 			else
