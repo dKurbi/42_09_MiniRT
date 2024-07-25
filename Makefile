@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/07/24 01:00:28 by iassambe         ###   ########.fr        #
+#    Updated: 2024/07/25 20:29:35 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,7 +148,7 @@ err: error
 e: error
 
 go:
-	./$(NAME) $(DIR_FILES_RT)/scene.rt
+	./$(NAME) $(DIR_FILES_RT)scene.rt
 
 g: go
 
