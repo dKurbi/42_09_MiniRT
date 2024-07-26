@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 11:54:44 by diego             #+#    #+#             */
-/*   Updated: 2024/06/02 18:54:37 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/07/26 19:37:43 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,27 +77,32 @@ void	print_scene_figures(t_sphere *sp, t_plane *pl, t_cylinder *cy, int i)
 
 void	print_scene(t_scene s)
 {
-	t_sphere	*sp;
+	/* t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
-	int			i;
+	int			i; */
 
 	printf("--------SCENE-------\n");
-	printf("\nAMBIENT\n");
+	/* printf("\nAMBIENT\n");
 	printf("Ratio: %f\n", s.a_l_ratio);
-	print_rgb("Color", s.a_l_color);
+	print_rgb("Color", s.a_l_color); */
 	printf("\nCAMERA\n");
 	print_v("Camara position", s.c_pos);
 	print_v("Camara direction", s.c_dir);
+	printf("len Camara direction: %f len2: %f\n", v_lenght(s.c_dir), v_lenght2(s.c_dir));
 	printf("Camera FOV: %f\n", s.c_fov);
-	printf("\nLIGHT\n");
+	/*printf("\nLIGHT\n");
 	print_v("Light Position", s.l_pos);
 	printf("Light bright: %f\n", s.l_bright);
-	sp = s.sp;
+	 sp = s.sp;
 	pl = s.pl;
 	i = 1;
 	cy = s.cy;
-	print_scene_figures(sp, pl, cy, i);
+	print_scene_figures(sp, pl, cy, i); */
 	print_v("vector up", s.v_up);
+	printf("len Vector up: %f len2: %f\n", v_lenght(s.v_up), v_lenght2(s.v_up));
 	print_v("vector right", s.v_right);
+	printf("len Vector right: %f len2: %f\n", v_lenght(s.v_right), v_lenght2(s.v_right));
+	printf("Dir . Up = %f, Dir . right = %f, Up . Right = %f \n", v_dot(s.c_dir,s.v_up), v_dot(s.c_dir, s.v_right), v_dot(s.v_up, s.v_right));
+
 }

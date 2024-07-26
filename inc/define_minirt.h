@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/15 15:19:36 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/26 19:38:42 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,15 @@
 #  define KEY_ARROW_RIGHT 65363
 #  define KEY_W 119
 #  define KEY_A 97
+#  define KEY_B 98
+#  define KEY_V 118
 #  define KEY_S 115
 #  define KEY_D 100
 #  define KEY_Z 122
 #  define KEY_X 120
 #  define KEY_C 99
+#  define KEY_R 114
+#  define KEY_T 116
 # else
 #  define KEY_ESC 53
 #  define KEY_ENTER 36
@@ -96,6 +100,10 @@
 #  define KEY_Z 6
 #  define KEY_X 7
 #  define KEY_C 8
+#  define KEY_R 15
+#  define KEY_T 17
+
+
 # endif
 
 //mouse control mlx
@@ -130,7 +138,7 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
 # endif
-#define EPSILON 1e-6
+#define EPSILON 1e-2
 
 //other defines
 # define ERROR 1

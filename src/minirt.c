@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/23 19:19:13 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/26 19:59:53 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ void	raytracing(t_rt *rt)
 				pixel_put(*rt, x, y, get_color_inter(inter, *rt));
 			else
 				pixel_put(*rt, x, y, 0);
+			if (y %40 == 0 && x % 40 == 0)
+				printf("%d |", inter.object);
+
 		}
+		if (y %40 == 0)
+			printf("\n");
 		x = -1;
 	}
 	print_scene(rt->scene);
