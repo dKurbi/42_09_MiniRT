@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:48:25 by diego             #+#    #+#             */
-/*   Updated: 2024/07/18 15:11:41 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/26 18:27:26 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	calc_up_right_vector(t_rt *rt)
 	rt->scene.c_dir = v_normalized(rt->scene.c_dir);
 	if (rt->scene.c_dir.x || rt->scene.c_dir.y)
 	{
-		rt->scene.v_up = v_cross(rt->scene.c_dir, v_new(-1, 0, 0));
+		rt->scene.v_up = v_cross(rt->scene.c_dir, v_new(1, 0, 0));
 		rt->scene.v_up = v_normalized(rt->scene.v_up);
 		rt->scene.v_right = v_normalized(v_cross(rt->scene.v_up, \
 			rt->scene.c_dir));

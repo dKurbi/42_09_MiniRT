@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/24 01:00:58 by iassambe         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/07/29 01:50:01 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../inc/minirt.h"
 
@@ -33,7 +34,12 @@ void	raytracing(t_rt *rt)
 				pixel_put(*rt, x, y, get_color_inter(inter, *rt));
 			else
 				pixel_put(*rt, x, y, 0);
+			if (y %40 == 0 && x % 40 == 0)
+				printf("%d |", inter.object);
+
 		}
+		if (y %40 == 0)
+			printf("\n");
 		x = -1;
 	}
 	print_scene(rt->scene);

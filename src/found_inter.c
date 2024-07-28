@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   found_inter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/23 19:45:45 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/24 22:41:12 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 			(inter[i].object > NO_INTER && inter[i].t1 < ret.t1))
 			ret = inter[i];
 	}
-	if (ret.object != NO_INTER)
-		printf("objeto = %d, index = %d\n", ret.object, ret.index);
+	//if (ret.object != NO_INTER)
+	//	printf("objeto = %d, index = %d\n", ret.object, ret.index);
 	return (ret);
 }
 

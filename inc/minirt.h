@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/24 01:00:15 by iassambe         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2024/07/29 01:24:29 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINIRT_H
 # define MINIRT_H
@@ -125,6 +126,7 @@ double		v_dot(t_vector v1, t_vector v2);
 t_vector	v_cross(t_vector v1, t_vector v2);
 
 //minirt.c
+void		raytracing(t_rt *rt);
 
 //struct.c
 void		rtnew(t_rt *rt, int ac, char **av);
@@ -185,6 +187,17 @@ t_intersec 	found_inter_cy(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 //get_color.c
 int			get_color_inter(t_intersec inter, t_rt rt);
 int			is_shadow(t_intersec inter, t_rt rt);
+
+//cam_moves.c
+void	cam_spin(t_rt *rt, double ang);
+void	cam_m_h(t_rt *rt, double ang);
+void	cam_m_v(t_rt *rt, double ang);
+void	cam_m_fwd(t_rt *rt, int distance);
+
+//light_change.c
+void amb_light_more_bright (t_rt *rt);
+void amb_light_less_bright (t_rt *rt);
+
 
 
 #endif
