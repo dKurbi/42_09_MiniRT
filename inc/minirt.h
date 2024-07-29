@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/26 18:02:02 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/29 13:22:05 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 int			add_ambient_light(t_rt *rt, char *line);
 int			add_camera(t_rt *rt, char *line);
 int			add_light(t_rt *rt, char *line);
+void 		add_light_as_sphere(t_rt *rt);
 
 //add_scene_lower_second.c
 int			add_sp_second_part(t_rt *rt, char *line, int i, t_sphere *new_sp);
@@ -194,9 +195,11 @@ void	cam_m_v(t_rt *rt, double ang);
 void	cam_m_fwd(t_rt *rt, int distance);
 
 //light_change.c
-void amb_light_more_bright (t_rt *rt);
-void amb_light_less_bright (t_rt *rt);
+void 	amb_light_more_bright (t_rt *rt);
+void 	amb_light_less_bright (t_rt *rt);
 
-
+//zoom.c
+int		zoom_in(t_rt *rt);
+int		zoom_out(t_rt *rt);
 
 #endif

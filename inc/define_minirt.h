@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/26 19:38:42 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/29 12:50:33 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@
 #  define KEY_C 99
 #  define KEY_R 114
 #  define KEY_T 116
+#  define KEY_I 105
+#  define KEY_O 111
 # else
 #  define KEY_ESC 53
 #  define KEY_ENTER 36

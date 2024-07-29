@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/23 18:27:32 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:55:19 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,21 @@ t_intersec	inter_ray_top_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
 // Intersección con la tapa y la base del cilindro
 t_intersec	inter_ray_t_b_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
 {
-	t_intersec	i_ret;
+	t_intersec	i_top;
+	t_intersec	i_base;
 
-	i_ret = inter_ray_base_cy (cy, ray, val);
-	if (i_ret.object == CYLINDER)
-		return (i_ret);
-	i_ret = inter_ray_top_cy (cy, ray, val);
-	return (i_ret);
+
+	i_base = inter_ray_base_cy (cy, ray, val);
+	i_top = inter_ray_top_cy (cy, ray, val);
+	if (i_base.object == CYLINDER && i_top.object == CYLINDER)
+	{
+		if (i_base.t1 < i_top.t1)
+			return (i_base);
+		return (i_top);	
+	}
+	if (i_base.object == CYLINDER)
+		return (i_base);
+	return (i_top);
 }
 
 t_intersec	inter_ray_cy(t_cylinder cy, t_ray ray)

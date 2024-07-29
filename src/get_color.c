@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:55:16 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/23 19:58:57 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:07:05 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 
 	nxl = 0;
 	intensity = rt.scene.a_l_ratio * 0.8;
+	if (inter.object == SPHERE && inter.index == 0)
+		return (color(255,255,255));
 	if (!is_shadow(inter, rt))
 	{
 		if (inter.object == SPHERE || inter.object == CYLINDER)
@@ -56,13 +58,13 @@ int	is_shadow(t_intersec inter, t_rt rt)
 	double		norm_l_h;
 	t_vector	l_h;
 	
-
 	ray.start = inter.hit1;
 	l_h =  v_rest(rt.scene.l_pos, inter.hit1);
 	ray.direction = v_normalized(l_h);
 	shadow = found_inter(ray, rt, inter.object, inter.index);
 	norm_l_h =  v_lenght2(l_h);
-	if (shadow.object == NO_INTER || norm_l_h < pow(shadow.t1, 2) )
+	if (shadow.object == NO_INTER || norm_l_h < pow(shadow.t1, 2) || \
+			(shadow.object == SPHERE && inter.index == 0))
 		return (0);
 	return (1);
 	
