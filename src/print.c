@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 11:54:44 by diego             #+#    #+#             */
-/*   Updated: 2024/07/29 13:24:24 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:32:04 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,26 @@ void	print_cylinder(char *name, t_cylinder c)
 
 void	print_scene_figures(t_sphere *sp, t_plane *pl, t_cylinder *cy, int i)
 {
-	printf("\nLIST OF SPHERES\n");
+	if (sp != NULL)
+		printf("\nLIST OF SPHERES\n");
 	while (sp != NULL)
 	{
 		printf("%d: ", i++);
 		print_sphere("Sphere", *sp);
 		sp = sp->next;
 	}
-	i = 1;
-	printf("\nLIST OF PLANES\n");
+	i = 0;
+	if (pl != NULL)
+		printf("\nLIST OF PLANES\n");
 	while (pl != NULL)
 	{
 		printf("%d: ", i++);
 		print_plane("Plane", *pl);
 		pl = pl->next;
 	}
-	i = 1;
-	printf("\nLIST OF CYLINDER\n");
+	i = 0;
+	if (cy != NULL)
+		printf("\nLIST OF CYLINDER\n");
 	while (cy != NULL)
 	{
 		printf("%d: ", i++);
@@ -83,9 +86,9 @@ void	print_scene(t_scene s)
 	int			i; 
 
 	printf("--------SCENE-------\n");
-	/* printf("\nAMBIENT\n");
+ 	printf("\nAMBIENT\n");
 	printf("Ratio: %f\n", s.a_l_ratio);
-	print_rgb("Color", s.a_l_color); */
+	print_rgb("Color", s.a_l_color);
 	printf("\nCAMERA\n");
 	print_v("Camara position", s.c_pos);
 	print_v("Camara direction", s.c_dir);
@@ -96,13 +99,9 @@ void	print_scene(t_scene s)
 	printf("Light bright: %f\n", s.l_bright);
 	sp = s.sp;
 	pl = s.pl;
-	i = 1;
+	i = 0;
 	cy = s.cy;
 	print_scene_figures(sp, pl, cy, i); 
 	print_v("vector up", s.v_up);
-	printf("len Vector up: %f len2: %f\n", v_lenght(s.v_up), v_lenght2(s.v_up));
 	print_v("vector right", s.v_right);
-	printf("len Vector right: %f len2: %f\n", v_lenght(s.v_right), v_lenght2(s.v_right));
-	printf("Dir . Up = %f, Dir . right = %f, Up . Right = %f \n", v_dot(s.c_dir,s.v_up), v_dot(s.c_dir, s.v_right), v_dot(s.v_up, s.v_right));
-
 }

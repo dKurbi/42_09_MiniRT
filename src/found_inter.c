@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/29 17:52:58 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:24:16 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 
 	i = -1;
 	while (++i < 3)
+	{
 		inter[i].object = NO_INTER;
+		inter[i].index = 0; 
+	}
 	if (rt.scene.pl)
 		inter[0] = found_inter_pl(ray, rt, ob_avoid, index_avoid);
 	if (rt.scene.sp)
@@ -111,6 +114,7 @@ t_intersec	found_inter_cy(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 	index = 0;
 	inter.index = -1;
 	inter.object = NO_INTER;
+	inter.index = -1;
 	while (cy)
 	{
 		if (!(ob_avoid >= CYLINDER && index == index_avoid))

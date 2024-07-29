@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/26 20:08:40 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/29 19:24:22 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 	double		dn;
 
 	i_ret.object = NO_INTER;
-	i_ret.t1 = -1;
+	i_ret.t1 = 0;
 	dn = v_dot(ray.direction, pl.pl_normal);
 	if (fabs(dn) > EPSILON)
 	{

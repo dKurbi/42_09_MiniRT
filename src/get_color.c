@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:55:16 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/29 19:14:59 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:19:07 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 	double		nxl;
 	double		intensity;
 	t_rgb		final_color;
-	static int	i;
 
 	nxl = 0;
 	intensity = rt.scene.a_l_ratio * 0.8;
