@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/12 17:36:26 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:17:31 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ void	rtnew(t_rt *rt, int ac, char **av)
 
 void	mlxnew(t_rt *rt)
 {
+	char *str;
+	
+	str = ft_strjoin("minirt: ", rt->av[1]);
 	rt->rtmlx.mlx_ptr = mlx_init();
-	rt->rtmlx.win = mlx_new_window(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y, "miniRT");
+	rt->rtmlx.win = mlx_new_window(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y, str);
 	rt->rtmlx.img = mlx_new_image(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y);
 	rt->rtmlx.addr = mlx_get_data_addr(rt->rtmlx.img, \
 					&rt->rtmlx.bitspp, &rt->rtmlx.line_len, &rt->rtmlx.endian);

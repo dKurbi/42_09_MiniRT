@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/29 13:22:05 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:56:50 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ t_intersec 	found_inter_cy(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 //get_color.c
 int			get_color_inter(t_intersec inter, t_rt rt);
 int			is_shadow(t_intersec inter, t_rt rt);
+int			is_plane_in_the_middle(t_intersec inter, t_rt rt);
 
 //cam_moves.c
 void	cam_spin(t_rt *rt, double ang);

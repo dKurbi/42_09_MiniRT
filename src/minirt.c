@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/29 18:03:18 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:38:27 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	raytracing(t_rt *rt)
 			else
 				pixel_put(*rt, x, y, 0);
 		if (y %40 == 0 && x % 40 == 0)
-				printf("%d |", inter.object);
+				printf("%d.%d|", inter.object, inter.index);
 
 		}
 		if (y %40 == 0)
