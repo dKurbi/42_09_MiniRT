@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/29 13:25:44 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:19:57 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	add_light(t_rt *rt, char *line)
 		return (print_error_arg(*rt, ERR_RANGE, STR_LIGHT, NO_FREE_MLX));
 	if (empty_after_line(line, i) == 0)
 		return (print_error_arg(*rt, ERR_VALUE_MUCH, STR_LIGHT, NO_FREE_MLX));
-	add_light_as_sphere(rt);
+	//add_light_as_sphere(rt);
 
 	return (0);
 }

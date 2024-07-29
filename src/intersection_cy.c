@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/29 14:55:19 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:50:46 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
 		&& t_base > 0)
 	{
 		i_ret.t1 = t_base;
-		if (i_ret.t1 < 0)
-			return (i_ret);
-		i_ret.object = CYLINDER;
+		i_ret.object = T_CYLINDER;
 		i_ret.hit1 = hit_base;
 		i_ret.color = cy.cy_color;
 		i_ret.n1 = cy.cy_axis;
@@ -55,9 +53,7 @@ t_intersec	inter_ray_top_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
 	if (v_dot(top_to_hit, top_to_hit) <= pow(cy.cy_diam / 2, 2) && t_top > 0)
 	{
 		i_ret.t1 = t_top;
-		if (i_ret.t1 < 0)
-			return (i_ret);
-		i_ret.object = CYLINDER;
+		i_ret.object = T_CYLINDER;
 		i_ret.hit1 = hit_top;
 		i_ret.color = cy.cy_color;
 		i_ret.n1 = top_normal;
@@ -74,13 +70,13 @@ t_intersec	inter_ray_t_b_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
 
 	i_base = inter_ray_base_cy (cy, ray, val);
 	i_top = inter_ray_top_cy (cy, ray, val);
-	if (i_base.object == CYLINDER && i_top.object == CYLINDER)
+	if (i_base.object == T_CYLINDER && i_top.object == T_CYLINDER)
 	{
 		if (i_base.t1 < i_top.t1)
 			return (i_base);
 		return (i_top);	
 	}
-	if (i_base.object == CYLINDER)
+	if (i_base.object == T_CYLINDER)
 		return (i_base);
 	return (i_top);
 }

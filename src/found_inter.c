@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   found_inter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/24 22:41:12 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/29 17:52:58 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ t_intersec	found_inter_cy(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 	inter.object = NO_INTER;
 	while (cy)
 	{
-		if (!(ob_avoid == CYLINDER && index == index_avoid))
+		if (!(ob_avoid >= CYLINDER && index == index_avoid))
 		{
 			temp = inter_ray_cy(*cy, ray);
 			if (inter.object == NO_INTER || \

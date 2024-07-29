@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/29 14:07:34 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:03:18 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	raytracing(t_rt *rt)
 		x = -1;
 	}
 	print_scene(rt->scene);
-	printf("fov = %f, tan = %f\n", rt->scene.c_fov, t);
 	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
 							rt->rtmlx.img, 0, 0);
 }

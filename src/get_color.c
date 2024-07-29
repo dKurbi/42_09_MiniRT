@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:55:16 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/29 14:07:05 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:01:39 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,24 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 	double		nxl;
 	double		intensity;
 	t_rgb		final_color;
+	static int	i;
 
 	nxl = 0;
 	intensity = rt.scene.a_l_ratio * 0.8;
-	if (inter.object == SPHERE && inter.index == 0)
-		return (color(255,255,255));
 	if (!is_shadow(inter, rt))
 	{
-		if (inter.object == SPHERE || inter.object == CYLINDER)
+		if (inter.object != NO_INTER) 
 		{
 			l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.hit1));
 			nxl = v_dot(l_dir, inter.n1);
+			if (inter.object == T_CYLINDER && i++ %100 == 0)
+			{
+				printf("t_cylinder, nxl=%f\n ", nxl );
+				if  (nxl < 0)
+					nxl = (-nxl);
+			}
 			if (nxl < 0)
 				nxl = 0;
-			intensity += rt.scene.l_bright * nxl;
-		}
-		else if (inter.object == PLANE)
-		{
-			l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.hit1));
-			nxl = v_dot(l_dir, inter.n1);
-			if (nxl < 0)
-				nxl = -nxl;
 			intensity += rt.scene.l_bright * nxl;
 		}
 		if (intensity > 1.0)
@@ -55,16 +52,15 @@ int	is_shadow(t_intersec inter, t_rt rt)
 {
 	t_ray		ray;
 	t_intersec	shadow;
-	double		norm_l_h;
+	double		norm2_l_h;
 	t_vector	l_h;
 	
 	ray.start = inter.hit1;
 	l_h =  v_rest(rt.scene.l_pos, inter.hit1);
 	ray.direction = v_normalized(l_h);
 	shadow = found_inter(ray, rt, inter.object, inter.index);
-	norm_l_h =  v_lenght2(l_h);
-	if (shadow.object == NO_INTER || norm_l_h < pow(shadow.t1, 2) || \
-			(shadow.object == SPHERE && inter.index == 0))
+	norm2_l_h =  v_lenght2(l_h);
+	if (shadow.object == NO_INTER || norm2_l_h < pow(shadow.t1, 2)) // || (shadow.object == SPHERE && inter.index == 0))
 		return (0);
 	return (1);
 	
