@@ -6,24 +6,30 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/29 17:50:46 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:18:08 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
+t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, \
+	t_cy_inter_values val, int type)
 {
 	float		t_base;
 	t_intersec	i_ret;
 	t_vector	hit_base;
 	t_vector	base_to_hit;
+	t_vector	cyl_base;
 
+	
 	i_ret.object = NO_INTER;
-	t_base = v_dot(v_rest(val.cylBase, ray.start), cy.cy_axis) / \
+	cyl_base = val.cylTop;
+	if (type == T_BASE)
+		cyl_base = val.cylBase;
+	t_base = v_dot(v_rest(cyl_base, ray.start), cy.cy_axis) / \
 		v_dot(ray.direction, cy.cy_axis);
 	hit_base = v_add(ray.start, v_expand(ray.direction, t_base));
-	base_to_hit = v_rest(hit_base, val.cylBase);
+	base_to_hit = v_rest(hit_base, cyl_base);
 	if (v_dot(base_to_hit, base_to_hit) <= pow(cy.cy_diam / 2, 2) \
 		&& t_base > 0)
 	{
@@ -36,7 +42,7 @@ t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
 	return (i_ret);
 }
 
-t_intersec	inter_ray_top_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
+/* t_intersec	inter_ray_top_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val, int type)
 {
 	t_intersec	i_ret;
 	t_vector	top_normal;
@@ -59,7 +65,7 @@ t_intersec	inter_ray_top_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
 		i_ret.n1 = top_normal;
 	}
 	return (i_ret);
-}
+} */
 
 // Intersección con la tapa y la base del cilindro
 t_intersec	inter_ray_t_b_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
@@ -68,8 +74,8 @@ t_intersec	inter_ray_t_b_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
 	t_intersec	i_base;
 
 
-	i_base = inter_ray_base_cy (cy, ray, val);
-	i_top = inter_ray_top_cy (cy, ray, val);
+	i_base = inter_ray_base_cy (cy, ray, val, T_BASE);
+	i_top = inter_ray_base_cy (cy, ray, val, T_TOP);
 	if (i_base.object == T_CYLINDER && i_top.object == T_CYLINDER)
 	{
 		if (i_base.t1 < i_top.t1)

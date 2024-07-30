@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/29 17:32:42 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:09:29 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,10 @@
 # define PLANE 2
 # define CYLINDER 3
 # define T_CYLINDER 4
+
+//type Cilinder Base
+# define T_BASE 0
+# define T_TOP 	1
 
 //3.14 not defined in Linux
 # ifndef M_PI
