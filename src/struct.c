@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/29 18:17:31 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:19:44 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	rtnew(t_rt *rt, int ac, char **av)
 
 void	mlxnew(t_rt *rt)
 {
-	char *str;
-	
+	char	*str;
+
 	str = ft_strjoin("minirt: ", rt->av[1]);
 	rt->rtmlx.mlx_ptr = mlx_init();
 	rt->rtmlx.win = mlx_new_window(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y, str);

@@ -6,14 +6,13 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/30 16:46:30 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:11:51 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, \
-	t_cy_inter_values val, int type)
+t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, int type)
 {
 	float		t_base;
 	t_intersec	i_ret;
@@ -23,9 +22,9 @@ t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, \
 
 	
 	i_ret = new_intersec();
-	cyl_base = val.cylTop;
+	cyl_base = cy.cylTop;
 	if (type == T_BASE)
-		cyl_base = val.cylBase;
+		cyl_base = cy.cylBase;
 	t_base = v_dot(v_rest(cyl_base, ray.start), cy.cy_axis) / \
 		v_dot(ray.direction, cy.cy_axis);
 	hit_base = v_add(ray.start, v_expand(ray.direction, t_base));
@@ -72,11 +71,9 @@ t_intersec	inter_ray_cy_base(t_cylinder cy, t_ray ray)
 {
 	t_intersec			i_top;
 	t_intersec			i_base;
-	t_cy_inter_values	val;
 
-	val = calc_inter_values(cy, ray);
-	i_base = inter_ray_base_cy (cy, ray, val, T_BASE);
-	i_top = inter_ray_base_cy (cy, ray, val, T_TOP);
+	i_base = inter_ray_base_cy (cy, ray, T_BASE);
+	i_top = inter_ray_base_cy (cy, ray, T_TOP);
 	if (i_base.object == T_CYLINDER && i_top.object == T_CYLINDER)
 	{
 		if (i_base.t1 < i_top.t1)

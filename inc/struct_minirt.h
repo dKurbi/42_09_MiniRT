@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/30 16:40:05 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:04:50 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ typedef struct s_cylinder
 	double				cy_diam;
 	double				cy_height;
 	t_rgb				cy_color;
+	t_vector			halfHeightVec;
+	t_vector			cylBase;
+	t_vector			cylTop;
 	struct s_cylinder	*next;
 }	t_cylinder;
 
@@ -142,9 +145,6 @@ typedef struct s_cuadratica
 
 typedef struct s_cy_inter_values
 {
-	t_vector	halfHeightVec;
-	t_vector	cylBase;
-	t_vector	cylTop;
 	t_vector	deltaP;
 	double		dDotV;
 	double		deltaPDotV;

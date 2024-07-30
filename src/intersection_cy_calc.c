@@ -6,21 +6,24 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:45:45 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/18 13:48:28 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:15:30 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+void	calc_cy_values(t_cylinder *cy)
+{
+	cy->cy_axis = v_normalized(cy->cy_axis);
+	cy->halfHeightVec = v_expand(cy->cy_axis, cy->cy_height / 2.0);
+	cy->cylBase = v_rest(cy->cy_center, cy->halfHeightVec);
+	cy->cylTop = v_add(cy->cy_center, cy->halfHeightVec);
+}
 
 t_cy_inter_values	calc_inter_values(t_cylinder cy, t_ray ray)
 {
 	t_cy_inter_values	val;
 
-	val.halfHeightVec = v_expand(cy.cy_axis, cy.cy_height / 2.0);
-	val.cylBase = v_rest(cy.cy_center, val.halfHeightVec);
-	val.cylTop = v_add(cy.cy_center, val.halfHeightVec);
-	cy.cy_axis = v_normalized(cy.cy_axis);
-	val.deltaP = v_rest(ray.start, val.cylBase);
+	val.deltaP = v_rest(ray.start, cy.cylBase);
 	val.dDotV = v_dot(ray.direction, cy.cy_axis);
 	val.deltaPDotV = v_dot(val.deltaP, cy.cy_axis);
 	val.v_a = v_rest(ray.direction, v_expand(cy.cy_axis, val.dDotV));
@@ -36,7 +39,7 @@ t_cy_inter_values	calc_inter_values(t_cylinder cy, t_ray ray)
 	val.t2 = (-val.b + val.sqrtDiscriminant) / (2 * val.a);
 	val.t1 = choose_t (val.t1, val.t2);
 	val.hit1 = v_add(ray.start, v_expand(ray.direction, val.t1));
-	val.p1DotV = v_dot(v_rest(val.hit1, val.cylBase), cy.cy_axis);
+	val.p1DotV = v_dot(v_rest(val.hit1, cy.cylBase), cy.cy_axis);
 	return (val);
 }
 
