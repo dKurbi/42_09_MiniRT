@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/30 16:17:52 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:46:16 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray);
 double		choose_t(double t1, double t2);
 
 //intersection_cy.c
-t_intersec	inter_ray_cy(t_cylinder cy, t_ray ray);
-t_intersec	inter_ray_t_b_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val);
+t_intersec	inter_ray_cy_body(t_cylinder cy, t_ray ray);
+t_intersec	inter_ray_cy_base(t_cylinder cy, t_ray ray);
 t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, \
 	t_cy_inter_values val, int type);
 
@@ -187,7 +187,9 @@ t_ray	make_ray(t_vector2 point, t_rt rt);
 t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 t_intersec	found_inter_sp(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 t_intersec	found_inter_pl(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
-t_intersec 	found_inter_cy(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
+t_intersec 	found_inter_cy_body(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
+t_intersec	new_intersec(void);
+t_intersec	found_inter_cy_base(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 
 //get_color.c
 int			get_color_inter(t_intersec inter, t_rt rt);

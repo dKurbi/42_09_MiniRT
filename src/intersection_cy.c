@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/30 16:18:08 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:46:30 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, \
 	t_vector	cyl_base;
 
 	
-	i_ret.object = NO_INTER;
+	i_ret = new_intersec();
 	cyl_base = val.cylTop;
 	if (type == T_BASE)
 		cyl_base = val.cylBase;
@@ -68,12 +68,13 @@ t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, \
 } */
 
 // Intersección con la tapa y la base del cilindro
-t_intersec	inter_ray_t_b_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
+t_intersec	inter_ray_cy_base(t_cylinder cy, t_ray ray)
 {
-	t_intersec	i_top;
-	t_intersec	i_base;
+	t_intersec			i_top;
+	t_intersec			i_base;
+	t_cy_inter_values	val;
 
-
+	val = calc_inter_values(cy, ray);
 	i_base = inter_ray_base_cy (cy, ray, val, T_BASE);
 	i_top = inter_ray_base_cy (cy, ray, val, T_TOP);
 	if (i_base.object == T_CYLINDER && i_top.object == T_CYLINDER)
@@ -87,14 +88,13 @@ t_intersec	inter_ray_t_b_cy(t_cylinder cy, t_ray ray, t_cy_inter_values val)
 	return (i_top);
 }
 
-t_intersec	inter_ray_cy(t_cylinder cy, t_ray ray)
+t_intersec	inter_ray_cy_body(t_cylinder cy, t_ray ray)
 {
 	t_cy_inter_values	val;
 	t_intersec			i_ret;
 
 	val = calc_inter_values(cy, ray);
-	i_ret.object = NO_INTER;
-	i_ret.t1 = -1;
+	i_ret = new_intersec();
 	if (val.discriminant < 0 || val.t1 < 0)
 		return (i_ret);
 	val.sqrtDiscriminant = sqrt(val.discriminant);
@@ -105,8 +105,7 @@ t_intersec	inter_ray_cy(t_cylinder cy, t_ray ray)
 		i_ret.hit1 = val.hit1;
 		i_ret.color = cy.cy_color;
 		i_ret.n1 = calculate_normal_cy(cy, i_ret.hit1);
-		return (i_ret);
 	}
-	i_ret = inter_ray_t_b_cy(cy, ray, val);
 	return (i_ret);
 }
+
