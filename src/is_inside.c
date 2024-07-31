@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 12:06:22 by diego             #+#    #+#             */
-/*   Updated: 2024/07/31 14:06:00 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/31 14:14:39 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,16 @@ int	is_inside_cy(t_cylinder cy, t_rt rt)
 	float 		t;
 	float		distance;
 
-	to_point = v_rest(rt.scene.c_pos, cy.cylBase);
+	to_point = v_rest(rt.scene.c_pos, cy.cy_base);
     t = v_dot(to_point, cy.cy_axis);
-    projection = v_add(cy.cylBase, v_expand(cy.cy_axis, t));
+    projection = v_add(cy.cy_base, v_expand(cy.cy_axis, t));
     distance_vector = v_rest(rt.scene.c_pos, projection);
     distance = v_lenght(distance_vector);
     if (distance > cy.cy_diam / 2 || t < 0 || t > cy.cy_height)
 	{
         return (0);
 	}
-	print_v("base cy: ", cy.cylBase);
+	print_v("base cy: ", cy.cy_base);
 	print_v("cam  posc: ", rt.scene.c_pos);
 	printf("dist = %f, t = %f, cy radius: %f, cy height= %f\n", distance, t, cy.cy_diam / 2, cy.cy_height);
     return (1);

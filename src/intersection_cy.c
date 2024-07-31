@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 05:38:26 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/31 09:34:06 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/31 14:14:58 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_intersec	inter_base_cy(t_cylinder cy, t_ray ray, int type)
 
 	
 	i_ret = new_intersec();
-	cyl_base = cy.cylTop;
+	cyl_base = cy.cy_top;
 	if (type == T_BASE)
-		cyl_base = cy.cylBase;
+		cyl_base = cy.cy_base;
 	t_base = v_dot(v_rest(cyl_base, ray.start), cy.cy_axis) / \
 		v_dot(ray.direction, cy.cy_axis);
 	hit_base = v_add(ray.start, v_expand(ray.direction, t_base));
