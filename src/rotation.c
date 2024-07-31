@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:48:25 by diego             #+#    #+#             */
-/*   Updated: 2024/07/26 18:27:26 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/31 11:30:29 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ t_vector	rotation_y(t_vector v, double ang)
 }
 
 //calculate the rotation angle for each x,y pixel
-t_vector2	calc_ang_rot(int x, int y, double tan, double aspect_ratio)
+t_vector2	calc_ang_rot(int x, int y, t_rt rt)
 {
 	t_vector2	ret;
 	double		norm_x;
 	double		norm_y;
 
 	norm_x = ((double)(2 * x - WIN_X)) / WIN_X ;
-	ret.x = norm_x * tan;
+	ret.x = norm_x * rt.scene.c_fov_tan;
 	norm_y = ((double)(2 * y - WIN_Y)) / WIN_X ;
-	ret.y = norm_y * (tan / aspect_ratio);
+	ret.y = norm_y * (rt.scene.c_fov_tan /  rt.aspect_ratio);
 	return (ret);
 }
 

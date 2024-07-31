@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/31 09:34:06 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/31 12:49:25 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ void		print_cylinder(char *name, t_cylinder c);
 //rotation.c 
 t_vector	rotation_x(t_vector v, double ang);
 t_vector	rotation_y(t_vector v, double ang);
-t_vector2	calc_ang_rot(int x, int y, double fov, double aspect_ratio);
+t_vector2	calc_ang_rot(int x, int y, t_rt rt);
 t_vector	rotation_axis(t_vector v, t_vector u, double ang);
 void		calc_up_right_vector(t_rt *rt);
 
@@ -210,4 +210,15 @@ void 	amb_light_less_bright (t_rt *rt);
 int		zoom_in(t_rt *rt);
 int		zoom_out(t_rt *rt);
 
+//check_cam_is_inside.c 
+int		check_cam_is_inside(t_rt rt);
+int		is_in_sp_lst(t_rt rt);
+int		is_in_pl_lst(t_rt rt);
+int		is_in_cy_lst(t_rt rt);
+
+//is_inside.c 
+int		is_inside_sp(t_sphere sp, t_rt rt);
+int		is_inside_pl(t_plane pl, t_rt rt);
+int		is_inside_cy(t_cylinder cy, t_rt rt);
+void	print_black(t_rt *rt);
 #endif

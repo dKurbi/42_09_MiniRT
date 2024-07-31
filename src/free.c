@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/26 16:07:49 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/31 11:46:40 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	free_rt(t_rt *rt, int if_free_mlx)
 {
 	if (rt->line || rt->line != NULL)
 		free_str(&rt->line);
+	if (rt->name || rt->name != NULL)
+		free_str(&rt->name);
 	ft_close(&rt->fd);
 	free_double_str(&rt->split);
 	free_sphere(&rt->scene.sp);

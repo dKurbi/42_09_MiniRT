@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/29 19:28:00 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:50:32 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,33 @@ void	raytracing(t_rt *rt)
 	int			y;
 	t_ray		ray;
 	t_intersec	inter;
-	double		t;
 
-	x = -1;
-	y = -1;
-	t = tan(rt->scene.c_fov);
-	while (++y < WIN_Y)
+	if (check_cam_is_inside(*rt))
+		print_black(rt);
+	else
 	{
-		while (++x < WIN_X)
+		y = -1;
+		while (++y < WIN_Y)
 		{
-			ray = make_ray(calc_ang_rot(x, y, t, rt->aspect_ratio), *rt);
-			inter = found_inter(ray, *rt, NO_INTER, -1);
-			if (inter.object != NO_INTER)
-				pixel_put(*rt, x, y, get_color_inter(inter, *rt));
-			else
-				pixel_put(*rt, x, y, 0);
-		if (y %40 == 0 && x % 40 == 0)
-				printf("%d.%d|", inter.object, inter.index);
-		}
-		if (y %40 == 0)
-			printf("\n");
 		x = -1;
+			while (++x < WIN_X)
+			{
+				ray = make_ray(calc_ang_rot(x, y, *rt), *rt);
+				inter = found_inter(ray, *rt, NO_INTER, -1);
+				if (inter.object != NO_INTER)
+					pixel_put(*rt, x, y, get_color_inter(inter, *rt));
+				else
+					pixel_put(*rt, x, y, 0);
+		//	if (y %40 == 0 && x % 40 == 0)
+		//			printf("%d.%d|", inter.object, inter.index);
+			}
+		//	if (y %40 == 0)
+		//		printf("\n");
+		}
+		//print_scene(rt->scene);
+		mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
+								rt->rtmlx.img, 0, 0);
 	}
-	print_scene(rt->scene);
-	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
-							rt->rtmlx.img, 0, 0);
 }
 
 //MAIN: MAIN

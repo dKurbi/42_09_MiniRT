@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/30 17:04:50 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:41:30 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct s_scene
 	t_vector	c_pos;
 	t_vector	c_dir;
 	double		c_fov;
+	double		c_fov_tan;
 	t_vector	l_pos;
 	double		l_bright;
 	t_sphere	*sp;
@@ -132,6 +133,7 @@ typedef struct s_rt
 	int		l_count;
 	double	aspect_ratio;
 	t_scene	scene;
+	char	*name;
 }	t_rt;
 
 typedef struct s_cuadratica
