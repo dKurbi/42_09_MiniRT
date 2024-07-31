@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   found_inter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/30 16:51:38 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/31 09:30:49 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//inter[0] == plano, inter[1] == esfera, inter[2] == cilindro
 t_intersec new_intersec(void)
 {	
 	t_intersec new_intersec;
@@ -25,6 +24,7 @@ t_intersec new_intersec(void)
 	return(new_intersec);	
 }
 
+//inter[0] == plano, inter[1] == esfera, inter[2] == cilindro
 t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 {
 	t_intersec	inter[4];
@@ -154,7 +154,7 @@ t_intersec	found_inter_cy_base(t_ray ray, t_rt rt, int ob_avoid, int index_avoid
 	{
 		if (!(ob_avoid == T_CYLINDER && index == index_avoid))
 		{
-			temp = inter_ray_cy_base(*cy, ray);
+			temp = inter_ray_cy_bases(*cy, ray);
 			if (inter.object == NO_INTER || \
 				(temp.object != NO_INTER && temp.t1 < inter.t1))
 			{

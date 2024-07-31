@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/30 17:15:30 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/31 09:34:06 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ double		choose_t(double t1, double t2);
 
 //intersection_cy.c
 t_intersec	inter_ray_cy_body(t_cylinder cy, t_ray ray);
-t_intersec	inter_ray_cy_base(t_cylinder cy, t_ray ray);
-t_intersec	inter_ray_base_cy(t_cylinder cy, t_ray ray, int type);
+t_intersec	inter_ray_cy_bases(t_cylinder cy, t_ray ray);
+t_intersec	inter_base_cy(t_cylinder cy, t_ray ray, int type);
 
 //intersection_cy_calc.c
 t_cy_inter_values	calc_inter_values(t_cylinder cy, t_ray ray);
