@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:32:56 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/26 18:04:13 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/29 13:04:46 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,16 @@ int	event_key(int key, t_rt *rt)
 	{
 		amb_light_less_bright(rt);
 		raytracing(rt);
+	}
+	else if (key == KEY_I)
+	{
+		if (zoom_in(rt))
+			raytracing(rt);
+	}
+	else if (key == KEY_O)
+	{
+		if (zoom_out(rt))
+			raytracing(rt);
 	}
 	return (0);
 	

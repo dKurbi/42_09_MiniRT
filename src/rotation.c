@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:48:25 by diego             #+#    #+#             */
-/*   Updated: 2024/07/26 18:27:26 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/31 17:08:53 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ t_vector	rotation_y(t_vector v, double ang)
 }
 
 //calculate the rotation angle for each x,y pixel
-t_vector2	calc_ang_rot(int x, int y, double tan, double aspect_ratio)
+t_vector2	calc_ang_rot(int x, int y, t_rt rt)
 {
 	t_vector2	ret;
 	double		norm_x;
 	double		norm_y;
 
 	norm_x = ((double)(2 * x - WIN_X)) / WIN_X ;
-	ret.x = norm_x * tan;
+	ret.x = norm_x * rt.scene.c_fov_tan;
 	norm_y = ((double)(2 * y - WIN_Y)) / WIN_X ;
-	ret.y = norm_y * (tan / aspect_ratio);
+	ret.y = norm_y * (rt.scene.c_fov_tan /  rt.aspect_ratio);
 	return (ret);
 }
 
@@ -71,15 +71,14 @@ void	calc_up_right_vector(t_rt *rt)
 	rt->scene.c_dir = v_normalized(rt->scene.c_dir);
 	if (rt->scene.c_dir.x || rt->scene.c_dir.y)
 	{
-		rt->scene.v_up = v_cross(rt->scene.c_dir, v_new(1, 0, 0));
+		rt->scene.v_up = v_cross(rt->scene.c_dir, v_new(0, 0, 1));
 		rt->scene.v_up = v_normalized(rt->scene.v_up);
 		rt->scene.v_right = v_normalized(v_cross(rt->scene.v_up, \
 			rt->scene.c_dir));
 	}
 	else if (rt->scene.c_dir.z)
 	{
-		rt->scene.v_up = v_cross(rt->scene.c_dir, v_new(0, 1, 0));
-		rt->scene.v_up = v_normalized(rt->scene.v_up);
+		rt->scene.v_up = v_cross(rt->scene.c_dir, v_new(-1, 0, 0));
 		rt->scene.v_right = v_normalized(v_cross(rt->scene.v_up, \
 		rt->scene.c_dir));
 	}

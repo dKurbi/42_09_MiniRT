@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/23 18:25:15 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/31 14:15:38 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ typedef struct s_cylinder
 	double				cy_diam;
 	double				cy_height;
 	t_rgb				cy_color;
+	t_vector			cy_half_vec;
+	t_vector			cy_base;
+	t_vector			cy_top;
 	struct s_cylinder	*next;
 }	t_cylinder;
 
@@ -106,6 +109,7 @@ typedef struct s_scene
 	t_vector	c_pos;
 	t_vector	c_dir;
 	double		c_fov;
+	double		c_fov_tan;
 	t_vector	l_pos;
 	double		l_bright;
 	t_sphere	*sp;
@@ -129,6 +133,7 @@ typedef struct s_rt
 	int		l_count;
 	double	aspect_ratio;
 	t_scene	scene;
+	char	*name;
 }	t_rt;
 
 typedef struct s_cuadratica
@@ -142,9 +147,6 @@ typedef struct s_cuadratica
 
 typedef struct s_cy_inter_values
 {
-	t_vector	halfHeightVec;
-	t_vector	cylBase;
-	t_vector	cylTop;
 	t_vector	deltaP;
 	double		dDotV;
 	double		deltaPDotV;

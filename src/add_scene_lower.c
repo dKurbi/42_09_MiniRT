@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_scene_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:27 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/15 17:05:47 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/30 17:15:30 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	add_cylinder(t_rt *rt, char *line)
 			print_error_arg(*rt, ERR_VECTOR_RANGE, STR_CYL, NO_FREE_MLX), 1);
 	if (add_cy_second_part(rt, line, i, new_cyl) > 0)
 		return (ERROR);
-	new_cyl->cy_axis = v_normalized(new_cyl->cy_axis);
+	calc_cy_values(new_cyl);
 	add_cylinder_lst(rt, new_cyl);
 	return (0);
 }

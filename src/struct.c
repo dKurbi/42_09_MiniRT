@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/06/12 17:36:26 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:45:31 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,16 @@ void	rtnew(t_rt *rt, int ac, char **av)
 	rt->c_count = 0;
 	rt->l_count = 0;
 	rt->aspect_ratio = WIN_X / WIN_Y;
+	rt->name = ft_strjoin("minirt: ", rt->av[1]);
+	if (!rt->name)
+		exit (print_error(*rt, ERR_MALLOC, NO_FREE_MLX));
 }
 
 void	mlxnew(t_rt *rt)
 {
+	
 	rt->rtmlx.mlx_ptr = mlx_init();
-	rt->rtmlx.win = mlx_new_window(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y, "miniRT");
+	rt->rtmlx.win = mlx_new_window(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y, rt->name);
 	rt->rtmlx.img = mlx_new_image(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y);
 	rt->rtmlx.addr = mlx_get_data_addr(rt->rtmlx.img, \
 					&rt->rtmlx.bitspp, &rt->rtmlx.line_len, &rt->rtmlx.endian);

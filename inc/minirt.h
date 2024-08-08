@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/07/29 01:24:29 by iassambe         ###   ########.fr       */
+/*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
+/*   Updated: 2024/08/08 02:09:00 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 int			add_ambient_light(t_rt *rt, char *line);
 int			add_camera(t_rt *rt, char *line);
 int			add_light(t_rt *rt, char *line);
+void 		add_light_as_sphere(t_rt *rt);
 
 //add_scene_lower_second.c
 int			add_sp_second_part(t_rt *rt, char *line, int i, t_sphere *new_sp);
@@ -98,12 +99,17 @@ void		init_cam(t_rt *rt);
 //intersection.c
 t_intersec	inter_ray_sp(t_sphere sp, t_ray ray);
 t_intersec	inter_ray_pl(t_plane pl, t_ray ray);
-t_intersec	inter_ray_cy(t_cylinder cy, t_ray ray);
 double		choose_t(double t1, double t2);
+
+//intersection_cy.c
+t_intersec	inter_ray_cy_body(t_cylinder cy, t_ray ray);
+t_intersec	inter_ray_cy_bases(t_cylinder cy, t_ray ray);
+t_intersec	inter_base_cy(t_cylinder cy, t_ray ray, int type);
 
 //intersection_cy_calc.c
 t_cy_inter_values	calc_inter_values(t_cylinder cy, t_ray ray);
 t_vector			calculate_normal_cy(t_cylinder cy, t_vector hit);
+void				calc_cy_values(t_cylinder *cy);
 
 
 
@@ -170,7 +176,7 @@ void		print_cylinder(char *name, t_cylinder c);
 //rotation.c 
 t_vector	rotation_x(t_vector v, double ang);
 t_vector	rotation_y(t_vector v, double ang);
-t_vector2	calc_ang_rot(int x, int y, double fov, double aspect_ratio);
+t_vector2	calc_ang_rot(int x, int y, t_rt rt);
 t_vector	rotation_axis(t_vector v, t_vector u, double ang);
 void		calc_up_right_vector(t_rt *rt);
 
@@ -182,11 +188,14 @@ t_ray	make_ray(t_vector2 point, t_rt rt);
 t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 t_intersec	found_inter_sp(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 t_intersec	found_inter_pl(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
-t_intersec 	found_inter_cy(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
+t_intersec 	found_inter_cy_body(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
+t_intersec	new_intersec(void);
+t_intersec	found_inter_cy_base(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 
 //get_color.c
 int			get_color_inter(t_intersec inter, t_rt rt);
 int			is_shadow(t_intersec inter, t_rt rt);
+int			is_plane_in_the_middle(t_intersec inter, t_rt rt);
 
 //cam_moves.c
 void	cam_spin(t_rt *rt, double ang);
@@ -195,9 +204,22 @@ void	cam_m_v(t_rt *rt, double ang);
 void	cam_m_fwd(t_rt *rt, int distance);
 
 //light_change.c
-void amb_light_more_bright (t_rt *rt);
-void amb_light_less_bright (t_rt *rt);
+void 	amb_light_more_bright (t_rt *rt);
+void 	amb_light_less_bright (t_rt *rt);
 
+//zoom.c
+int		zoom_in(t_rt *rt);
+int		zoom_out(t_rt *rt);
 
+//check_cam_is_inside.c 
+int		check_cam_is_inside(t_rt rt);
+int		is_in_sp_lst(t_rt rt);
+int		is_in_pl_lst(t_rt rt);
+int		is_in_cy_lst(t_rt rt);
 
+//is_inside.c 
+int		is_inside_sp(t_sphere sp, t_rt rt);
+int		is_inside_pl(t_plane pl, t_rt rt);
+int		is_inside_cy(t_cylinder cy, t_rt rt);
+void	print_black(t_rt *rt);
 #endif

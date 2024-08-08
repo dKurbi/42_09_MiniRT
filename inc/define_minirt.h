@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/26 19:38:42 by diego            ###   ########.fr       */
+/*   Updated: 2024/07/30 16:09:29 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@
 #  define KEY_C 99
 #  define KEY_R 114
 #  define KEY_T 116
+#  define KEY_I 105
+#  define KEY_O 111
 # else
 #  define KEY_ESC 53
 #  define KEY_ENTER 36
@@ -133,6 +135,11 @@
 # define SPHERE 1
 # define PLANE 2
 # define CYLINDER 3
+# define T_CYLINDER 4
+
+//type Cilinder Base
+# define T_BASE 0
+# define T_TOP 	1
 
 //3.14 not defined in Linux
 # ifndef M_PI
