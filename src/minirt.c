@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/14 16:31:03 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/14 18:09:25 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	raytracing(t_rt *rt)
 		//	if (y %40 == 0)
 		//		printf("\n");
 		}
-		//print_scene(rt->scene);
+		print_scene(rt->scene);
 		mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
 								rt->rtmlx.img, 0, 0);
 	}
