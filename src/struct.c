@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/31 11:45:31 by diego            ###   ########.fr       */
+/*   Updated: 2024/08/14 16:33:44 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	rtnew(t_rt *rt, int ac, char **av)
 
 void	mlxnew(t_rt *rt)
 {
-	
 	rt->rtmlx.mlx_ptr = mlx_init();
 	rt->rtmlx.win = mlx_new_window(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y, rt->name);
 	rt->rtmlx.img = mlx_new_image(rt->rtmlx.mlx_ptr, WIN_X, WIN_Y);

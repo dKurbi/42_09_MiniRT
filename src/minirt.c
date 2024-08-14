@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/08 02:09:17 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:31:03 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/minirt.h"
 
@@ -27,7 +26,7 @@ void	raytracing(t_rt *rt)
 		y = -1;
 		while (++y < WIN_Y)
 		{
-		x = -1;
+			x = -1;
 			while (++x < WIN_X)
 			{
 				ray = make_ray(calc_ang_rot(x, y, *rt), *rt);

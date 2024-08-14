@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_cy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/08/08 02:09:06 by iassambe         ###   ########.fr       */
+/*   Created: 2024/08/14 16:16:32 by dkurcbar          #+#    #+#             */
+/*   Updated: 2024/08/14 16:17:29 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/minirt.h"
 
@@ -21,7 +20,6 @@ t_intersec	inter_base_cy(t_cylinder cy, t_ray ray, int type)
 	t_vector	base_to_hit;
 	t_vector	cyl_base;
 
-	
 	i_ret = new_intersec();
 	cyl_base = cy.cy_top;
 	if (type == T_BASE)
@@ -42,7 +40,6 @@ t_intersec	inter_base_cy(t_cylinder cy, t_ray ray, int type)
 	return (i_ret);
 }
 
-
 // Intersección con la tapa y la base del cilindro
 t_intersec	inter_ray_cy_bases(t_cylinder cy, t_ray ray)
 {
@@ -55,7 +52,7 @@ t_intersec	inter_ray_cy_bases(t_cylinder cy, t_ray ray)
 	{
 		if (i_base.t1 < i_top.t1)
 			return (i_base);
-		return (i_top);	
+		return (i_top);
 	}
 	if (i_base.object == T_CYLINDER)
 		return (i_base);
@@ -82,4 +79,3 @@ t_intersec	inter_ray_cy_body(t_cylinder cy, t_ray ray)
 	}
 	return (i_ret);
 }
-

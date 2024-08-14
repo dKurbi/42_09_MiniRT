@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:48:25 by diego             #+#    #+#             */
-/*   Updated: 2024/07/31 17:08:53 by diego            ###   ########.fr       */
+/*   Updated: 2024/08/14 16:33:26 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_vector2	calc_ang_rot(int x, int y, t_rt rt)
 	norm_x = ((double)(2 * x - WIN_X)) / WIN_X ;
 	ret.x = norm_x * rt.scene.c_fov_tan;
 	norm_y = ((double)(2 * y - WIN_Y)) / WIN_X ;
-	ret.y = norm_y * (rt.scene.c_fov_tan /  rt.aspect_ratio);
+	ret.y = norm_y * (rt.scene.c_fov_tan / rt.aspect_ratio);
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:33:48 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/18 18:03:51 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:22:32 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	rgb_limit(int r, int g, int b)
 
 //adding, judging which scene is
 int	add_line_to_scene(t_rt *rt, char *line)
-{	
+{
 	if (line[0] == '/' && line[1] == '/')
 		return (0);
 	if (!line[1] || !line[2])

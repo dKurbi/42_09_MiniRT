@@ -3,25 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   found_inter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/31 09:30:49 by diego            ###   ########.fr       */
+/*   Updated: 2024/08/14 16:26:07 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_intersec new_intersec(void)
-{	
-	t_intersec new_intersec;
+t_intersec	new_intersec(void)
+{
+	t_intersec	new_intersec;
 
 	new_intersec.object = NO_INTER;
 	new_intersec.index = -1;
 	new_intersec.t1 = -1;
 	new_intersec.t2 = -1;
-
-	return(new_intersec);	
+	return (new_intersec);
 }
 
 //inter[0] == plano, inter[1] == esfera, inter[2] == cilindro
@@ -51,8 +50,6 @@ t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 			(inter[i].object > NO_INTER && inter[i].t1 < ret.t1))
 			ret = inter[i];
 	}
-	//if (ret.object != NO_INTER)
-	//	printf("objeto = %d, index = %d\n", ret.object, ret.index);
 	return (ret);
 }
 
@@ -91,7 +88,6 @@ t_intersec	found_inter_pl(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 	t_intersec	temp;
 	int			index;
 
-
 	pl = rt.scene.pl;
 	index = 0;
 	inter = new_intersec();
@@ -113,7 +109,8 @@ t_intersec	found_inter_pl(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 	return (inter);
 }
 
-t_intersec	found_inter_cy_body(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
+t_intersec	found_inter_cy_body(t_ray ray, t_rt rt, int ob_avoid, \
+	int index_avoid)
 {
 	t_cylinder	*cy;
 	t_intersec	inter;
@@ -140,7 +137,9 @@ t_intersec	found_inter_cy_body(t_ray ray, t_rt rt, int ob_avoid, int index_avoid
 	}
 	return (inter);
 }
-t_intersec	found_inter_cy_base(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
+
+t_intersec	found_inter_cy_base(t_ray ray, t_rt rt, int ob_avoid, \
+	int index_avoid)
 {
 	t_cylinder	*cy;
 	t_intersec	inter;

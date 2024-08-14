@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/08/08 02:09:13 by iassambe         ###   ########.fr       */
+/*   Created: 2024/08/14 16:26:45 by dkurcbar          #+#    #+#             */
+/*   Updated: 2024/08/14 16:26:54 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/minirt.h"
 
@@ -61,7 +60,6 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 		i_ret.n1 = pl.pl_normal;
 		i_ret.object = PLANE;
 		i_ret.t2 = 0;
-	
 	}
 	return (i_ret);
 }

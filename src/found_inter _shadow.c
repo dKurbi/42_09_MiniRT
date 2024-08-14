@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   found_inter _shadow.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/07/24 01:00:35 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:24:17 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_aboid)
 		printf("objeto = %d, index = %d\n", ret.object, ret.index);
 	return (ret);
 }
-
 
 t_intersec	found_inter_cy(t_ray ray, t_rt rt, int)
 {
@@ -81,7 +80,6 @@ t_intersec	found_inter_sp(t_ray ray, t_rt rt)
 	inter.object = NO_INTER;
 	while (sp)
 	{
-			
 		temp = inter_ray_sp(*sp, ray);
 		if (inter.object == NO_INTER || \
 			(temp.object != NO_INTER && temp.t1 < inter.t1))

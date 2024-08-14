@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:32:56 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/29 13:04:46 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:22:41 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	event_key(int key, t_rt *rt)
 	{
 		cam_spin(rt, 0.17444);
 		raytracing(rt);
-	}	
+	}
 	else if (key == KEY_T)
 	{
 		cam_spin(rt, -0.17444);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_scene_capital.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 17:44:13 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/31 11:27:41 by diego            ###   ########.fr       */
+/*   Updated: 2024/08/14 16:19:33 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	add_camera(t_rt *rt, char *line)
 	rt->scene.c_fov = get_radian(rt->scene.c_fov / 2);
 	if (empty_after_line(line, i) == 0)
 		return (print_error_arg(*rt, ERR_VALUE_MUCH, STR_CAMERA, NO_FREE_MLX));
-	rt->scene.c_fov_tan= tan(rt->scene.c_fov);
+	rt->scene.c_fov_tan = tan(rt->scene.c_fov);
 	return (0);
 }
 
@@ -82,11 +82,10 @@ int	add_light(t_rt *rt, char *line)
 		return (print_error_arg(*rt, ERR_RANGE, STR_LIGHT, NO_FREE_MLX));
 	if (empty_after_line(line, i) == 0)
 		return (print_error_arg(*rt, ERR_VALUE_MUCH, STR_LIGHT, NO_FREE_MLX));
-	//add_light_as_sphere(rt);
-
 	return (0);
 }
-void 	add_light_as_sphere(t_rt *rt)
+
+void	add_light_as_sphere(t_rt *rt)
 {
 	t_sphere	*new_sphere;
 	int			intense;
@@ -97,7 +96,6 @@ void 	add_light_as_sphere(t_rt *rt)
 	new_sphere->sp_center = rt->scene.l_pos;
 	new_sphere->sp_diam = 1;
 	intense = 255 * rt->scene.l_bright;
-	new_sphere->sp_color = (t_rgb) {intense, intense, intense};
+	new_sphere->sp_color = (t_rgb){intense, intense, intense};
 	add_sphere_lst(rt, new_sphere);
-
 }

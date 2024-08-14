@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_cy_calc.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:45:45 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/31 14:15:38 by diego            ###   ########.fr       */
+/*   Updated: 2024/08/14 16:27:36 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+
 void	calc_cy_values(t_cylinder *cy)
 {
 	cy->cy_axis = v_normalized(cy->cy_axis);

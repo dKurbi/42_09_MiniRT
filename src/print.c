@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 11:54:44 by diego             #+#    #+#             */
-/*   Updated: 2024/07/29 19:32:04 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:32:52 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	print_cylinder(char *name, t_cylinder c)
 	print_rgb("Color", c.cy_color);
 }
 
-void	print_scene_figures(t_sphere *sp, t_plane *pl, t_cylinder *cy, int i)
+void	print_scene_figures(t_sphere *sp, t_plane *pl, \
+	t_cylinder *cy, int i)
 {
 	if (sp != NULL)
 		printf("\nLIST OF SPHERES\n");
@@ -80,20 +81,22 @@ void	print_scene_figures(t_sphere *sp, t_plane *pl, t_cylinder *cy, int i)
 
 void	print_scene(t_scene s)
 {
-	 t_sphere	*sp;
+	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
 	int			i; 
 
 	printf("--------SCENE-------\n");
- 	printf("\nAMBIENT\n");
+	printf("\nAMBIENT\n");
 	printf("Ratio: %f\n", s.a_l_ratio);
 	print_rgb("Color", s.a_l_color);
 	printf("\nCAMERA\n");
 	print_v("Camara position", s.c_pos);
 	print_v("Camara direction", s.c_dir);
-	printf("len Camara direction: %f len2: %f\n", v_lenght(s.c_dir), v_lenght2(s.c_dir));
-	printf("Camera FOV: %f rad, FOV: %dº\n", s.c_fov,(int) (s.c_fov * 180/M_PI));
+	printf("len Camara direction: %f len2: %f\n", v_lenght(s.c_dir), \
+		v_lenght2(s.c_dir));
+	printf("Camera FOV: %f rad, FOV: %dº\n", s.c_fov, (int)(s.c_fov * 180 \
+		 / M_PI));
 	printf("\nLIGHT\n");
 	print_v("Light Position", s.l_pos);
 	printf("Light bright: %f\n", s.l_bright);
