@@ -6,22 +6,11 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/08/14 16:26:07 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:22:15 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
-t_intersec	new_intersec(void)
-{
-	t_intersec	new_intersec;
-
-	new_intersec.object = NO_INTER;
-	new_intersec.index = -1;
-	new_intersec.t1 = -1;
-	new_intersec.t2 = -1;
-	return (new_intersec);
-}
 
 //inter[0] == plano, inter[1] == esfera, inter[2] == cilindro
 t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)

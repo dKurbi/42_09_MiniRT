@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/14 16:33:44 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:41:00 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ void	rtnew(t_rt *rt, int ac, char **av)
 	rt->c_count = 0;
 	rt->l_count = 0;
 	rt->aspect_ratio = WIN_X / WIN_Y;
-	rt->name = ft_strjoin("minirt: ", rt->av[1]);
-	if (!rt->name)
-		exit (print_error(*rt, ERR_MALLOC, NO_FREE_MLX));
+	rt->name = NULL;
+	if (rt->av[1])
+	{
+		rt->name = ft_strjoin("minirt: ", rt->av[1]);
+		if (!rt->name)
+			exit (print_error(*rt, ERR_MALLOC, NO_FREE_MLX));
+	}
 }
 
 void	mlxnew(t_rt *rt)

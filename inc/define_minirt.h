@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/30 16:09:29 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:51:45 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@
 #  define KEY_R 15
 #  define KEY_T 17
 
-
 # endif
 
 //mouse control mlx
@@ -145,7 +144,7 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
 # endif
-#define EPSILON 1e-2
+# define EPSILON 1e-2
 
 //other defines
 # define ERROR 1

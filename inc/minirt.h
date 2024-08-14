@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/08 02:09:00 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:34:29 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ double		ft_atof(char *str);
 
 //init_cam.c
 void		init_cam(t_rt *rt);
+t_intersec	new_intersec(void);
 
 //intersection.c
 t_intersec	inter_ray_sp(t_sphere sp, t_ray ray);
@@ -182,15 +183,16 @@ void		calc_up_right_vector(t_rt *rt);
 
 
 //ray_and_pixel.c
-t_ray	make_ray(t_vector2 point, t_rt rt);
+t_ray		make_ray(t_vector2 point, t_rt rt);
 
 //found_inter.c
 t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 t_intersec	found_inter_sp(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
 t_intersec	found_inter_pl(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
-t_intersec 	found_inter_cy_body(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
-t_intersec	new_intersec(void);
-t_intersec	found_inter_cy_base(t_ray ray, t_rt rt, int ob_avoid, int index_avoid);
+t_intersec	found_inter_cy_body(t_ray ray, t_rt rt, int ob_avoid, \
+	int index_avoid);
+t_intersec	found_inter_cy_base(t_ray ray, t_rt rt, int ob_avoid, \
+	int index_avoid);
 
 //get_color.c
 int			get_color_inter(t_intersec inter, t_rt rt);
@@ -198,18 +200,18 @@ int			is_shadow(t_intersec inter, t_rt rt);
 int			is_plane_in_the_middle(t_intersec inter, t_rt rt);
 
 //cam_moves.c
-void	cam_spin(t_rt *rt, double ang);
-void	cam_m_h(t_rt *rt, double ang);
-void	cam_m_v(t_rt *rt, double ang);
-void	cam_m_fwd(t_rt *rt, int distance);
+void		cam_spin(t_rt *rt, double ang);
+void		cam_m_h(t_rt *rt, double ang);
+void		cam_m_v(t_rt *rt, double ang);
+void		cam_m_fwd(t_rt *rt, int distance);
 
 //light_change.c
-void 	amb_light_more_bright (t_rt *rt);
-void 	amb_light_less_bright (t_rt *rt);
+void		amb_light_more_bright(t_rt *rt);
+void		amb_light_less_bright(t_rt *rt);
 
 //zoom.c
-int		zoom_in(t_rt *rt);
-int		zoom_out(t_rt *rt);
+int			zoom_in(t_rt *rt);
+int			zoom_out(t_rt *rt);
 
 //check_cam_is_inside.c 
 int		check_cam_is_inside(t_rt rt);

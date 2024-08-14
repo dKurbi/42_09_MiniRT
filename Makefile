@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
+#    By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/08/08 02:08:38 by iassambe         ###   ########.fr        #
+#    Updated: 2024/08/14 17:33:09 by dkurcbar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,7 @@ DEPS = $(OBJS:.o=.d)
 all: $(NAME)
 
 $(NAME): $(COMPILED_LIBFT) $(COMPILED_MINILIBX) $(DIR_OBJS) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) $(MINILIBXCOMPILEFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(DEPFLAGS) $(LIBFTFLAGS) $(MINILIBXFLAGS) $(MINILIBXCOMPILEFLAGS) -o $(NAME)
 	@$(ECHO) "$(COLOR_BOLD_WHITE)miniRT $(COLOR_GREEN)Compiled!$(COLOR_RESET)"
 
 $(DIR_OBJS):
