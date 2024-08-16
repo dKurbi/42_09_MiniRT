@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+         #
+#    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/08/14 17:33:09 by dkurcbar         ###   ########.fr        #
+#    Updated: 2024/08/16 04:47:51 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #	Executable program
-NAME = minirt
+NAME = miniRT
 
 #	Get current OS
 UNAME_S := $(shell uname -s)
