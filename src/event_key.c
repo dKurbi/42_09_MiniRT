@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 08:37:07 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 09:03:11 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/17 22:40:08 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ void	event_key_zoom_bright(int key, t_rt *rt)
 		amb_light_more_bright(rt);
 		raytracing(rt);
 	}
-	else if (key == KEY_V)
+	else if (key == KEY_N)
 	{
 		amb_light_less_bright(rt);
 		raytracing(rt);
 	}
-	else if (key == KEY_I)
+	else if (key == KEY_PLUS)
 	{
 		if (zoom_in(rt))
 			raytracing(rt);
 	}
-	else if (key == KEY_O)
+	else if (key == KEY_MINUS)
 	{
 		if (zoom_out(rt))
 			raytracing(rt);
@@ -78,12 +78,12 @@ void	event_key_spin(int key, t_rt *rt)
 
 void	event_key_move(int key, t_rt *rt)
 {
-	if (key == KEY_Z)
+	if (key == KEY_S)
 	{
 		cam_m_fwd(rt, -10);
 		raytracing(rt);
 	}
-	else if (key == KEY_A)
+	else if (key == KEY_W)
 	{
 		cam_m_fwd(rt, 10);
 		raytracing(rt);

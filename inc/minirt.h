@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 21:26:20 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/17 22:22:09 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,9 @@ t_vector			v_add(t_vector v1, t_vector v2);
 t_vector			v_rest(t_vector v1, t_vector v2);
 double				v_dot(t_vector v1, t_vector v2);
 t_vector			v_cross(t_vector v1, t_vector v2);
+
+//menu.c
+void	print_menu(void);
 
 //minirt.c
 void				raytracing(t_rt *rt);

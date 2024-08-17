@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 21:12:02 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/17 22:21:09 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	raytracing(t_rt *rt)
 		y = -1;
 		raytracing_loop(rt, x, y);
 	}
+	print_menu();
 }
 
 //MAIN: MAIN
