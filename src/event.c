@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:32:56 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/14 17:28:01 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 08:43:44 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,68 +26,11 @@ int	event_key(int key, t_rt *rt)
 	printf("key pressed - %d\n", key);
 	if (key == KEY_ESC)
 		return (event_destroy(rt));
-	else if (key == KEY_R)
-	{
-		cam_spin(rt, 0.17444);
-		raytracing(rt);
-	}
-	else if (key == KEY_T)
-	{
-		cam_spin(rt, -0.17444);
-		raytracing(rt);
-	}
-	else if (key == KEY_ARROW_LEFT)
-	{
-		cam_m_h(rt, -0.17444);
-		raytracing(rt);
-	}	
-	else if (key == KEY_ARROW_RIGHT)
-	{
-		cam_m_h(rt, 0.17444);
-		raytracing(rt);
-	}
-	else if (key == KEY_ARROW_UP)
-	{
-		cam_m_v(rt, 0.17444);
-		raytracing(rt);
-	}	
-	else if (key == KEY_ARROW_DOWN)
-	{
-		cam_m_v(rt, -0.17444);
-		raytracing(rt);
-	}
-	else if (key == KEY_Z)
-	{
-		cam_m_fwd(rt, -10);
-		raytracing(rt);
-	}	
-	else if (key == KEY_A)
-	{
-		cam_m_fwd(rt, 10);
-		raytracing(rt);
-	}
-	else if (key == KEY_B)
-	{
-		amb_light_more_bright(rt);
-		raytracing(rt);
-	}	
-	else if (key == KEY_V)
-	{
-		amb_light_less_bright(rt);
-		raytracing(rt);
-	}
-	else if (key == KEY_I)
-	{
-		if (zoom_in(rt))
-			raytracing(rt);
-	}
-	else if (key == KEY_O)
-	{
-		if (zoom_out(rt))
-			raytracing(rt);
-	}
+	event_key_spin(key, rt);
+	event_key_move(key, rt);
+	event_key_rotate(key, rt);
+	event_key_zoom_bright(key, rt);
 	return (0);
-	
 }
 
 //destroy window, free rt and exit

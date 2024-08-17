@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/14 17:34:29 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 08:42:49 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINIRT_H
 # define MINIRT_H
@@ -73,6 +72,12 @@ int			check_is_a_vector_range(char *line, int *i, t_vector *vec);
 int			print_error(t_rt rt, char *s_err, int flag_mlx);
 int			print_error_arg(t_rt rt, char *s_err, char *s_arg, int flag_mlx);
 int			print_ocurred_line(int number);
+
+//event.c
+void		event_key_rotate(int key, t_rt *rt);
+void		event_key_zoom_bright(int key, t_rt *rt);
+void		event_key_spin(int key, t_rt *rt);
+void		event_key_move(int key, t_rt *rt);
 
 //event.c
 int			event_mouse(int mouse, t_rt *rt);
