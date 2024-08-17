@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:55:16 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/08/14 18:46:37 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/17 20:33:10 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int	is_shadow(t_intersec inter, t_rt rt)
 		if (is_plane_in_the_middle(inter, rt))
 			return (1);
 	shadow = found_inter(ray, rt, inter.object, inter.index);
+	if (inter.object == shadow.object && \
+		shadow.t1 < EPSILON)
+		return (0);
 	norm2_l_h = v_lenght2(l_h);
 	if (shadow.object == NO_INTER || norm2_l_h <= pow(shadow.t1, 2))
 		return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_str_number.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 20:58:49 by iassambe          #+#    #+#             */
-/*   Updated: 2024/05/09 05:29:06 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/17 19:53:36 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ int	check_is_a_vector_range(char *str, int *i, t_vector *vec)
 	if (!(vec->x >= -1 && vec->x <= 1) || \
 		!(vec->y >= -1 && vec->y <= 1) || \
 		!(vec->z >= -1 && vec->z <= 1))
+		return (1);
+	if (vec->x == 0 && vec->y == 0 && vec->z == 0)
 		return (1);
 	return (0);
 }

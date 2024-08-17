@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 08:42:49 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/17 20:55:04 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,12 +172,12 @@ int			if_space(char c);
 int			len_split(char **split);
 
 //print.c
-void		print_v(char *name, t_vector v);
+/*void		print_v(char *name, t_vector v);
 void		print_rgb(char *name, t_rgb rgb);
 void		print_plane(char *name, t_plane p);
 void		print_sphere(char *name, t_sphere s);
 void		print_scene(t_scene s);
-void		print_cylinder(char *name, t_cylinder c);
+void		print_cylinder(char *name, t_cylinder c);*/
 
 //rotation.c 
 t_vector	rotation_x(t_vector v, double ang);
@@ -219,14 +219,14 @@ int			zoom_in(t_rt *rt);
 int			zoom_out(t_rt *rt);
 
 //check_cam_is_inside.c 
-int		check_cam_is_inside(t_rt rt);
-int		is_in_sp_lst(t_rt rt);
-int		is_in_pl_lst(t_rt rt);
-int		is_in_cy_lst(t_rt rt);
+int			check_is_inside(t_rt rt, t_vector point);
+int			is_in_sp_lst(t_rt rt, t_vector point);
+int			is_in_pl_lst(t_rt rt, t_vector point);
+int			is_in_cy_lst(t_rt rt, t_vector point);
 
 //is_inside.c 
-int		is_inside_sp(t_sphere sp, t_rt rt);
-int		is_inside_pl(t_plane pl, t_rt rt);
-int		is_inside_cy(t_cylinder cy, t_rt rt);
-void	print_black(t_rt *rt);
+int			is_inside_sp(t_sphere sp, t_vector point);
+int			is_inside_pl(t_plane pl, t_vector point);
+int			is_inside_cy(t_cylinder cy, t_vector point);
+void		print_black(t_rt *rt);
 #endif

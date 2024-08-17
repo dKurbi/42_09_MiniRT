@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:16:32 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/08/14 16:17:29 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 21:00:54 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ t_intersec	inter_ray_cy_body(t_cylinder cy, t_ray ray)
 
 	val = calc_inter_values(cy, ray);
 	i_ret = new_intersec();
-	if (val.discriminant < 0 || val.t1 < 0)
+	if (val.discrim < 0 || val.t1 < 0)
 		return (i_ret);
-	val.sqrtDiscriminant = sqrt(val.discriminant);
+	val.sqrt_discrim = sqrt(val.discrim);
 	i_ret.t1 = val.t1;
 	if (val.p1DotV >= 0 && val.p1DotV <= cy.cy_height)
 	{

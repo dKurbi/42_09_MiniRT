@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/14 18:09:25 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/17 20:55:14 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,15 @@ void	raytracing(t_rt *rt)
 	t_ray		ray;
 	t_intersec	inter;
 
-	if (check_cam_is_inside(*rt))
+	if (check_is_inside(*rt, rt->scene.c_pos))
 		print_black(rt);
 	else
 	{
+		if (check_is_inside(*rt, rt->scene.l_pos))
+		{
+			ft_printf("THE LIGHT IS INSIDE\n");
+			rt->scene.l_bright = 0;
+		}
 		y = -1;
 		while (++y < WIN_Y)
 		{
@@ -41,7 +46,7 @@ void	raytracing(t_rt *rt)
 		//	if (y %40 == 0)
 		//		printf("\n");
 		}
-		print_scene(rt->scene);
+		//print_scene(rt->scene);
 		mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
 								rt->rtmlx.img, 0, 0);
 	}

@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/14 16:51:45 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 20:34:11 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define ERR_RANGE "value is out of range\n"
 # define ERR_RGB "values are not RGB\n"
 # define ERR_NOT_VECTOR "values are not vectors\n"
-# define ERR_VECTOR_RANGE "values in vector are out of range\n"
+# define ERR_VECTOR_RANGE "values in vector are out of range or are all 0\n"
 # define ERR_A_C_L "file doesn't have only 1 ambient light (A), \
 1 camera (C) and 1 light (L)\n"
 
@@ -144,7 +144,7 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846264338327950288
 # endif
-# define EPSILON 1e-2
+# define EPSILON 1e-5
 
 //other defines
 # define ERROR 1

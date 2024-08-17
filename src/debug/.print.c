@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 11:54:44 by diego             #+#    #+#             */
-/*   Updated: 2024/08/14 16:32:52 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 20:47:07 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	print_scene(t_scene s)
 	t_cylinder	*cy;
 	int			i; 
 
+//eliminar
 	printf("--------SCENE-------\n");
 	printf("\nAMBIENT\n");
 	printf("Ratio: %f\n", s.a_l_ratio);

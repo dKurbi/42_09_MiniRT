@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/07/31 14:15:38 by diego            ###   ########.fr       */
+/*   Updated: 2024/08/17 21:00:54 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,22 +141,22 @@ typedef struct s_cuadratica
 	double		a;
 	double		b;
 	double		c;
-	double		discriminant;
-	double		sqrtDiscriminant;
+	double		discrim;
+	double		sqrt_discrim;
 } t_cuadratica;
 
 typedef struct s_cy_inter_values
 {
-	t_vector	deltaP;
-	double		dDotV;
-	double		deltaPDotV;
+	t_vector	delta_p;
+	double		d_dot_v;
+	double		delta_p_dot_v;
 	t_vector	v_a;
 	t_vector	v_b;
 	double		a;
 	double		b;
 	double		c;
-	double		discriminant;
-	double		sqrtDiscriminant;
+	double		discrim;
+	double		sqrt_discrim;
 	double		t1;
 	double		t2;
 	t_vector	hit1;
