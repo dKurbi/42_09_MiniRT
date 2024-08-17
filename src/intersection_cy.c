@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_cy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:16:32 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/08/17 21:00:54 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 21:18:22 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_intersec	inter_ray_cy_body(t_cylinder cy, t_ray ray)
 		return (i_ret);
 	val.sqrt_discrim = sqrt(val.discrim);
 	i_ret.t1 = val.t1;
-	if (val.p1DotV >= 0 && val.p1DotV <= cy.cy_height)
+	if (val.p1_dot_v >= 0 && val.p1_dot_v <= cy.cy_height)
 	{
 		i_ret.object = CYLINDER;
 		i_ret.hit1 = val.hit1;

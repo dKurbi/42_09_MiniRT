@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:48:25 by diego             #+#    #+#             */
-/*   Updated: 2024/08/17 20:25:37 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 21:05:44 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,17 @@ t_vector	rotation_axis(t_vector v, t_vector u, double ang)
 void	calc_up_right_vector(t_rt *rt)
 {
 	rt->scene.c_dir = v_normalized(rt->scene.c_dir);
-	if  (fabs(v_dot(rt->scene.c_dir, v_new(1, 0 ,0))) != 1)
+	if (fabs(v_dot(rt->scene.c_dir, v_new(1, 0, 0))) != 1)
 	{
 		rt->scene.v_up = v_cross(rt->scene.c_dir, v_new(-1, 0, 0));
 		rt->scene.v_up = v_normalized(rt->scene.v_up);
 		rt->scene.v_right = v_normalized(v_cross(rt->scene.v_up, \
 			rt->scene.c_dir));
 	}
-	else 
+	else
 	{
 		rt->scene.v_up = v_cross(rt->scene.c_dir, v_new(0, 0, 1));
 		rt->scene.v_right = v_normalized(v_cross(rt->scene.v_up, \
 		rt->scene.c_dir));
 	}
-/* 	else
-	{
-		rt->scene.v_up.x = 1;
-		rt->scene.v_up.y = 0;
-		rt->scene.v_up.z = 0;
-		rt->scene.v_right.x = 0;
-		rt->scene.v_right.y = 1;
-		rt->scene.v_right.z = 0;
-	} */
 }

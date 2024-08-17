@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_inside.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 12:06:22 by diego             #+#    #+#             */
-/*   Updated: 2024/08/17 20:55:54 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 21:07:45 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_black(t_rt *rt)
 	int	x;
 
 	y = -1;
-	printf("THE CAM IS INSIDE\n");
+	ft_printf("CAMERA IS INSIDE OF FIGURE!\n");
 	while (++y < WIN_Y)
 	{
 		x = -1;
@@ -68,7 +68,5 @@ int	is_inside_cy(t_cylinder cy, t_vector point)
 	distance = v_lenght(distance_vector);
 	if (distance > cy.cy_diam / 2 || t < 0 || t > cy.cy_height)
 		return (0);
-	//print_v("base cy: ", cy.cy_base);
-	//print_v("cam  posc: ", point);
 	return (1);
 }

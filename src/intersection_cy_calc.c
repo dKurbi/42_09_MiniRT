@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection_cy_calc.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 13:45:45 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/08/17 21:00:54 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 21:18:30 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_cy_inter_values	calc_inter_values(t_cylinder cy, t_ray ray)
 	val.t2 = (-val.b + val.sqrt_discrim) / (2 * val.a);
 	val.t1 = choose_t (val.t1, val.t2);
 	val.hit1 = v_add(ray.start, v_expand(ray.direction, val.t1));
-	val.p1DotV = v_dot(v_rest(val.hit1, cy.cy_base), cy.cy_axis);
+	val.p1_dot_v = v_dot(v_rest(val.hit1, cy.cy_base), cy.cy_axis);
 	return (val);
 }
 

@@ -3,27 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:55:16 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/08/17 20:33:10 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 21:32:33 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+
+int	get_color_inter_final_col(t_intersec inter, t_rt rt, double intensity)
+{
+	t_rgb	fin_col;
+
+	fin_col.r = (int)(inter.color.r * intensity * rt.scene.a_l_color.r / 255);
+	fin_col.g = (int)(inter.color.g * intensity * rt.scene.a_l_color.g / 255);
+	fin_col.b = (int)(inter.color.b * intensity * rt.scene.a_l_color. b / 255);
+	return (color(fin_col.r, fin_col.g, fin_col.b));
+}
 
 int	get_color_inter(t_intersec inter, t_rt rt)
 {
 	t_vector	l_dir;
 	double		nxl;
 	double		intensity;
-	t_rgb		final_color;
 
 	nxl = 0;
 	intensity = rt.scene.a_l_ratio * 0.8;
 	if (!is_shadow(inter, rt))
 	{
-		if (inter.object != NO_INTER) 
+		if (inter.object != NO_INTER)
 		{
 			l_dir = v_normalized(v_rest(rt.scene.l_pos, inter.hit1));
 			nxl = v_dot(l_dir, inter.n1);
@@ -36,10 +45,7 @@ int	get_color_inter(t_intersec inter, t_rt rt)
 		if (intensity > 1.0)
 			intensity = 1.0;
 	}
-	final_color.r = (int)(inter.color.r * intensity * rt.scene.a_l_color.r / 255);
-	final_color.g = (int)(inter.color.g * intensity * rt.scene.a_l_color.g / 255);
-	final_color.b = (int)(inter.color.b * intensity * rt.scene.a_l_color. b / 255);
-	return (color(final_color.r, final_color.g, final_color.b));
+	return (get_color_inter_final_col(inter, rt, intensity));
 }
 
 //1 shadow, 0 no shadow
@@ -64,11 +70,10 @@ int	is_shadow(t_intersec inter, t_rt rt)
 	if (shadow.object == NO_INTER || norm2_l_h <= pow(shadow.t1, 2))
 		return (0);
 	return (1);
-	
 }
 
 //1 is a plane inter light and camara
-int is_plane_in_the_middle(t_intersec inter, t_rt rt)
+int	is_plane_in_the_middle(t_intersec inter, t_rt rt)
 {
 	t_intersec	inter2;
 	t_plane		*plane;
@@ -84,8 +89,8 @@ int is_plane_in_the_middle(t_intersec inter, t_rt rt)
 	inter2 = inter_ray_pl(*plane, ray);
 	if (inter2.object == NO_INTER)
 		return (0);
-	if (v_lenght2(v_rest(rt.scene.l_pos, rt.scene.c_pos)) \
-		> v_lenght2(v_rest(inter2.hit1, rt.scene.c_pos)))
-		return (1);	
+	if (v_lenght2(v_rest(rt.scene.l_pos, rt.scene.c_pos)) > \
+		v_lenght2(v_rest(inter2.hit1, rt.scene.c_pos)))
+		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cam_is_inside.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 11:56:27 by diego             #+#    #+#             */
-/*   Updated: 2024/08/17 19:28:38 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 21:17:01 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	check_is_inside(t_rt rt, t_vector point)
 {
-	return (is_in_sp_lst(rt,point) \
-		|| is_in_pl_lst(rt, point) || is_in_cy_lst(rt, point));
+	return (is_in_sp_lst(rt, point) || \
+			is_in_pl_lst(rt, point) || is_in_cy_lst(rt, point));
 }
-
 
 int	is_in_sp_lst(t_rt rt, t_vector point)
 {

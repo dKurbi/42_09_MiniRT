@@ -3,52 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 20:55:14 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 21:12:02 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	raytracing(t_rt *rt)
+void	raytracing_loop(t_rt *rt, int x, int y)
 {
-	int			x;
-	int			y;
 	t_ray		ray;
 	t_intersec	inter;
+
+	if (check_is_inside(*rt, rt->scene.l_pos))
+		rt->scene.l_bright = 0;
+	while (++y < WIN_Y)
+	{
+		x = -1;
+		while (++x < WIN_X)
+		{
+			ray = make_ray(calc_ang_rot(x, y, *rt), *rt);
+			inter = found_inter(ray, *rt, NO_INTER, -1);
+			if (inter.object != NO_INTER)
+				pixel_put(*rt, x, y, get_color_inter(inter, *rt));
+			else
+				pixel_put(*rt, x, y, 0);
+		}
+	}
+	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
+							rt->rtmlx.img, 0, 0);
+}
+
+void	raytracing(t_rt *rt)
+{
+	int	x;
+	int	y;
 
 	if (check_is_inside(*rt, rt->scene.c_pos))
 		print_black(rt);
 	else
 	{
-		if (check_is_inside(*rt, rt->scene.l_pos))
-		{
-			ft_printf("THE LIGHT IS INSIDE\n");
-			rt->scene.l_bright = 0;
-		}
+		x = -1;
 		y = -1;
-		while (++y < WIN_Y)
-		{
-			x = -1;
-			while (++x < WIN_X)
-			{
-				ray = make_ray(calc_ang_rot(x, y, *rt), *rt);
-				inter = found_inter(ray, *rt, NO_INTER, -1);
-				if (inter.object != NO_INTER)
-					pixel_put(*rt, x, y, get_color_inter(inter, *rt));
-				else
-					pixel_put(*rt, x, y, 0);
-		//	if (y %40 == 0 && x % 40 == 0)
-		//			printf("%d.%d|", inter.object, inter.index);
-			}
-		//	if (y %40 == 0)
-		//		printf("\n");
-		}
-		//print_scene(rt->scene);
-		mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
-								rt->rtmlx.img, 0, 0);
+		raytracing_loop(rt, x, y);
 	}
 }
 
@@ -57,7 +56,6 @@ int	main(int ac, char **av)
 {
 	t_rt	rt;
 
-	printf("BITWISE MASKS: 1L << 0 - %ld\n", 1L << 0);
 	rtnew(&rt, ac, av);
 	if (ac != 2 || !av)
 		exit(print_error(rt, ERR_INC_ARGS, NO_FREE_MLX));

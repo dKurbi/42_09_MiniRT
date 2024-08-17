@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_minirt.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 21:00:54 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/17 21:19:10 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ typedef struct s_ray
 
 typedef struct s_intersec
 {
-	int		    object;
-	t_ray   	ray;
-	double	    t1;
-	double	    t2;
-    t_vector	hit1;
-    t_vector	n1;
-	t_rgb	    color;
+	int			object;
+	t_ray		ray;
+	double		t1;
+	double		t2;
+	t_vector	hit1;
+	t_vector	n1;
+	t_rgb		color;
 	int			index;
 }	t_intersec;
 
@@ -143,7 +143,7 @@ typedef struct s_cuadratica
 	double		c;
 	double		discrim;
 	double		sqrt_discrim;
-} t_cuadratica;
+}	t_cuadratica;
 
 typedef struct s_cy_inter_values
 {
@@ -160,7 +160,7 @@ typedef struct s_cy_inter_values
 	double		t1;
 	double		t2;
 	t_vector	hit1;
-	double		p1DotV;
-} t_cy_inter_values;
+	double		p1_dot_v;
+}	t_cy_inter_values;
 
 #endif
