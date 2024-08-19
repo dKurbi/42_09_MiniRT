@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 22:21:09 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/19 04:34:26 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	raytracing(t_rt *rt)
 		raytracing_loop(rt, x, y);
 	}
 	print_menu();
+	printf("AFTERRAYTRACIN\n");
 }
 
 //MAIN: MAIN
@@ -65,9 +66,9 @@ int	main(int ac, char **av)
 	calc_up_right_vector(&rt);
 	mlxnew(&rt);
 	raytracing(&rt);
+	mlx_hook(rt.rtmlx.win, EV_DESTROY, MASK_DESTROY, event_destroy, &rt);
 	mlx_hook(rt.rtmlx.win, EV_KEY, 0, event_key, &rt);
 	mlx_mouse_hook(rt.rtmlx.win, event_mouse, &rt);
-	mlx_hook(rt.rtmlx.win, EV_DESTROY, MASK_DESTROY, event_destroy, &rt);
 	mlx_loop(rt.rtmlx.mlx_ptr);
 	free_rt(&rt, FREE_MLX);
 	return (0);

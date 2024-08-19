@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:32:56 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 22:51:09 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/19 04:15:07 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,37 @@
 //when did something in screen with mouse
 int	event_mouse(int mouse, t_rt *rt)
 {
-	printf("mouse pressed - %d\n", mouse);
 	if (mouse == MOUSE_LEFT)
 	{
+		printf("befortot\n");
 		amb_light_more_bright(rt);
+		printf("amblittot\n");
 		raytracing(rt);
+		printf("sigmnitot\n");
 	}
 	else if (mouse == MOUSE_RIGHT)
 	{
+		printf("befortot\n");
 		amb_light_less_bright(rt);
+		printf("amblittot\n");
 		raytracing(rt);
+		printf("sigmnitot\n");
 	}
 	else if (mouse == MOUSE_SCROLL_UP)
 	{
+		printf("befortot\n");
+
 		if (zoom_in(rt))
 			raytracing(rt);
+		printf("sigmnitot\n");
 	}
 	else if (mouse == MOUSE_SCROLL_DOWN)
 	{
+		printf("befortot\n");
+
 		if (zoom_out(rt))
 			raytracing(rt);
+		printf("sigmnitot\n");
 	}
 	return (0);
 }
