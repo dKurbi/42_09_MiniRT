@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 04:35:34 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 22:22:09 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:39:11 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void				event_key_spin(int key, t_rt *rt);
 void				event_key_move(int key, t_rt *rt);
 
 //event.c
-int					event_mouse(int mouse, t_rt *rt);
 int					event_key(int key, t_rt *rt);
 int					event_destroy(t_rt *rt);
 
@@ -140,7 +139,7 @@ double				v_dot(t_vector v1, t_vector v2);
 t_vector			v_cross(t_vector v1, t_vector v2);
 
 //menu.c
-void	print_menu(void);
+void				print_menu(void);
 
 //minirt.c
 void				raytracing(t_rt *rt);
@@ -180,14 +179,6 @@ int					skip_spaces(char *s, int i_provided);
 int					if_space(char c);
 int					len_split(char **split);
 
-//print.c
-/*void		print_v(char *name, t_vector v);
-void		print_rgb(char *name, t_rgb rgb);
-void		print_plane(char *name, t_plane p);
-void		print_sphere(char *name, t_sphere s);
-void		print_scene(t_scene s);
-void		print_cylinder(char *name, t_cylinder c);*/
-
 //rotation.c 
 t_vector			rotation_x(t_vector v, double ang);
 t_vector			rotation_y(t_vector v, double ang);
@@ -220,6 +211,7 @@ void				cam_spin(t_rt *rt, double ang);
 void				cam_m_h(t_rt *rt, double ang);
 void				cam_m_v(t_rt *rt, double ang);
 void				cam_m_fwd(t_rt *rt, int distance);
+void				cam_m_r_l(t_rt *rt, int distance);
 
 //light_change.c
 void				amb_light_more_bright(t_rt *rt);

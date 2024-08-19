@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 17:04:56 by diego             #+#    #+#             */
-/*   Updated: 2024/08/14 16:21:21 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:40:19 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,10 @@ void	cam_m_fwd(t_rt *rt, int distance)
 {
 	rt->scene.c_pos = v_add(rt->scene.c_pos, \
 		v_expand(rt->scene.c_dir, distance));
+}
+
+void	cam_m_r_l(t_rt *rt, int distance)
+{
+	rt->scene.c_pos = v_add(rt->scene.c_pos, \
+		v_expand(rt->scene.v_right, distance));
 }

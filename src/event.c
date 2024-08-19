@@ -3,57 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:32:56 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/19 04:15:07 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:31:38 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//when did something in screen with mouse
-int	event_mouse(int mouse, t_rt *rt)
-{
-	if (mouse == MOUSE_LEFT)
-	{
-		printf("befortot\n");
-		amb_light_more_bright(rt);
-		printf("amblittot\n");
-		raytracing(rt);
-		printf("sigmnitot\n");
-	}
-	else if (mouse == MOUSE_RIGHT)
-	{
-		printf("befortot\n");
-		amb_light_less_bright(rt);
-		printf("amblittot\n");
-		raytracing(rt);
-		printf("sigmnitot\n");
-	}
-	else if (mouse == MOUSE_SCROLL_UP)
-	{
-		printf("befortot\n");
-
-		if (zoom_in(rt))
-			raytracing(rt);
-		printf("sigmnitot\n");
-	}
-	else if (mouse == MOUSE_SCROLL_DOWN)
-	{
-		printf("befortot\n");
-
-		if (zoom_out(rt))
-			raytracing(rt);
-		printf("sigmnitot\n");
-	}
-	return (0);
-}
-
 //when pressed key in screen
 int	event_key(int key, t_rt *rt)
 {
-	printf("key pressed - %d\n", key);
 	if (key == KEY_ESC)
 		return (event_destroy(rt));
 	else if (key == KEY_M)

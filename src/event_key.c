@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_key.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 08:37:07 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 22:40:08 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:38:26 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,16 @@ void	event_key_move(int key, t_rt *rt)
 	else if (key == KEY_W)
 	{
 		cam_m_fwd(rt, 10);
+		raytracing(rt);
+	}
+	else if (key == KEY_D)
+	{
+		cam_m_r_l(rt, 10);
+		raytracing(rt);
+	}
+	else if (key == KEY_A)
+	{
+		cam_m_r_l(rt, -10);
 		raytracing(rt);
 	}
 }
