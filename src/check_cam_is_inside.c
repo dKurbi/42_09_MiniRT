@@ -6,12 +6,13 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 11:56:27 by diego             #+#    #+#             */
-/*   Updated: 2024/08/17 21:17:01 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/20 02:54:28 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minirt.h"
 
+//checks in every figure if inside
 int	check_is_inside(t_rt rt, t_vector point)
 {
 	return (is_in_sp_lst(rt, point) || \

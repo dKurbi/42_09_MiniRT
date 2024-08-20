@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maths_vector_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:05:39 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/18 13:49:46 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/20 02:59:14 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_vector	v_normalized(t_vector vector)
 	return (v_ret);
 }
 
+//create new vector
 t_vector	v_new(double x, double y, double z)
 {
 	t_vector	new;

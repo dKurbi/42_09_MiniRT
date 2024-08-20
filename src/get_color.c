@@ -6,12 +6,13 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:55:16 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/08/17 21:32:33 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/20 02:57:16 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//grab final color in int
 int	get_color_inter_final_col(t_intersec inter, t_rt rt, double intensity)
 {
 	t_rgb	fin_col;
@@ -22,6 +23,7 @@ int	get_color_inter_final_col(t_intersec inter, t_rt rt, double intensity)
 	return (color(fin_col.r, fin_col.g, fin_col.b));
 }
 
+//get the final color for printing on screen
 int	get_color_inter(t_intersec inter, t_rt rt)
 {
 	t_vector	l_dir;
@@ -72,7 +74,7 @@ int	is_shadow(t_intersec inter, t_rt rt)
 	return (1);
 }
 
-//1 is a plane inter light and camara
+//1 is a plane inter light and camera
 int	is_plane_in_the_middle(t_intersec inter, t_rt rt)
 {
 	t_intersec	inter2;

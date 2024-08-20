@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/19 17:31:26 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/20 02:32:41 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,23 @@ void	raytracing(t_rt *rt)
 {
 	int	x;
 	int	y;
+	int	camera_inside;
 
+	camera_inside = 0;
 	if (check_is_inside(*rt, rt->scene.c_pos))
-		print_black(rt);
+		camera_inside = 1;
 	else
 	{
 		x = -1;
 		y = -1;
 		raytracing_loop(rt, x, y);
+	}
+	if (camera_inside == 0)
+		print_menu();
+	else
+	{
+		ft_printf("CAMERA IS INSIDE OF FIGURE!\nPUT THE CAMERA OUTSIDE!\n");
+		print_black(rt);
 	}
 }
 
@@ -64,7 +73,6 @@ int	main(int ac, char **av)
 	calc_up_right_vector(&rt);
 	mlxnew(&rt);
 	raytracing(&rt);
-	print_menu();
 	mlx_hook(rt.rtmlx.win, EV_DESTROY, MASK_DESTROY, event_destroy, &rt);
 	mlx_hook(rt.rtmlx.win, EV_KEY, 0, event_key, &rt);
 	mlx_loop(rt.rtmlx.mlx_ptr);

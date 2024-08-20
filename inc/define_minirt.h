@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:50 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 22:45:58 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/19 22:46:24 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 
 //pixels for mlx window (Linux/Mac)
 # ifdef __linux__
-#  define WIN_X 1280
+#  define WIN_X 1310
 #  define WIN_Y 920
 # else
 #  define WIN_X 1920
@@ -109,7 +109,7 @@
 
 # endif
 
-//mouse control mlx
+//mouse control mlx (NOT USED!!!)
 # ifdef __linux__
 #  define MOUSE_LEFT 1
 #  define MOUSE_RIGHT 3
@@ -138,7 +138,7 @@
 # define CYLINDER 3
 # define T_CYLINDER 4
 
-//type Cilinder Base
+//type Cylinder Base
 # define T_BASE 0
 # define T_TOP 	1
 

@@ -6,7 +6,7 @@
 #    By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 20:00:30 by iassambe          #+#    #+#              #
-#    Updated: 2024/08/17 22:19:48 by iassambe         ###   ########.fr        #
+#    Updated: 2024/08/20 03:01:53 by iassambe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,9 +85,9 @@ SRCS = 	minirt.c check_file.c error.c free.c struct.c utils.c utils_mlx.c \
 		check_str_number.c utils_check.c free_struct_lst.c utils_check_2.c \
 		add_struct_figure.c add_scene_lower_second.c maths_vector.c \
 		maths_vector_2.c maths_others.c intersection.c ray_and_pixel.c \
-		init_cam.c rotation.c found_inter.c intersection_cy.c \
-		intersection_cy_calc.c get_color.c cam_moves.c light_change.c \
-		zoom.c check_cam_is_inside.c is_inside.c event_key.c menu.c
+		rotation.c found_inter.c intersection_cy.c light_change.c \
+		intersection_cy_calc.c get_color.c cam_moves.c menu.c \
+		zoom.c check_cam_is_inside.c is_inside.c event_key.c
 
 		
 OBJS = $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
@@ -148,11 +148,6 @@ error:
 err: error
 
 e: error
-
-go:
-	./$(NAME) $(DIR_FILES_RT)scene.rt
-
-g: go
 
 -include $(DEPS)
 

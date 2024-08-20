@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 19:31:29 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/17 21:19:10 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/20 01:30:37 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,31 +119,14 @@ typedef struct s_scene
 	t_vector	v_right;
 }	t_scene;
 
-//main structure: we add all to this t_rt
-typedef struct s_rt
-{
-	t_mlx	rtmlx;
-	int		fd;
-	char	**av;
-	int		ac;
-	char	*line;
-	char	**split;
-	int		a_l_count;
-	int		c_count;
-	int		l_count;
-	double	aspect_ratio;
-	t_scene	scene;
-	char	*name;
-}	t_rt;
-
-typedef struct s_cuadratica
+typedef struct s_quadr
 {
 	double		a;
 	double		b;
 	double		c;
 	double		discrim;
 	double		sqrt_discrim;
-}	t_cuadratica;
+}	t_quadr;
 
 typedef struct s_cy_inter_values
 {
@@ -162,5 +145,22 @@ typedef struct s_cy_inter_values
 	t_vector	hit1;
 	double		p1_dot_v;
 }	t_cy_inter_values;
+
+//main structure: we add all to this t_rt
+typedef struct s_rt
+{
+	t_mlx	rtmlx;
+	int		fd;
+	char	**av;
+	int		ac;
+	char	*line;
+	char	**split;
+	int		a_l_count;
+	int		c_count;
+	int		l_count;
+	double	aspect_ratio;
+	t_scene	scene;
+	char	*name;
+}	t_rt;
 
 #endif

@@ -6,12 +6,13 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 18:54:23 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/07/21 07:32:40 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/20 02:59:46 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//making ray from points
 t_ray	make_ray(t_vector2 point, t_rt rt)
 {
 	t_ray	new_ray;

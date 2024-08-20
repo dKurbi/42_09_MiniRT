@@ -3,19 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:26:45 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/08/17 21:00:54 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/20 02:58:34 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//create new intersection structure
+t_intersec	new_intersec(void)
+{
+	t_intersec	new_intersec;
+
+	new_intersec.object = NO_INTER;
+	new_intersec.index = -1;
+	new_intersec.t1 = -1;
+	new_intersec.t2 = -1;
+	return (new_intersec);
+}
+
 t_intersec	inter_ray_sp(t_sphere sp, t_ray ray)
 {
 	t_intersec		i_ret;
-	t_cuadratica	val;
+	t_quadr			val;
 
 	i_ret.object = NO_INTER;
 	i_ret.t1 = -1;
@@ -64,6 +76,7 @@ t_intersec	inter_ray_pl(t_plane pl, t_ray ray)
 	return (i_ret);
 }
 
+//choose between t1 and t2
 double	choose_t(double t1, double t2)
 {
 	if (t1 > 0 && t2 > 0)

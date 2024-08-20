@@ -6,7 +6,7 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:16:32 by dkurcbar          #+#    #+#             */
-/*   Updated: 2024/08/17 21:18:22 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/20 02:57:56 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_intersec	inter_base_cy(t_cylinder cy, t_ray ray, int type)
 	return (i_ret);
 }
 
-// Intersección con la tapa y la base del cilindro
+// intersection with cylinder cover and base
 t_intersec	inter_ray_cy_bases(t_cylinder cy, t_ray ray)
 {
 	t_intersec			i_top;

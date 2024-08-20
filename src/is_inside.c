@@ -6,19 +6,19 @@
 /*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 12:06:22 by diego             #+#    #+#             */
-/*   Updated: 2024/08/17 21:07:45 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/20 02:51:32 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minirt.h"
 
+//print just black screen
 void	print_black(t_rt *rt)
 {
 	int	y;
 	int	x;
 
 	y = -1;
-	ft_printf("CAMERA IS INSIDE OF FIGURE!\n");
 	while (++y < WIN_Y)
 	{
 		x = -1;
@@ -26,11 +26,12 @@ void	print_black(t_rt *rt)
 		{
 			pixel_put(*rt, x, y, 0);
 		}
-		mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
-			rt->rtmlx.img, 0, 0);
 	}
+	mlx_put_image_to_window(rt->rtmlx.mlx_ptr, rt->rtmlx.win, \
+			rt->rtmlx.img, 0, 0);
 }
 
+//if the point is inside - 1
 int	is_inside_sp(t_sphere sp, t_vector point)
 {
 	double	dist;
@@ -41,6 +42,7 @@ int	is_inside_sp(t_sphere sp, t_vector point)
 	return (0);
 }
 
+//if the point is inside - 1
 int	is_inside_pl(t_plane pl, t_vector point)
 {
 	t_vector	line;
@@ -51,8 +53,7 @@ int	is_inside_pl(t_plane pl, t_vector point)
 	return (0);
 }
 
-// Función para verificar si un punto está dentro del cilindro
-// retorna 1 si esta adentro y 0 sino
+//if the point is inside - 1
 int	is_inside_cy(t_cylinder cy, t_vector point)
 {
 	t_vector	to_point;

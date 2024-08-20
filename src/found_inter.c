@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   found_inter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:32:46 by diego             #+#    #+#             */
-/*   Updated: 2024/08/14 17:22:15 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/20 02:55:55 by iassambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//inter[0] == plano, inter[1] == esfera, inter[2] == cilindro
+//inter[0] == plane, inter[1] == sphere, inter[2] == cylinder
 t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 {
 	t_intersec	inter[4];
@@ -42,6 +42,7 @@ t_intersec	found_inter(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 	return (ret);
 }
 
+//if indersection in sphere
 t_intersec	found_inter_sp(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 {
 	t_sphere	*sp;
@@ -70,6 +71,7 @@ t_intersec	found_inter_sp(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 	return (inter);
 }
 
+//if indersection in plane
 t_intersec	found_inter_pl(t_ray ray, t_rt rt, int ob_avoid, int index_avoid)
 {
 	t_plane		*pl;
