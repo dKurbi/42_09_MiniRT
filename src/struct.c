@@ -6,7 +6,7 @@
 /*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:05:00 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/14 17:41:00 by dkurcbar         ###   ########.fr       */
+/*   Updated: 2024/08/20 20:15:18 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	rtnew(t_rt *rt, int ac, char **av)
 	rt->l_count = 0;
 	rt->aspect_ratio = WIN_X / WIN_Y;
 	rt->name = NULL;
+	rt->printed_menu = 0;
 	if (rt->av[1])
 	{
 		rt->name = ft_strjoin("minirt: ", rt->av[1]);

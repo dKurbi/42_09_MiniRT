@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iassambe <iassambe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: dkurcbar <dkurcbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:50:10 by iassambe          #+#    #+#             */
-/*   Updated: 2024/08/20 02:32:41 by iassambe         ###   ########.fr       */
+/*   Updated: 2024/08/20 20:14:40 by dkurcbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ void	raytracing(t_rt *rt)
 		raytracing_loop(rt, x, y);
 	}
 	if (camera_inside == 0)
-		print_menu();
+	{
+		if (rt->printed_menu == 0)
+			print_menu();
+		rt->printed_menu = 1;
+	}
 	else
 	{
 		ft_printf("CAMERA IS INSIDE OF FIGURE!\nPUT THE CAMERA OUTSIDE!\n");
