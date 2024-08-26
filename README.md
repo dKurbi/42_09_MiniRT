@@ -1,4 +1,8 @@
 # MiniRT - My First RayTracer with miniLibX
+<div align="center">
+  <img src="images/bright_2_2.png" alt="bright_2_2.rt" width="300"/>
+  <img src="images/planes.png" alt="bright_2_2.rt" width="300"/>
+</div>
 
 ## Overview
 
@@ -73,3 +77,5 @@ Developed by **[Diego Kurcbart](https://www.linkedin.com/in/diegokurcbart/)** an
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+
